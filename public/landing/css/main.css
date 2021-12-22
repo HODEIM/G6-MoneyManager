@@ -3,6 +3,10 @@
     background-position: center center;
 }
 
+.canalAlfa {
+    background-image: url("../assets/img/canalAlfa.png")
+}
+
 .contacto {
     font-size: calc(1.475rem + 2.7vw);
     padding-top: 5%;

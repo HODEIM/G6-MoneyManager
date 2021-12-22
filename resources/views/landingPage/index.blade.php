@@ -69,11 +69,11 @@
     </div> -->
     <div class="modal fade mt-5" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content border-0" style="background: rgba(255, 255, 255, 0) !important;">
                 <div class="form-bg">
                     <div class="container">
-                        <div class="row bg-transparent">
-                            <div class="" style="width:100%;">
+                        <div class="row">
+                            <div style="width:100%;" class="canalAlfa">
                                 <div class="form-container">
                                     <div class="form-icon">
                                         <img src="{{asset('landing/assets/logo_blanco.ico')}}" width="100px">
@@ -89,7 +89,7 @@
                                             <span class="input-icon"><i class="fa fa-lock"></i></span>
                                             <input class="form-control" type="password" placeholder="Contraseña" name="password">
                                         </div>
-                                        <input type="submit" class="btn signin" value="Iniciar Sesión"/>
+                                        <input type="submit" class="btn signin" value="Iniciar Sesión" />
                                         <span class="forgot-pass"><a href="#">Forgot Username/Password?</a></span>
                                     </form>
                                 </div>
