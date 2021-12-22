@@ -25,9 +25,11 @@ class CreateUsersTable extends Migration
             $table->string('image');
             $table->boolean('loqued');
             $table->unsignedBigInteger('id_rol');
-            $table->foreign('id_rol')->references('id')->on('rols')->onDelete()->onUpdate();
             $table->rememberToken();
             $table->timestamps();
+            $table->foreign('id_rol')->references('id')->on('rols')->onUpdate('cascade')->onDelete('cascade');
+
+
         });
     }
 
