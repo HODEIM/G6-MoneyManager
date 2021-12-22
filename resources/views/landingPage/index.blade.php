@@ -78,17 +78,18 @@
                                     <div class="form-icon">
                                         <img src="{{asset('landing/assets/logo_blanco.ico')}}" width="100px">
                                     </div>
-                                    <form class="form-horizontal">
-                                        <h3 class="title">Login</h3>
+                                    <form method="POST" class="form-horizontal" action="/loginControl">
+                                        @csrf
+                                        <h3 class="title">Acceder</h3>
                                         <div class="form-group">
                                             <span class="input-icon"><i class="fa fa-envelope"></i></span>
-                                            <input class="form-control" type="email" placeholder="Correo Electrónico">
+                                            <input class="form-control" type="email" placeholder="Correo Electrónico" name="email">
                                         </div>
                                         <div class="form-group">
                                             <span class="input-icon"><i class="fa fa-lock"></i></span>
-                                            <input class="form-control" type="password" placeholder="Contraseña">
+                                            <input class="form-control" type="password" placeholder="Contraseña" name="password">
                                         </div>
-                                        <button class="btn signin">Login</button>
+                                        <input type="submit" class="btn signin" value="Iniciar Sesión"/>
                                         <span class="forgot-pass"><a href="#">Forgot Username/Password?</a></span>
                                     </form>
                                 </div>

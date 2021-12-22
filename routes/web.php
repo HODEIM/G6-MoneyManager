@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// LANDING PAGE VIEW
 Route::get('/', function () {
     return view('landingPage.index');
 });
+
+
+// CONTROLLER ROUTES
+Route::post('/loginControl', [Controller::class, 'controlLogin'] );
+
+
+// ... ROUTES
