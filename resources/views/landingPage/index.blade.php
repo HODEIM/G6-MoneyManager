@@ -35,14 +35,14 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="#signup" href="#!">Registrate</a></li>
-                    <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="#login" href="#!">Acceder</a></li>
+                    <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="/signup" href="/signup/create">Registrate</a></li>
+                    <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="#" href="#!">Acceder</a></li>
                 </ul>
             </div>
         </div>
     </nav>
     <!-- Login-->
-    <!-- <div class="modal fade mt-5" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade mt-5" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -66,47 +66,10 @@
                 </div>
             </div>
         </div>
-    </div> -->
-    <div class="modal fade mt-5" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="form-bg">
-                    <div class="container">
-                        <div class="row bg-transparent">
-                            <div class="" style="width:100%;">
-                                <div class="form-container">
-                                    <div class="form-icon">
-                                        <img src="{{asset('landing/assets/logo_blanco.ico')}}" width="100px">
-                                    </div>
-                                    <form method="POST" class="form-horizontal" action="/loginControl">
-                                        @csrf
-                                        <h3 class="title">Acceder</h3>
-                                        <div class="form-group">
-                                            <span class="input-icon"><i class="fa fa-envelope"></i></span>
-                                            <input class="form-control" type="email" placeholder="Correo Electrónico" name="email">
-                                        </div>
-                                        <div class="form-group">
-                                            <span class="input-icon"><i class="fa fa-lock"></i></span>
-                                            <input class="form-control" type="password" placeholder="Contraseña" name="password">
-                                        </div>
-                                        <input type="submit" class="btn signin" value="Iniciar Sesión"/>
-                                        <span class="forgot-pass"><a href="#">Forgot Username/Password?</a></span>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
-
-
-
-    <!-- Sign up-->
-    <div class="modal fade mt-5" id="signup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Sign up
+    <div class="modal modal-backdrop fade mt-5" id="signup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Crear cuenta</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -136,7 +99,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Header-->
     <header class="masthead text-center text-white">
         <div class="masthead-content">

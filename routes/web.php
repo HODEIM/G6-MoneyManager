@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\UserController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,8 +22,9 @@ Route::get('/', function () {
 });
 
 
-// CONTROLLER ROUTES
+// Controller ROUTES
 Route::post('/loginControl', [Controller::class, 'controlLogin'] );
 
-
-// ... ROUTES
+// UserController ROUTES
+Route::get('/signup/create', [UserController::class , 'create']);
+Route::post('/signup', [UserController::class , 'store']);
