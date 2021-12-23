@@ -21,10 +21,10 @@ class UserController extends Controller
             'surname' => $request->get('surname'),
             'email' => $request->get('emailRegister'),
             'password' => $request->get('passwordRegister'),
-            'telephone' => $request->get('telephone'),
+            'telephone' => (int)$request->get('telephone'),
             'address' => $request->get('address'),
-            'image' => null,
-            'locked' => false,
+            'image' => '',
+            'loqued' => false,
             'id_rol' => 2,
         ]);
 
