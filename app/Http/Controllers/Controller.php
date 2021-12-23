@@ -19,10 +19,9 @@ class Controller extends BaseController
             'email' => 'required',
             'password' => 'required',
         ]);
-        $user = User::where('email', '=', $request->get('email'))
-            ->where('password', '=', $request->get('password'))
-            ->get();
-        if ($user != null) {
+        $pass = hash('sha256', $request->get('password'));
+        $user = User::where('email', '=', $request->get('email'))->where('password', '=', $pass)->get();
+        if (count($user) > 0) {
             return view("viewStart", ['user' => $user]);
         } else {
             return redirect('/');

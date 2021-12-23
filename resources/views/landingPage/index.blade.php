@@ -41,55 +41,31 @@
             </div>
         </div>
     </nav>
-    <!-- Login-->
-    <!-- <div class="modal fade mt-5" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <!-- Login -->
+    <div class="modal hide fade in mt-5" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Iniciar sesión</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">Usuario</label>
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label for="message-text" class="col-form-label">Contraseña</label>
-                            <input type="password" class="form-control">
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Siguiente</button>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <div class="modal fade mt-5" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content border-0" style="background: rgba(255, 255, 255, 0) !important;">
                 <div class="form-bg">
                     <div class="container">
-                        <div class="row bg-transparent">
-                            <div class="" style="width:100%;">
+                        <div class="row">
+                            <div style="width:100%;" class="canalAlfa">
                                 <div class="form-container">
                                     <div class="form-icon">
                                         <img src="{{asset('landing/assets/logo_blanco.ico')}}" width="100px">
                                     </div>
-                                    <form method="POST" class="form-horizontal" action="/loginControl">
+                                    <form method="POST" class="form-horizontal" action="/loginControl" id="loginForm">
                                         @csrf
                                         <h3 class="title">Acceder</h3>
-                                        <div class="form-group">
+                                        <div class="form-group" id="padreEmailLogin">
                                             <span class="input-icon"><i class="fa fa-envelope"></i></span>
-                                            <input class="form-control" type="email" placeholder="Correo Electrónico" name="email">
+                                            <input class="form-control" type="email" placeholder="Correo Electrónico" name="email" id="emailLogin">
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" id="padrePasswordLogin">
                                             <span class="input-icon"><i class="fa fa-lock"></i></span>
-                                            <input class="form-control" type="password" placeholder="Contraseña" name="password">
+                                            <input class="form-control" type="password" placeholder="Contraseña" name="password" id="passwordLogin">
                                         </div>
-                                        <input type="submit" class="btn signin" value="Iniciar Sesión"/>
+                                        <input type="submit" class="btn signin" value="Iniciar Sesión" id="enviar" />
                                         <span class="forgot-pass"><a href="#">Forgot Username/Password?</a></span>
                                     </form>
                                 </div>
