@@ -11,12 +11,15 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('register/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css') }}">
 	<!-- Main Style Css -->
 	<link rel="stylesheet" href="{{ asset('register/css/style.css') }}" />
+	<!--Jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="{{ asset('register/js/script.js')}}"></script> 
 </head>
 
 <body class="form-v10">
 	<div class="page-content">
 		<div class="form-v10-content">
-			<form class="form-detail" action="/signup" method="post" id="myform">
+			<form class="form-detail" action="/signup" method="post" id="registerFrom">
 				@csrf
 				<div class="form-left">
 					<h2>Informacion General</h2>
@@ -64,7 +67,7 @@
 						</label>
 					</div>
 					<div class="form-row-last">
-						<input type="submit" name="register" class="register" value="Register Badge">
+						<input type="submit" name="register" class="register" id="registerSubmit">
 					</div>
 				</div>
 			</form>
