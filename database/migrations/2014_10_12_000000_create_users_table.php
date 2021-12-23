@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->integer('telephone');
             $table->string('address');
             $table->string('image');
-            $table->boolean('loqued');
+            $table->boolean('locked');
             $table->unsignedBigInteger('id_rol');
             $table->rememberToken();
             $table->timestamps();
