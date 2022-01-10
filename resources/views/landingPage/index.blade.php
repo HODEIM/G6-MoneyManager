@@ -35,8 +35,8 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="#signup" href="#!">Registrate</a></li>
-                    <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="#login" href="#!">Acceder</a></li>
+                    <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="/signup" href="/signup/create">Registrate</a></li>
+                    <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="#" href="#!">Acceder</a></li>
                 </ul>
             </div>
         </div>
@@ -76,11 +76,9 @@
             </div>
         </div>
     </div>
-    
-    <!-- Sign up-->
-    <div class="modal fade mt-5" id="signup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Sign up
+    <div class="modal modal-backdrop fade mt-5" id="signup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Crear cuenta</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -110,8 +108,7 @@
                 </div>
             </div>
         </div>
-    </div>
-
+    </div> -->
     <!-- Header-->
     <header class="masthead text-center text-white">
         <div class="masthead-content">
