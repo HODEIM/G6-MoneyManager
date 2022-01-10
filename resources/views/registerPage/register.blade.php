@@ -39,6 +39,17 @@
 							<input type="password" name="rePasswordRegister" id="rePasswordRegister" class="input-text" placeholder="Repetir contraseña" required>
 						</div>
 					</div>
+					<div class="form-group">
+						<div class="form-row form-row-1">
+							<input type="text" name="day" id="passwordRegister" class="input-text" placeholder="Contraseña" required>
+						</div>
+						<div class="form-row form-row-2">
+							<input type="text" name="Month" id="rePasswordRegister" class="input-text" placeholder="Repetir contraseña" required>
+						</div>
+						<div class="form-row form-row-3">
+							<input type="text" name="rePasswordRegister" id="rePasswordRegister" class="input-text" placeholder="Repetir contraseña" required>
+						</div>
+					</div>
 					<div class="form-row">
 						<input type="text" name="accountRegister" id="accountRegister" class="input-text" placeholder="Cuenta" required>
 					</div>					
@@ -56,7 +67,7 @@
 							<input type="text" name="code" class="code" id="code" placeholder="Code +" required>
 						</div>
 						<div class="form-row form-row-2">
-							<input type="text" name="phone" class="phone" id="phone" placeholder="Phone Number" required>
+							<input type="text" name="telephone" class="phone" id="phone" placeholder="Phone Number" required>
 						</div>
 					</div>
 					<div class="form-checkbox">

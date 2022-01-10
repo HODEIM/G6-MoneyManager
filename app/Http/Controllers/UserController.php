@@ -16,11 +16,12 @@ class UserController extends Controller
         //     'email' => 'required',
         //     'password' => 'required',
         // ]);
-        /*User::create([
+        $password = hash('sha256', $request->get('passwordRegister'));
+        User::create([
             'name' => $request->get('name'),
             'surname' => $request->get('surname'),
             'email' => $request->get('emailRegister'),
-            'password' => $request->get('passwordRegister'),
+            'password' => $password,
             'telephone' => (int)$request->get('telephone'),
             'address' => $request->get('address'),
             'image' => '',
@@ -28,7 +29,7 @@ class UserController extends Controller
             'id_rol' => 2,
         ]);
 
-        return redirect('/');*/
+        return redirect('/');
 
     }
 }
