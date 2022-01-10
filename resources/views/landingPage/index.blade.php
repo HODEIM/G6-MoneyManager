@@ -76,9 +76,7 @@
             </div>
         </div>
     </div>
-
-
-
+    
     <!-- Sign up-->
     <div class="modal fade mt-5" id="signup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -113,6 +111,7 @@
             </div>
         </div>
     </div>
+
     <!-- Header-->
     <header class="masthead text-center text-white">
         <div class="masthead-content">
@@ -138,8 +137,8 @@
         <div class="bg-circle-3 bg-circle">
             <img src="{{ asset('landing/assets/img/dollar.png') }}" class="bg-coins bg-coin-3">
         </div>
-
     </header>
+
     <!-- Content section 1-->
     <section id="scroll">
         <div class="container px-5">
@@ -161,6 +160,7 @@
             </div>
         </div>
     </section>
+
     <!-- Content section 2-->
     <section>
         <div class="container px-5">
@@ -180,6 +180,7 @@
             </div>
         </div>
     </section>
+
     <!-- Content section 3-->
     <section>
         <div class="container px-5">
@@ -198,6 +199,7 @@
             </div>
         </div>
     </section>
+
     <!-- Contact -->
     <section>
         <div class="container px-5 pt-5">
@@ -230,26 +232,24 @@
             </div>
         </div>
     </section>
+    
     <!-- Footer-->
     <footer class="py-5 bg-black">
-        <div class="container ">
+        <div class="container">
             <div class="row d-flex justify-content-center">
                 <div class="col-6 text-center">
                     <i id="instagram" class="fab fa-instagram fa-lg mx-2"></i>
                     <i id="twitter" class="fab fa-twitter fa-lg mx-2"></i>
                     <i id="facebook" class="fab fa-facebook fa-lg mx-2"></i>
                     <i id="phone" class="fas fa-phone fa-lg mx-2"></i>
-                    <!--+34 943 25 78 92-->
-
                 </div>
             </div>
             <div class="row my-2">
                 <p class="m-0 text-center text-white small">Copyright &copy; Money Manager 2021</p>
-
             </div>
         </div>
-
     </footer>
+
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
