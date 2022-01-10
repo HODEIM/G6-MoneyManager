@@ -19,11 +19,10 @@ class Controller extends BaseController
             'email' => 'required',
             'password' => 'required',
         ]);
-        $user = User::where('email', '=', $request->get('email'))
-            ->where('password', '=', $request->get('password'))
-            ->get();
+        $pass = hash('sha256', $request->get('password'));
+        $user = User::where('email', '=', $request->get('email'))->where('password', '=', $pass)->first();
         if ($user != null) {
-            return view("viewStart", ['user' => $user]);
+            return redirect("/movements/$user->id");
         } else {
             return redirect('/');
         }
