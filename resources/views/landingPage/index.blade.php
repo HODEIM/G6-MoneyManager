@@ -36,7 +36,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="/signup" href="/signup/create">Registrate</a></li>
-                    <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="#" href="#!">Acceder</a></li>
+                    <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="#login" href="#!">Acceder</a></li>
                 </ul>
             </div>
         </div>
@@ -76,39 +76,7 @@
             </div>
         </div>
     </div>
-    <!-- Sign up
-    <div class="modal modal-backdrop fade mt-5" id="signup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Crear cuenta</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">Nombre</label>
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">Apellidos</label>
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">Correo Electrónico</label>
-                            <input type="email" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">Contraseña</label>
-                            <input type="password" class="form-control">
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Siguiente</button>
-                </div>
-            </div>
-        </div>
-    </div> -->
+    
     <!-- Header-->
     <header class="masthead text-center text-white">
         <div class="masthead-content">
