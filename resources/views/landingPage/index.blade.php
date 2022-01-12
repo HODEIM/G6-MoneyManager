@@ -41,7 +41,17 @@
             </div>
         </div>
     </nav>
-
+    @if (config('locale.status') && count(config('locale.languages')) > 1)
+                <div class="top-right links">
+                    @foreach (array_keys(config('locale.languages')) as $lang)
+                        @if ($lang != App::getLocale())
+                            <a href="{!! route('lang.swap', $lang) !!}">
+                                    {!! $lang !!} <small>{!! $lang !!}</small>
+                            </a>
+                        @endif
+                    @endforeach
+                </div>
+            @endif
     <!-- Login -->
     <div class="modal hide fade in mt-5" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">

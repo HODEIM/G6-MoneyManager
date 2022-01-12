@@ -9,7 +9,7 @@ use App\Http\Controllers\UserController;
 // LANDING PAGE VIEW
 Route::get('/', function () {return view('landingPage.index');});
 
-
+Route::get('lang/{lang}', 'LangController@swap')->name('lang.swap');
 // Controller ROUTES
 Route::post('/loginControl', [Controller::class, 'controlLogin'] );
 
