@@ -36,7 +36,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="/signup" href="/signup/create">Registrate</a></li>
-                    <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="#" href="#!">Acceder</a></li>
+                    <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="#login" href="#!">Acceder</a></li>
                 </ul>
             </div>
         </div>

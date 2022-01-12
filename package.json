@@ -7,7 +7,8 @@
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
         "prod": "npm run production",
-        "production": "mix --production"
+        "production": "mix --production",
+        "start": "node resources/js/app.js"
     },
     "devDependencies": {
         "@popperjs/core": "^2.10.2",
@@ -16,10 +17,14 @@
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14",
-        "resolve-url-loader": "^3.1.2",
+        "resolve-url-loader": "^2.3.2",
         "sass": "^1.32.11",
         "sass-loader": "^11.0.1",
         "vue": "^2.6.12",
+        "vue-loader": "^17.0.0",
         "vue-template-compiler": "^2.6.12"
+    },
+    "dependencies": {
+        "grunt": "^1.4.1"
     }
 }
