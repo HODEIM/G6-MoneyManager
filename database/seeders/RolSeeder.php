@@ -18,16 +18,16 @@ class RolSeeder extends Seeder
         Rol::create([
             'id' => '1',
             'rol' => 'Admin',
-            'description' => 'Administracion de la applicacion',
+            'description' => 'Admin user',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')    
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         Rol::create([
             'id' => '2',
             'rol' => 'User',
-            'description' => 'Administracion de la applicacion',
+            'description' => 'Normal user',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')    
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
     }
 }

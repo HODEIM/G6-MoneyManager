@@ -1,20 +1,20 @@
-?php
+<?php
 
 return [
 
     /*
-     * Si esta a true, mostrará los lenguajes disponibles
-     *
-     * @var bool
-     */
+* Si esta a true, mostrará los lenguajes disponibles
+*
+* @var bool
+*/
     'status' => true,
 
     /*
-     * Lenguajes disponibles
-    */
+* Lenguajes disponibles
+*/
     'languages' => [
-        'en'    => ['en', 'en_US', false],
-        'es'    => ['es', 'es_ES', false],
-        <!-- 'eu'    => ['eu', 'eU_EU', false], -->
+        'en' => ['en', 'en_US', false],
+        'es' => ['es', 'es_ES', false],
+        // 'eu'    => ['eu', 'eU_EU', false],
     ],
 ];
