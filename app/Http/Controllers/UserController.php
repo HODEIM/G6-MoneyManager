@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUser;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -11,11 +12,10 @@ class UserController extends Controller
         return view('registerPage.register');
     }
 
-    public function store(Request $request){
-        // $request->validate([
-        //     'email' => 'required',
-        //     'password' => 'required',
-        // ]);
+    public function store(StoreUser $request){
+
+        $request->validated();
+
         $password = hash('sha256', $request->get('passwordRegister'));
         User::create([
             'name' => $request->get('name'),

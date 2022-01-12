@@ -45,7 +45,7 @@
 						</div>
 						<div class="form-row form-row-3">
 							<select name="month" id="birthMonth" class="input-text">
-								<option value="choose" selected  hidden>Mes</option>	
+								<option value="choose" selected hidden>Mes</option>
 								<option value="01">Enero</option>
 								<option value="02">Febrero</option>
 								<option value="03">Marzo</option>
@@ -65,7 +65,7 @@
 						</div>
 					</div>
 					<div class="form-row">
-						<input type="text" name="accountRegister" id="accountRegister" class="input-text" placeholder="Cuenta" required>
+						<input type="text" name="accountRegister" id="accountRegister" class="input-text" placeholder="Cuenta">
 					</div>
 				</div>
 				<div class="form-right">
@@ -81,18 +81,19 @@
 					</div>
 					<div class="form-group">
 						<div class="form-row form-row-1">
-							<select name="code" id="code" class="code">
+							<input type="text" name="code" class="code" id="code" placeholder="Prefijo +" required>
+							<!-- <select name="code" id="code" class="code">
 								<option value="choose" selected  hidden>Prefijo +</option>	
-							</select>
+							</select> -->
 						</div>
 						<div class="form-row form-row-2">
-							<input type="text" name="telephone" class="phone" id="phone" placeholder="Telefono" required>
+							<input type="text" name="telephone" class="telephone" id="telephone" placeholder="Telefono" required>
 						</div>
 					</div>
 					<div class="form-checkbox">
 						<label class="container">
-							<p>Aceptó los <a href="#" class="text">Términos y condiciones</a> de la web.</p>
-							<input type="checkbox" name="checkbox">
+							<p>Acepto los <a href="#" class="text">Términos y condiciones</a> de la web.</p>
+							<input type="checkbox" name="checkbox" required>
 							<span class="checkmark"></span>
 						</label>
 					</div>
