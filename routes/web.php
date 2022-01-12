@@ -14,11 +14,11 @@ Route::get('/', function () {
 
 
 // Controller ROUTES
-Route::post('/loginControl', [Controller::class, 'controlLogin'] );
+Route::post('/loginControl', [Controller::class, 'controlLogin']);
 
 
 // MOVEMENTS ROUTES
-Route::get('/movements/{id}', [MovementController::class, 'index'])->middleware("auth");
+Route::get('/movements', [MovementController::class, 'index'])->middleware("auth");
 
 // ... ROUTES
 /*
@@ -47,6 +47,14 @@ Route::get('/signup/create', [UserController::class , 'create']);
 Route::post('/signup', [UserController::class , 'store']);
 
 */
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

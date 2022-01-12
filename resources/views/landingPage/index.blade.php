@@ -36,7 +36,11 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="/signup" href="/signup/create">Registrate</a></li>
+                    @auth
+                    <li class="nav-item"><a class="nav-link" href="/movements">Acceder</a></li>
+                    @else
                     <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="#login" href="#!">Acceder</a></li>
+                    @endauth
                 </ul>
             </div>
         </div>
@@ -229,7 +233,7 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Footer-->
     <footer class="py-5 bg-black">
         <div class="container">

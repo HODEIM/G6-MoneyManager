@@ -32,11 +32,10 @@ class Controller extends BaseController
         */
         $credentials = request()->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            $id = User::where('email', '=', $request->get('email'))->first();
             request()->session()->regenerate();
-            return redirect("/movements/$id->id");
+            return redirect("/movements");
         } else {
-            return "No tienes cuenta";
+            return redirect("/");
         }
     }
 }
