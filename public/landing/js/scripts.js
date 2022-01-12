@@ -26,7 +26,7 @@ function validarLogin(event) {
     }
     if (!falso) {
         event.preventDefault();
-        return null;
+        return false;
     }
     
 }
