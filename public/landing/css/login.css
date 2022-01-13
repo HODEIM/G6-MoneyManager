@@ -128,3 +128,9 @@
         margin: 0;
     }
 }
+ .textoDecoracion {
+    color: #999;
+ }
+ .textoDecoracion:hover {
+    color: #777;
+ }

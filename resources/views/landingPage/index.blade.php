@@ -67,8 +67,14 @@
                                         </div>
                                         <div class="form-group" id="padrePasswordLogin">
                                             <span class="input-icon"><i class="fa fa-lock"></i></span>
-                                            <input class="form-control" type="password" placeholder="Contraseña" name="password" id="passwordLogin">
+                                        <input class="form-control" type="password" placeholder="Contraseña" name="password" id="passwordLogin">
                                         </div>
+                                        <span class="forgot-pass text-start m-2">
+                                            <label class="textoDecoracion">
+                                                <input type="checkbox" name="remember">
+                                                Recuérdame
+                                            </label>
+                                        </span>
                                         <input type="submit" class="btn signin" value="Iniciar Sesión" id="enviar" />
                                         <span class="forgot-pass"><a href="#">Forgot Username/Password?</a></span>
                                     </form>
