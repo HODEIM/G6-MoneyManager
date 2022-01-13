@@ -52,7 +52,6 @@
                     <li class="nav-item"><a class="nav-link" href="/accounts">{{ __('myaccounts') }}</a></li>
                     @else
                     <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="#login" href="#!">{{ __('signin') }}</a></li>
-                    <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="#login" href="#!">Acceder</a></li>
                     @endauth
                 </ul>
             </div>
@@ -75,12 +74,11 @@
                                         <h3 class="title">{{ __('signin') }}</h3>
                                         <div class="form-group" id="padreEmailLogin">
                                             <span class="input-icon"><i class="fa fa-envelope"></i></span>
-                                            <<<<<<< HEAD <input class="form-control" type="email" placeholder="Correo Electrónico" name="email" id="emailLogin" autofocus value="{{ old('email')}}">
+                                            <input class="form-control" type="email" placeholder="{{ __('email') }}" name="email" id="emailLogin">
                                         </div>
                                         <div class="form-group" id="padrePasswordLogin">
                                             <span class="input-icon"><i class="fa fa-lock"></i></span>
-                                            <input class="form-control" type="password" placeholder="Contraseña" name="password" id="passwordLogin">
-
+                                            <input class="form-control" type="password" placeholder="{{ __('password') }}" name="password" id="passwordLogin">
                                         </div>
                                         <span class="forgot-pass text-start m-2 text-danger">
                                             @error('email') {{ $message }} @enderror
@@ -91,26 +89,17 @@
                                                 Recuérdame
                                             </label>
                                         </span>
-                                        <input type="submit" class="btn signin" value="Iniciar Sesión" id="enviar" />
-                                        <span class="forgot-pass"><a href="#">Forgot Username/Password?</a></span>
-                                        =======
-                                        <input class="form-control" type="email" placeholder="{{ __('email') }}" name="email" id="emailLogin">
+                                        <input type="submit" class="btn signin" value="{{ __('login') }}" id="enviar" />
+                                        <span class="forgot-pass"><a href="#">{{ __('forgot') }}</a></span>
+                                        >>>>>>> Multilingual
+                                    </form>
                                 </div>
-                                <div class="form-group" id="padrePasswordLogin">
-                                    <span class="input-icon"><i class="fa fa-lock"></i></span>
-                                    <input class="form-control" type="password" placeholder="{{ __('password') }}" name="password" id="passwordLogin">
-                                </div>
-                                <input type="submit" class="btn signin" value="{{ __('login') }}" id="enviar" />
-                                <span class="forgot-pass"><a href="#">{{ __('forgot') }}</a></span>
-                                >>>>>>> Multilingual
-                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 
     <!-- Header-->
