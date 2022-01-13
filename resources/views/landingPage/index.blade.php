@@ -27,30 +27,37 @@
 <body id="page-top">
     <!-- Navigation-->
     <nav id="nav1" class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+        <div class="lenguageNav">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/lang/es">ES</a></li>
+                <li class="breadcrumb-item"><a href="/lang/en">EN</a></li>
+                <!-- <li class="breadcrumb-item"><a class="nav-link" href="/lang/eu">EU</a></li> -->
+            </ol>
+        </div>
         <div class="container px-5">
             <a class="navbar-brand" href="#page-top">
-                <img src="{{ asset('landing/assets/img/logo_blanco.png') }}" alt="" width="50" class="d-inline-block ">
+                <img src="{{ asset('landing/assets/img/logo_blanco.png') }}" alt="" width="60" class="d-inline-block ">
                 Money Manager
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
                     @auth
-                    
+
                     @else
-                    <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="/signup" href="/signup/create">Registrate</a></li>
+                    <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="/signup" href="/signup/create">{{ __('signup') }}</a></li>
                     @endauth
 
                     @auth
-                    <li class="nav-item"><a class="nav-link" href="/movements">Mis Cuentas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/accounts">{{ __('myaccounts') }}</a></li>
                     @else
+                    <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="#login" href="#!">{{ __('signin') }}</a></li>
                     <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="#login" href="#!">Acceder</a></li>
                     @endauth
                 </ul>
             </div>
         </div>
     </nav>
-
     <!-- Login -->
     <div class="modal hide fade in mt-5" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -58,25 +65,25 @@
                 <div class="form-bg">
                     <div class="container">
                         <div class="row">
-                            <div style="width:100%;" class="canalAlfa">
+                            <div>
                                 <div class="form-container">
                                     <div class="form-icon">
                                         <img src="{{asset('landing/assets/logo_blanco.ico')}}" width="100px">
                                     </div>
                                     <form method="POST" class="form-horizontal" action="/loginControl" id="loginForm">
                                         @csrf
-                                        <h3 class="title">Acceder</h3>
+                                        <h3 class="title">{{ __('signin') }}</h3>
                                         <div class="form-group" id="padreEmailLogin">
                                             <span class="input-icon"><i class="fa fa-envelope"></i></span>
-                                            <input class="form-control" type="email" placeholder="Correo Electrónico" name="email" id="emailLogin" autofocus value="{{ old('email')}}">
+                                            <<<<<<< HEAD <input class="form-control" type="email" placeholder="Correo Electrónico" name="email" id="emailLogin" autofocus value="{{ old('email')}}">
                                         </div>
                                         <div class="form-group" id="padrePasswordLogin">
                                             <span class="input-icon"><i class="fa fa-lock"></i></span>
-                                        <input class="form-control" type="password" placeholder="Contraseña" name="password" id="passwordLogin">
+                                            <input class="form-control" type="password" placeholder="Contraseña" name="password" id="passwordLogin">
 
                                         </div>
                                         <span class="forgot-pass text-start m-2 text-danger">
-                                        @error('email') {{ $message }} @enderror
+                                            @error('email') {{ $message }} @enderror
                                         </span>
                                         <span class="forgot-pass text-start m-2">
                                             <label class="textoDecoracion">
@@ -86,8 +93,17 @@
                                         </span>
                                         <input type="submit" class="btn signin" value="Iniciar Sesión" id="enviar" />
                                         <span class="forgot-pass"><a href="#">Forgot Username/Password?</a></span>
-                                    </form>
+                                        =======
+                                        <input class="form-control" type="email" placeholder="{{ __('email') }}" name="email" id="emailLogin">
                                 </div>
+                                <div class="form-group" id="padrePasswordLogin">
+                                    <span class="input-icon"><i class="fa fa-lock"></i></span>
+                                    <input class="form-control" type="password" placeholder="{{ __('password') }}" name="password" id="passwordLogin">
+                                </div>
+                                <input type="submit" class="btn signin" value="{{ __('login') }}" id="enviar" />
+                                <span class="forgot-pass"><a href="#">{{ __('forgot') }}</a></span>
+                                >>>>>>> Multilingual
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -95,14 +111,15 @@
             </div>
         </div>
     </div>
-    
+    </div>
+
     <!-- Header-->
     <header class="masthead text-center text-white">
         <div class="masthead-content">
             <div class="container px-5">
-                <h1 class="masthead-heading mb-0">Gestiona tu dinero</h1>
-                <h2 class="masthead-subheading mb-0">de manera fácil</h2>
-                <a class="btn btn-primary btn-xl rounded-pill mt-5" href="#scroll">Lee mas</a>
+                <h1 class="masthead-heading mb-0">{{ __('title1') }}</h1>
+                <h2 class="masthead-subheading mb-0">{{ __('subtitle1') }}</h2>
+                <a class="btn btn-primary btn-xl rounded-pill mt-5" href="#scroll">{{ __('more') }}</a>
             </div>
         </div>
         <img src="{{ asset('landing/assets/img/francosuizo.png') }}" class="bg-coins bg-coin-5">
@@ -136,9 +153,8 @@
                 </div>
                 <div class="col-lg-6 order-lg-1">
                     <div class="p-5">
-                        <h2 class="display-4">Observa tus movimientos</h2>
-                        <p>Controla tus movimientos de manera visual con diversos graficos. Por ejemplo podras ver los
-                            los gastos y o ingresos que llevas en todo el año.</p>
+                        <h2 class="display-4">{{ __('landinginfo1') }}</h2>
+                        <p>{{ __('landinginfo2') }}</p>
                     </div>
                 </div>
             </div>
@@ -155,10 +171,8 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="p-5">
-                        <h2 class="display-4">Ahorra gastos</h2>
-                        <p>¿Compartes piso y siempre divides los gastos de Netflix, comida… con el resto? Organiza
-                            mejor las experiencias grupales que hasta hoy eran imposibles de gestionar y ¡que todo
-                            el mundo pague lo que debe!</p>
+                        <h2 class="display-4">{{ __('landinginfo3') }}</h2>
+                        <p>{{ __('landinginfo4') }}</p>
                     </div>
                 </div>
             </div>
@@ -175,9 +189,8 @@
                 </div>
                 <div class="col-lg-6 order-lg-1">
                     <div class="p-5">
-
-                        <h2 class="display-4">Donde quieras, cuando quieras</h2>
-                        <p>Conéctate desde cualquier lugar del mundo y desde cualquier dispositivo.</p>
+                        <h2 class="display-4">{{ __('landinginfo5') }}</h2>
+                        <p>{{ __('landinginfo6') }}</p>
                     </div>
                 </div>
             </div>
@@ -189,26 +202,26 @@
         <div class="container px-5 pt-5">
             <div class="row gx-5 mb-5 d-flex justify-content-center">
                 <div class="col-lg-5 order-lg-2 text-center">
-                    <h2 class="display-4">Contáctanos</h2>
+                    <h2 class="display-4">{{ __('ContactTitle') }}</h2>
                     <form>
                         <!-- Name && Email address  input -->
                         <div class="mb-3">
                             <div class="row">
                                 <div class="col-6">
-                                    <input class="form-control" id="name" type="text" placeholder="Nombre" />
+                                    <input class="form-control" id="name" type="text" placeholder="{{ __('name') }}" />
                                 </div>
                                 <div class="col-6">
-                                    <input class="form-control" id="emailAddress" type="email" placeholder="Correo Electronico" />
+                                    <input class="form-control" id="emailAddress" type="email" placeholder="{{ __('email') }}" />
                                 </div>
                             </div>
                         </div>
                         <!-- Message input -->
                         <div class="mb-3">
-                            <textarea class="form-control" id="message" type="text" placeholder="Mensage" style="height: 10rem;"></textarea>
+                            <textarea class="form-control" id="message" type="text" placeholder="{{ __('message') }}" style="height: 10rem;"></textarea>
                         </div>
                         <!-- Form submit button -->
                         <div class="d-grid">
-                            <button class="btn btn-primary btn-lg" type="submit">Enviar</button>
+                            <button class="btn btn-primary btn-lg" type="submit">{{ __('send') }}</button>
                         </div>
 
                     </form>
@@ -241,7 +254,7 @@
     @if($errors->any() )
     <script src="{{ asset('aplicacion/js/scriptModal.js') }}" type="text/javascript"></script>
     @endif
-    
+
 </body>
 
 </html>

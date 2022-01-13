@@ -3,15 +3,17 @@
 use App\Http\Controllers\AccountController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\LangController;
 use App\Http\Controllers\MovementController;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
 // LANDING PAGE VIEW
 Route::get('/', function () {
     return view('landingPage.index');
 });
+
+Route::get('/lang/{lang}', [LangController::class, 'change'])->name('lang.change');
 
 // Controller ROUTES
 Route::post('/loginControl', [Controller::class, 'login']);

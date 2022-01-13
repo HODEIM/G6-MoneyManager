@@ -30,7 +30,6 @@ class UserController extends Controller
             'locked' => false,
             'id_rol' => 2,
         ]);
-
         return redirect('/accounts');
     }
 }
