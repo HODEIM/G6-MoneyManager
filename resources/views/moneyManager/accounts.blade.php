@@ -9,7 +9,7 @@
     <title>Movimientos</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('aplicacion/assets/logo_negro.ico') }}" />
     <!-- Font Awesome icons (free version)-->
-    
+
     <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
@@ -35,15 +35,15 @@
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto">
+                <!-- <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#!">Movimientos</a></li>
                     <li class="nav-item"><a class="nav-link" href="#!">Ingresos</a></li>
                     <li class="nav-item"><a class="nav-link" href="#!">Gastos</a></li>
                     <li class="nav-item"><a class="nav-link" href="#!">Estadísticas</a></li>
-                </ul>
+                </ul> -->
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#!">Perfil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">Mis Cuentas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!">{{ __('profile') }}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!">{{ __('myaccounts') }}</a></li>
                     <li class="nav-item">
                         <form action="/logoutControl" method="POST">
                             @csrf
@@ -55,65 +55,24 @@
         </div>
     </nav>
     <div class="container-fluid">
-
-        <div class="text-center m-4 row">
-            <div class="col-12">
-                <label class="mx-2"><input type="radio" name="cuenta1" checked> Cuenta1</label>
-                <label class="mx-2"><input type="radio" name="cuenta1"> Cuenta2</label>
-                <label class="mx-2"><input type="radio" name="cuenta1"> Cuenta3</label>
+        <div class="row d-flex justify-content-center mt-3">
+            <div class="col-lg-8 text-center">
+                <h1>{{ __('accounts') }}</h1>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-8 m-auto" id="tabla">
-                <table class="table table-hover table-striped">
-                    <thead>
-                        <tr>
-                            <td colspan="4" class="text-center h3">Movimientos</td>
-                        </tr>
-                        <tr>
-                            <th scope="col">Fecha</th>
-                            <th scope="col">Concepto</th>
-                            <th scope="col">Descripcion</th>
-                            <th scope="col" class="text-end">Importe</th>
-                        </tr>
-                    </thead>
+            <div class="col-lg-4 m-auto">
+                <table class="table table-hover">
                     <tbody>
+                        @if(count($accounts) > 0)
+                        @foreach($accounts as $account)
                         <tr>
-                            <td>03/01/2021</td>
-                            <td>Nómina</td>
-                            <td>Nomina del mes de enero</td>
-                            <th class="text-end text-success">1250,61&#8364;</th>
+                            <td name="accountID" hidden>{{ $account->id }}</td>
+                            <td>{{ $account->name }}</td>
+                            <td>{{ $account->description }}</td>
                         </tr>
-                        <tr>
-                            <td>05/01/2021</td>
-                            <td>Saldo</td>
-                            <td>Añadido saldo a la tarjeta del movil</td>
-                            <th class="text-end text-danger">-10&#8364;</th>
-                        </tr>
-                        <tr>
-                            <td>07/01/2021</td>
-                            <td>Coche</td>
-                            <td>Cambio del motor de la ventanilla</td>
-                            <th class="text-end text-danger">-250&#8364;</th>
-                        </tr>
-                        <tr>
-                            <td>09/01/2021</td>
-                            <td>Bar</td>
-                            <td></td>
-                            <th class="text-end text-danger">-20,3&#8364;</th>
-                        </tr>
-                        <tr>
-                            <td>09/01/2021</td>
-                            <td>Bizum</td>
-                            <td>Le he pagado lo que el consumió en el bar</td>
-                            <th class="text-end text-success">10,3&#8364;</th>
-                        </tr>
-                        <tr>
-                            <td>13/01/2021</td>
-                            <td>Cena</td>
-                            <td>Cena del sábado</td>
-                            <th class="text-end text-danger">-17,5&#8364;</th>
-                        </tr>
+                        @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div>
@@ -137,7 +96,9 @@
     </footer>
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
+    <<<<<<< HEAD:resources/views/moneyManager/movements.blade.php=======<!-- Core theme JS-->
+        <script src="{{ asset('landing/js/scripts.js')}}"></script>
+        >>>>>>> AccountsView:resources/views/moneyManager/accounts.blade.php
 </body>
 
 </html>

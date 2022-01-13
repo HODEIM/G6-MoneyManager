@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AccountController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\MovementController;
 use Illuminate\Support\Facades\Auth;
@@ -14,12 +16,18 @@ Route::get('/', function () {
 // Controller ROUTES
 Route::post('/loginControl', [Controller::class, 'login']);
 
+// MOVEMENTS ROUTES
+Route::get('/accounts/{id}', [AccountController::class, 'index']);
+
+// ... ROUTES
+
+// Auth::routes();
+
 Route::post('/logoutControl', [Controller::class, 'logout']);
 
 // MOVEMENTS ROUTES
 Route::get('/movements', [MovementController::class, 'index'])->middleware("auth");
 
 // UserController ROUTES
-Route::get('/signup/create', [UserController::class , 'create']);
-Route::post('/signup', [UserController::class , 'store']);
-
+Route::get('/signup/create', [UserController::class, 'create']);
+Route::post('/signup', [UserController::class, 'store']);

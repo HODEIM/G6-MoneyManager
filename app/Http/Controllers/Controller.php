@@ -24,8 +24,7 @@ class Controller extends BaseController
         $pass = hash('sha256', $request->get('password'));
         $user = User::where('email', '=', $request->get('email'))->where('password', '=', $pass)->first();
         if ($user != null) {
-        request()->session()->regenerate();
-        return redirect("/movements/$user->id");
+            return redirect("/accounts/$user->id");
         } else {
         return redirect('/');
         }
@@ -34,20 +33,20 @@ class Controller extends BaseController
         $remember = request()->filled('remember');
         if (Auth::attempt($credentials, $remember)) {
             request()->session()->regenerate();
-            return redirect("/movements");
+            return redirect("/accounts");
         } else {
-          
-           throw ValidationException::withMessages([
-               'email' => "Las credenciales no coinciden"
-           ]);
-           //return redirect("/");
+
+            throw ValidationException::withMessages([
+                'email' => "Las credenciales no coinciden"
+            ]);
+            //return redirect("/");
         }
     }
     public function logout(Request $request)
     {
-       Auth::logout();
-       $request->session()->invalidate();
-       $request->session()->regenerateToken();
-       return redirect ("/");
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect("/");
     }
 }

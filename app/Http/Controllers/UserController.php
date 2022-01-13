@@ -8,11 +8,13 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-    public function create(){
+    public function create()
+    {
         return view('registerPage.register');
     }
 
-    public function store(StoreUser $request){
+    public function store(StoreUser $request)
+    {
 
         $request->validated();
         $password = password_hash($request->get('passwordRegister'), PASSWORD_DEFAULT);
@@ -25,11 +27,10 @@ class UserController extends Controller
             'telephone' => (int)$request->get('telephone'),
             'address' => $request->get('address'),
             'image' => '',
-            'loqued' => false,
+            'locked' => false,
             'id_rol' => 2,
         ]);
 
-        return redirect('/');
-
+        return redirect('/accounts');
     }
 }
