@@ -1,10 +1,6 @@
-#tabla {
-    border-style: solid;
-    border-width: 2px;
-    border-color: black;
+body{
+    height: 100vh;
 }
-
-
 #info,
 #email,
 #instagram,

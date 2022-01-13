@@ -28,8 +28,8 @@ class UserController extends Controller
             'loqued' => false,
             'id_rol' => 2,
         ]);
-
-        return redirect('/');
+        
+        return redirect('/accounts');
 
     }
 }

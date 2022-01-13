@@ -22,7 +22,7 @@ class Controller extends BaseController
         $pass = hash('sha256', $request->get('password'));
         $user = User::where('email', '=', $request->get('email'))->where('password', '=', $pass)->first();
         if ($user != null) {
-            return redirect("/movements/$user->id");
+            return redirect("/accounts/$user->id");
         } else {
             return redirect('/');
         }

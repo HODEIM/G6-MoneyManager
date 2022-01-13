@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\MovementController;
 use App\Http\Controllers\UserController;
 
 
@@ -14,7 +14,7 @@ Route::get('/', function () {return view('landingPage.index');});
 Route::post('/loginControl', [Controller::class, 'controlLogin'] );
 
 // MOVEMENTS ROUTES
-Route::get('/movements/{id}', [MovementController::class, 'index'] );
+Route::get('/accounts/{id}', [AccountController::class, 'index'] );
 
 // ... ROUTES
 

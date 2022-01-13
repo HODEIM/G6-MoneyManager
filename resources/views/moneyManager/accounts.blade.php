@@ -46,65 +46,23 @@
         </div>
     </nav>
     <div class="container-fluid">
-
-        <div class="text-center m-4 row">
-            <div class="col-12">
-                <label class="mx-2"><input type="radio" name="cuenta1" checked> Cuenta1</label>
-                <label class="mx-2"><input type="radio" name="cuenta1"> Cuenta2</label>
-                <label class="mx-2"><input type="radio" name="cuenta1"> Cuenta3</label>
+        <div class="row d-flex justify-content-center mt-3">
+            <div class="col-lg-8 text-center">
+                <h1>Cuentas</h1>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-8 m-auto" id="tabla">
-                <table class="table table-hover table-striped">
-                    <thead>
-                        <tr>
-                            <td colspan="4" class="text-center h3">Movimientos</td>
-                        </tr>
-                        <tr>
-                            <th scope="col">Fecha</th>
-                            <th scope="col">Concepto</th>
-                            <th scope="col">Descripcion</th>
-                            <th scope="col" class="text-end">Importe</th>
-                        </tr>
-                    </thead>
+            <div class="col-lg-4 m-auto">
+                <table class="table table-hover">
                     <tbody>
+                    @if(count($accounts) > 0)
+                    @foreach($accounts as $account)
                         <tr>
-                            <td>03/01/2021</td>
-                            <td>Nómina</td>
-                            <td>Nomina del mes de enero</td>
-                            <th class="text-end text-success">1250,61&#8364;</th>
+                            <td>{{ $account->name }}</td>
+                            <td>{{ $account->description }}</td>
                         </tr>
-                        <tr>
-                            <td>05/01/2021</td>
-                            <td>Saldo</td>
-                            <td>Añadido saldo a la tarjeta del movil</td>
-                            <th class="text-end text-danger">-10&#8364;</th>
-                        </tr>
-                        <tr>
-                            <td>07/01/2021</td>
-                            <td>Coche</td>
-                            <td>Cambio del motor de la ventanilla</td>
-                            <th class="text-end text-danger">-250&#8364;</th>
-                        </tr>
-                        <tr>
-                            <td>09/01/2021</td>
-                            <td>Bar</td>
-                            <td></td>
-                            <th class="text-end text-danger">-20,3&#8364;</th>
-                        </tr>
-                        <tr>
-                            <td>09/01/2021</td>
-                            <td>Bizum</td>
-                            <td>Le he pagado lo que el consumió en el bar</td>
-                            <th class="text-end text-success">10,3&#8364;</th>
-                        </tr>
-                        <tr>
-                            <td>13/01/2021</td>
-                            <td>Cena</td>
-                            <td>Cena del sábado</td>
-                            <th class="text-end text-danger">-17,5&#8364;</th>
-                        </tr>
+                    @endforeach
+                    @endif
                     </tbody>
                 </table>    
             </div>
