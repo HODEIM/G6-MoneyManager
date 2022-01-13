@@ -1,11 +1,21 @@
-body{
-    height: 100vh;
+#tabla {
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
 }
-footer{
+
+footer {
     position: fixed;
     width: 100%;
     bottom: 0;
 }
+
+.lenguageNav {
+    position: absolute;
+    top: 0;
+    left: 4px;
+}
+
 #info,
 #email,
 #instagram,
