@@ -10,6 +10,11 @@ class AccountController extends Controller
     public function index()
     {
         $accounts = Account::all();
-        return view('moneyManager.accounts', ['accounts' => $accounts]);
+        $id = auth()->user()->id_rol;
+        if ($id == "2") {
+            return view('moneyManager.accounts', ['accounts' => $accounts]);
+        } else {
+            return view('moneyManager.admin', ['accounts' => $accounts]);
+        }
     }
 }
