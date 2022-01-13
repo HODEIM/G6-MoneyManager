@@ -7,8 +7,9 @@ use App\Models\Account;
 
 class AccountController extends Controller
 {
-    public function index($id) {
+    public function index()
+    {
         $accounts = Account::all();
-        return view('moneyManager.accounts', ['id' => $id, 'accounts' => $accounts]);
+        return view('moneyManager.accounts', ['accounts' => $accounts]);
     }
 }

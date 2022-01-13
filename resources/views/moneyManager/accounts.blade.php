@@ -96,9 +96,8 @@
     </footer>
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <<<<<<< HEAD:resources/views/moneyManager/movements.blade.php=======<!-- Core theme JS-->
-        <script src="{{ asset('landing/js/scripts.js')}}"></script>
-        >>>>>>> AccountsView:resources/views/moneyManager/accounts.blade.php
+    <!-- Core theme JS-->
+    <script src="{{ asset('landing/js/scripts.js')}}"></script>
 </body>
 
 </html>
