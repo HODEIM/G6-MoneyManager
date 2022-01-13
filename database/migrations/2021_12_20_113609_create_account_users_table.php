@@ -16,13 +16,13 @@ class CreateAccountUsersTable extends Migration
         Schema::create('account_users', function (Blueprint $table) {
             $table->id();
             $table->boolean('active');
-            $table->integer('id_account');
-            $table->integer('id_user');
-            $table->integer('id_permission');
+            $table->unsignedBigInteger('id_account');
+            $table->unsignedBigInteger('id_user');
+            $table->unsignedBigInteger('id_permission');
             $table->timestamps();
-            $table->foreign('id_account')->references('id')->on('accounts')->onDelete()->onUpdate();
-            $table->foreign('id_user')->references('id')->on('users')->onDelete()->onUpdate();
-            $table->foreign('id_permission')->references('id')->on('permissions')->onDelete()->onUpdate();
+            $table->foreign('id_account')->references('id')->on('accounts')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_permission')->references('id')->on('permissions')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

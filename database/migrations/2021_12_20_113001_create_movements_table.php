@@ -19,11 +19,11 @@ class CreateMovementsTable extends Migration
             $table->double('amount');
             $table->string('description');
             $table->date('date');
-            $table->integer('id_concept');
-            $table->integer('id_account');
+            $table->unsignedBigInteger('id_concept');
+            $table->unsignedBigInteger('id_account');
             $table->timestamps();
-            $table->foreign('id_concept')->references('id')->on('concepts')->onDelete()->onUpdate();
-            $table->foreign('id_account')->references('id')->on('accounts')->onDelete()->onUpdate();
+            $table->foreign('id_concept')->references('id')->on('concepts')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_account')->references('id')->on('accounts')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

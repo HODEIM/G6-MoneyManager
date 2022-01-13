@@ -23,11 +23,13 @@ class CreateUsersTable extends Migration
             $table->integer('telephone');
             $table->string('address');
             $table->string('image');
-            $table->boolean('loqued');
+            $table->boolean('locked');
             $table->unsignedBigInteger('id_rol');
-            $table->foreign('id_rol')->references('id')->on('rols')->onDelete()->onUpdate();
             $table->rememberToken();
             $table->timestamps();
+            $table->foreign('id_rol')->references('id')->on('rols')->onUpdate('cascade')->onDelete('cascade');
+
+
         });
     }
 

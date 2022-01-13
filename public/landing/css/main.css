@@ -1,6 +1,14 @@
-#logo {
-    background-image: url("");
-    background-position: center center;
+/* Personal Css */
+
+.lenguageNav {
+    position: absolute;
+    top: 0;
+    left: 4px;
+}
+
+.lenguageNav a {
+    text-decoration: none;
+
 }
 
 .contacto {
@@ -626,4 +634,5 @@
             transform: translateX(225px) translateY(-135px)
         }
     }
+
 }

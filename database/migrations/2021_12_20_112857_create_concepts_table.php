@@ -16,9 +16,9 @@ class CreateConceptsTable extends Migration
         Schema::create('concepts', function (Blueprint $table) {
             $table->id();
             $table->string('concept');
-            $table->integer('id_account');
+            $table->unsignedBigInteger('id_account');
             $table->timestamps();
-            $table->foreign('id_account')->references('id')->on('accounts')->onDelete()->onUpdate();
+            $table->foreign('id_account')->references('id')->on('accounts')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
