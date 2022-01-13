@@ -74,7 +74,7 @@
                                         <h3 class="title">{{ __('signin') }}</h3>
                                         <div class="form-group" id="padreEmailLogin">
                                             <span class="input-icon"><i class="fa fa-envelope"></i></span>
-                                            <input class="form-control" type="email" placeholder="{{ __('email') }}" name="email" id="emailLogin">
+                                            <input class="form-control" type="email" placeholder="{{ __('email') }}" name="email" id="emailLogin" value="{{ old('email')}}">
                                         </div>
                                         <div class="form-group" id="padrePasswordLogin">
                                             <span class="input-icon"><i class="fa fa-lock"></i></span>
