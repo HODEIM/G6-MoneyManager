@@ -27,6 +27,13 @@
 <body id="page-top">
     <!-- Navigation-->
     <nav id="nav1" class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+        <div class="lenguageNav">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/lang/es">ES</a></li>
+                <li class="breadcrumb-item"><a href="/lang/en">EN</a></li>
+                <!-- <li class="breadcrumb-item"><a class="nav-link" href="/lang/eu">EU</a></li> -->
+            </ol>
+        </div>
         <div class="container px-5">
             <a class="navbar-brand" href="#page-top">
                 <img src="{{ asset('landing/assets/img/logo_blanco.png') }}" alt="" width="50" class="d-inline-block ">
@@ -76,7 +83,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Header-->
     <header class="masthead text-center text-white">
         <div class="masthead-content">
@@ -197,7 +204,7 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Footer-->
     <footer class="py-5 bg-black">
         <div class="container">
