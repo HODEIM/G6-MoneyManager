@@ -1,21 +1,19 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\MovementController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Auth\EloquentUserProvider;
+use Illuminate\Support\Facades\Route;
 
 // LANDING PAGE VIEW
 Route::get('/', function () {
     return view('landingPage.index');
 });
 
-
 // Controller ROUTES
-Route::post('/loginControl', [Controller::class, 'controlLogin']);
+Route::post('/loginControl', [Controller::class, 'login']);
 
+Route::post('/logoutControl', [Controller::class, 'logout']);
 
 // MOVEMENTS ROUTES
 Route::get('/movements', [MovementController::class, 'index'])->middleware("auth");
@@ -46,7 +44,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/signup/create', [UserController::class , 'create']);
 Route::post('/signup', [UserController::class , 'store']);
 
-*/
+ */
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
