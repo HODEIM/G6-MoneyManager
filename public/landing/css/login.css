@@ -134,3 +134,7 @@
  .textoDecoracion:hover {
     color: #777;
  }
+
+ .modal-dialog {
+     top: 15vh;
+ }

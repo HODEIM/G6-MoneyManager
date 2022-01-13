@@ -9,6 +9,7 @@
     <title>Movimientos</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('aplicacion/assets/logo_negro.ico') }}" />
     <!-- Font Awesome icons (free version)-->
+    
     <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
@@ -28,7 +29,7 @@
 <body>
     <nav id="nav1" class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top">
         <div class="container px-5">
-            <a class="navbar-brand">
+            <a class="navbar-brand" href="/">
                 <img src="{{ asset('landing/assets/img/logo_blanco.png') }}" alt="logo" width="50" class="d-inline-block">
                 Money Manager
             </a>
@@ -46,7 +47,7 @@
                     <li class="nav-item">
                         <form action="/logoutControl" method="POST">
                             @csrf
-                            <a href="#" class="nav-link" id="logout">Logout</a>
+                            <a href="#" class="nav-link" id="logout"><i class="fas fa-sign-out-alt fa-lg"></i></a>
                         </form>
                     </li>
                 </ul>
