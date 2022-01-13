@@ -30,7 +30,7 @@
         <div class="lenguageNav">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/lang/es">ES</a></li>
-                <li class="breadcrumb-item"><a href="/lang/en">IN</a></li>
+                <li class="breadcrumb-item"><a href="/lang/en">EN</a></li>
                 <!-- <li class="breadcrumb-item"><a class="nav-link" href="/lang/eu">EU</a></li> -->
             </ol>
         </div>
@@ -46,8 +46,6 @@
                     <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="#login" href="#!">{{ __('signin') }}</a></li>
                 </ul>
             </div>
-
-            <!-- <a href="/lang/eu">EU</a> -->
         </div>
     </nav>
     <!-- Login -->
@@ -57,7 +55,7 @@
                 <div class="form-bg">
                     <div class="container">
                         <div class="row">
-                            <div style="width:100%;" class="canalAlfa">
+                            <div>
                                 <div class="form-container">
                                     <div class="form-icon">
                                         <img src="{{asset('landing/assets/logo_blanco.ico')}}" width="100px">
@@ -180,20 +178,20 @@
                         <div class="mb-3">
                             <div class="row">
                                 <div class="col-6">
-                                    <input class="form-control" id="name" type="text" placeholder="{{ __('Name') }}" />
+                                    <input class="form-control" id="name" type="text" placeholder="{{ __('name') }}" />
                                 </div>
                                 <div class="col-6">
-                                    <input class="form-control" id="emailAddress" type="email" placeholder="{{ __('Email') }}" />
+                                    <input class="form-control" id="emailAddress" type="email" placeholder="{{ __('email') }}" />
                                 </div>
                             </div>
                         </div>
                         <!-- Message input -->
                         <div class="mb-3">
-                            <textarea class="form-control" id="message" type="text" placeholder="{{ __('Message') }}" style="height: 10rem;"></textarea>
+                            <textarea class="form-control" id="message" type="text" placeholder="{{ __('message') }}" style="height: 10rem;"></textarea>
                         </div>
                         <!-- Form submit button -->
                         <div class="d-grid">
-                            <button class="btn btn-primary btn-lg" type="submit">{{ __('Send') }}</button>
+                            <button class="btn btn-primary btn-lg" type="submit">{{ __('send') }}</button>
                         </div>
 
                     </form>

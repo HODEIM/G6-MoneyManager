@@ -7,7 +7,7 @@
     "repeatpassword" : "Repeat Password",
     "login" : "Log In",
     "forgot" : "Forgot your password?",
-    "title1" : "Manage your money easily",
+    "title1" : "Manage your money",
     "subtitle1" : "in a simple way",
     "more" : "read more",
     "landinginfo1" : "Observe your movements",
@@ -42,7 +42,7 @@
     "address" : "Address",
     "code" : "Code +",
     "telephone" : "Telephone",
-    "terms1" : "i accept the",
+    "terms1" : "I accept the",
     "terms2" : "terms and conditions",
     "terms3" : "of the website."
 }
