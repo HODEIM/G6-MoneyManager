@@ -32,15 +32,15 @@
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto">
+                <!-- <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#!">Movimientos</a></li>
                     <li class="nav-item"><a class="nav-link" href="#!">Ingresos</a></li>
                     <li class="nav-item"><a class="nav-link" href="#!">Gastos</a></li>
                     <li class="nav-item"><a class="nav-link" href="#!">Estadísticas</a></li>
-                </ul>
+                </ul> -->
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#!">Perfil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">Mis Cuentas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!">{{ __('profile') }}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!">{{ __('myaccounts') }}</a></li>
                 </ul>
             </div>
         </div>
@@ -48,24 +48,24 @@
     <div class="container-fluid">
         <div class="row d-flex justify-content-center mt-3">
             <div class="col-lg-8 text-center">
-                <h1>Cuentas</h1>
+                <h1>{{ __('accounts') }}</h1>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-4 m-auto">
                 <table class="table table-hover">
                     <tbody>
-                    @if(count($accounts) > 0)
-                    @foreach($accounts as $account)
+                        @if(count($accounts) > 0)
+                        @foreach($accounts as $account)
                         <tr>
-                            <td name="accountID"hidden>{{ $account->id }}</td>
+                            <td name="accountID" hidden>{{ $account->id }}</td>
                             <td>{{ $account->name }}</td>
                             <td>{{ $account->description }}</td>
                         </tr>
-                    @endforeach
-                    @endif
+                        @endforeach
+                        @endif
                     </tbody>
-                </table>    
+                </table>
             </div>
         </div>
     </div>
@@ -85,8 +85,8 @@
             </div>
         </div>
     </footer>
-     <!-- Bootstrap core JS-->
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script src="{{ asset('landing/js/scripts.js')}}"></script>
 </body>
