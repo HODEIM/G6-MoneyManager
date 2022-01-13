@@ -26,6 +26,8 @@ Route::post('/logoutControl', [Controller::class, 'logout']);
 // accounts ROUTES
 Route::get('/accounts', [AccountController::class, 'index'])->middleware("auth");
 
+
+
 // UserController ROUTES
 Route::get('/signup/create', [UserController::class, 'create']);
 Route::post('/signup', [UserController::class, 'store']);

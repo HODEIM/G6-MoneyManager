@@ -54,6 +54,7 @@
             </div>
         </div>
     </nav>
+    
     <div class="container-fluid">
         <div class="row d-flex justify-content-center mt-3">
             <div class="col-lg-8 text-center">
