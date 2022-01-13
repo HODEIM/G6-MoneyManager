@@ -58,6 +58,7 @@
                     @if(count($accounts) > 0)
                     @foreach($accounts as $account)
                         <tr>
+                            <td name="accountID"hidden>{{ $account->id }}</td>
                             <td>{{ $account->name }}</td>
                             <td>{{ $account->description }}</td>
                         </tr>
