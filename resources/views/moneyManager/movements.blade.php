@@ -21,6 +21,8 @@
     <link href="{{ asset('aplicacion/css/styles.css') }}" rel="stylesheet" />
     <!-- Personal CSS-->
     <link href="{{ asset('aplicacion/css/miEstilo.css') }}" rel="stylesheet" />
+    <!-- Personal JavaScript-->
+    <script src="{{ asset('aplicacion/js/movements.js') }}" type="text/javascript"></script>
 </head>
 
 <body>
@@ -41,6 +43,12 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#!">Perfil</a></li>
                     <li class="nav-item"><a class="nav-link" href="#!">Mis Cuentas</a></li>
+                    <li class="nav-item">
+                        <form action="/logoutControl" method="POST">
+                            @csrf
+                            <a href="#" class="nav-link" id="logout">Logout</a>
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -106,7 +114,7 @@
                             <th class="text-end text-danger">-17,5&#8364;</th>
                         </tr>
                     </tbody>
-                </table>    
+                </table>
             </div>
         </div>
     </div>
@@ -126,10 +134,9 @@
             </div>
         </div>
     </footer>
-     <!-- Bootstrap core JS-->
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="{{ asset('landing/js/scripts.js')}}"></script>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>

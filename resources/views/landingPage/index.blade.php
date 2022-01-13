@@ -36,7 +36,11 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="/signup" href="/signup/create">Registrate</a></li>
+                    @auth
+                    <li class="nav-item"><a class="nav-link" href="/movements">Mis Cuentas</a></li>
+                    @else
                     <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="#login" href="#!">Acceder</a></li>
+                    @endauth
                 </ul>
             </div>
         </div>
@@ -59,12 +63,22 @@
                                         <h3 class="title">Acceder</h3>
                                         <div class="form-group" id="padreEmailLogin">
                                             <span class="input-icon"><i class="fa fa-envelope"></i></span>
-                                            <input class="form-control" type="email" placeholder="Correo Electrónico" name="email" id="emailLogin">
+                                            <input class="form-control" type="email" placeholder="Correo Electrónico" name="email" id="emailLogin" autofocus value="{{ old('email')}}">
                                         </div>
                                         <div class="form-group" id="padrePasswordLogin">
                                             <span class="input-icon"><i class="fa fa-lock"></i></span>
-                                            <input class="form-control" type="password" placeholder="Contraseña" name="password" id="passwordLogin">
+                                        <input class="form-control" type="password" placeholder="Contraseña" name="password" id="passwordLogin">
+
                                         </div>
+                                        <span class="forgot-pass text-start m-2 text-danger">
+                                        @error('email') {{ $message }} @enderror
+                                        </span>
+                                        <span class="forgot-pass text-start m-2">
+                                            <label class="textoDecoracion">
+                                                <input type="checkbox" name="remember">
+                                                Recuérdame
+                                            </label>
+                                        </span>
                                         <input type="submit" class="btn signin" value="Iniciar Sesión" id="enviar" />
                                         <span class="forgot-pass"><a href="#">Forgot Username/Password?</a></span>
                                     </form>
@@ -197,7 +211,7 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Footer-->
     <footer class="py-5 bg-black">
         <div class="container">
@@ -219,6 +233,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script src="{{ asset('landing/js/scripts.js')}}"></script>
+    @if($errors->any() )
+    <script src="{{ asset('aplicacion/js/scriptModal.js') }}" type="text/javascript"></script>
+    @endif
+    
 </body>
 
 </html>
