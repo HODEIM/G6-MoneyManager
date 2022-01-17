@@ -91,7 +91,6 @@
                                         </span>
                                         <input type="submit" class="btn signin" value="{{ __('login') }}" id="enviar" />
                                         <span class="forgot-pass"><a href="#">{{ __('forgot') }}</a></span>
-                                        >>>>>>> Multilingual
                                     </form>
                                 </div>
                             </div>

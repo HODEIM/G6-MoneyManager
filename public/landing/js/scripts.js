@@ -14,8 +14,10 @@ function validarLogin(event) {
     var password = $('#passwordLogin').val();
     var falso = true;
     if (email == "" || !checkEmail()) {
+        if (email != "") {
+            emailIncorrecto();
+        }
         $('#padreEmailLogin').css("border", "1px solid #cb0104");
-        emailIncorrecto();
         falso = false;
     } else {
         $('#padreEmailLogin').css("border", "1px solid #b5b5b5");
