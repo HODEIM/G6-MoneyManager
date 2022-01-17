@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -20,26 +21,22 @@ class Controller extends BaseController
             'email' => 'required',
             'password' => 'required',
         ]);
-        /*
-        $pass = hash('sha256', $request->get('password'));
-        $user = User::where('email', '=', $request->get('email'))->where('password', '=', $pass)->first();
-        if ($user != null) {
-            return redirect("/accounts/$user->id");
-        } else {
-        return redirect('/');
-        }
-         */
-        $credentials = request()->only('email', 'password');
-        $remember = request()->filled('remember');
-        if (Auth::attempt($credentials, $remember)) {
-            request()->session()->regenerate();
-            return redirect("/accounts");
-        } else {
-
+        $mail = User::where('email', '=', $request->get('email'))->first();
+        if ($mail != null) {
+            $credentials = request()->only('email', 'password');
+            $remember = request()->filled('remember');
+            if (Auth::attempt($credentials, $remember)) {
+                request()->session()->regenerate();
+                return redirect("/accounts");
+            } else {
+                throw ValidationException::withMessages([
+                    'validation' => __('error.password'),
+                ]);
+            }
+        }else {
             throw ValidationException::withMessages([
-                'email' => "Las credenciales no coinciden"
+                'validation' => __('error.email'),
             ]);
-            //return redirect("/");
         }
     }
     public function logout(Request $request)
