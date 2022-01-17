@@ -11,6 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('register/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css') }}">
 	<!-- Main Style Css -->
 	<link rel="stylesheet" href="{{ asset('register/css/style.css') }}" />
+	<link rel="stylesheet" href="{{ asset('register/css/register.css') }}" />
 	<!--Jquery-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="{{ asset('register/js/script.js')}}"></script>
@@ -22,28 +23,33 @@
 			<form class="form-detail" action="/signup" method="post" id="registerFrom">
 				@csrf
 				<div class="form-left">
-					<h2>Informacion General</h2>
+					<h2 >Informacion General</h2>
 					<div class="form-group">
-						<div class="form-row form-row-1">
-							<input type="text" name="name" id="name" class="input-text" placeholder="Nombre" required>
+						<div class="form-row form-row-1 tooltip" style="visibility: visible;">
+							<input type="text" name="name" id="name" class="input-text" placeholder="Nombre">
+							<span class="tooltiptext">nombre</span>
 						</div>
-						<div class="form-row form-row-2">
-							<input type="text" name="surname" id="surname" class="input-text" placeholder="Apellidos" required>
+						<div class="form-row form-row-2 tooltip">
+							<input type="text" name="surname" id="surname" class="input-text" placeholder="Apellidos">
+							<span class="tooltiptext">apellidos</span>
 						</div>
 					</div>
 					<div class="form-group">
-						<div class="form-row form-row-1">
-							<input type="password" name="passwordRegister" id="passwordRegister" class="input-text" placeholder="Contraseña" required>
+						<div class="form-row form-row-1 tooltip">
+							<input type="password" name="passwordRegister" id="passwordRegister" class="input-text" placeholder="Contraseña">
+							<span class="tooltiptext">password</span>
 						</div>
-						<div class="form-row form-row-2">
-							<input type="password" name="repeatPasswordRegister" id="repeatPasswordRegister" class="input-text" placeholder="Repetir contraseña" required>
+						<div class="form-row form-row-2 tooltip">
+							<input type="password" name="repeatPasswordRegister" id="repeatPasswordRegister" class="input-text" placeholder="Repetir contraseña">
+							<span class="tooltiptext">repeat</span>
 						</div>
 					</div>
 					<div class="form-group">
-						<div class="form-row form-row-1">
-							<input type="text" name="day" id="birthDay" class="input-text" placeholder="Dia" required>
+						<div class="form-row form-row-1 tooltip">
+							<input type="text" name="day" id="birthDay" class="input-text" placeholder="Dia">
+							<span class="tooltiptext">day</span>
 						</div>
-						<div class="form-row form-row-3">
+						<div class="form-row form-row-3 tooltip">
 							<select name="month" id="birthMonth" class="input-text">
 								<option value="choose" selected hidden>Mes</option>
 								<option value="01">Enero</option>
@@ -59,9 +65,11 @@
 								<option value="11">Noviembre</option>
 								<option value="12">Diciembre</option>
 							</select>
+							<span class="tooltiptext">month</span>
 						</div>
-						<div class="form-row form-row-4">
-							<input type="text" name="year" id="birthYear" class="input-text" placeholder="Año" required>
+						<div class="form-row form-row-4 tooltip">
+							<input type="text" name="year" id="birthYear" class="input-text" placeholder="Año">
+							<span class="tooltiptext">year</span>
 						</div>
 					</div>
 					<div class="form-row">
@@ -70,32 +78,30 @@
 				</div>
 				<div class="form-right">
 					<h2>Detalles de contacto</h2>
-					<div class="form-row">
-						<input type="email" name="emailRegister" id="emailRegister" class="emailRegister-text" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="Email">
+					<div class="form-row tooltip">
+						<input type="email" name="emailRegister" id="emailRegister" class="emailRegister-text" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="Email">
+						<span class="tooltiptext">email</span>
 					</div>
-					<div class="form-row">
-						<input type="email" name="repeatEmail" id="repeatEmail" class="repeatEmail-text" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="Repetir Email">
+					<div class="form-row tooltip">
+						<input type="email" name="repeatEmail" id="repeatEmail" class="repeatEmail-text" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="Repetir Email">
+						<span class="tooltiptext">repeat</span>
 					</div>
-					<div class="form-row">
-						<input type="text" name="address" class="address" id="address" placeholder="Dirección" required>
+					<div class="form-row tooltip">
+						<input type="text" name="address" class="address" id="address" placeholder="Dirección">
+						<span class="tooltiptext">address</span>
 					</div>
 					<div class="form-group">
-						<div class="form-row form-row-1">
-							<input type="text" name="code" class="code" id="code" placeholder="Prefijo +" required>
+						<div class="form-row form-row-1 tooltip">
+							<input type="text" name="code" class="code" id="code" placeholder="Prefijo +">
+							<span class="tooltiptext">code</span>
 							<!-- <select name="code" id="code" class="code">
 								<option value="choose" selected  hidden>Prefijo +</option>	
 							</select> -->
 						</div>
-						<div class="form-row form-row-2">
-							<input type="text" name="telephone" class="telephone" id="telephone" placeholder="Telefono" required>
+						<div class="form-row form-row-2 tooltip">
+							<input type="text" name="telephone" class="telephone" id="telephone" placeholder="Telefono">
+							<span class="tooltiptext">telephone</span>
 						</div>
-					</div>
-					<div class="form-checkbox">
-						<label class="container">
-							<p>Acepto los <a href="#" class="text">Términos y condiciones</a> de la web.</p>
-							<input type="checkbox" name="checkbox" required>
-							<span class="checkmark"></span>
-						</label>
 					</div>
 					<div class="form-row-last">
 						<input type="submit" name="register" class="register" id="registerSubmit" value="Enviar">
@@ -105,5 +111,4 @@
 		</div>
 	</div>
 </body>
-
 </html>

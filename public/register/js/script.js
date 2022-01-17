@@ -23,7 +23,7 @@ function registerValidation(){
         $(name).css("border-bottom", "1px solid #cb0104");
         send = false;
         console.log('name');
-
+        addError("{{__('error.name')}}","error1");
     }else{
         $(name).css("border-bottom", "");
     }
@@ -33,6 +33,7 @@ function registerValidation(){
         $(surname).css("border-bottom", "1px solid #cb0104");
         send = false;
         console.log('surname');
+        addError("{{__('error.surname')}}","error2");
 
     }else{
         $(surname).css("border-bottom", "");
@@ -45,7 +46,7 @@ function registerValidation(){
         $(repeatPassword).css("border-bottom", "1px solid #cb0104");
         send = false;
         console.log('passwordRegister');
-
+        addError("{{__('error.password')}}","error3");
     }else{
         $(password).css("border-bottom", "");
         $(repeatPassword).css("border-bottom", "");
@@ -57,7 +58,7 @@ function registerValidation(){
         $(day).css("border-bottom", "1px solid #cb0104");
         send = false;
         console.log('birthDay');
-
+        addError("{{__('error.birthDay')}}","error4")
     }else{
         $(day).css("border-bottom", "");
     }
@@ -67,7 +68,7 @@ function registerValidation(){
         $("#birthMonth").css("border-bottom", "1px solid #cb0104");
         send = false;
         console.log('birthMonth');
-
+        addError("{{__('error.bithMonth')}}","error5");
     }else{
         $("#birthMonth").css("border-bottom", "");
     }
@@ -77,7 +78,7 @@ function registerValidation(){
         $(year).css("border-bottom", "1px solid #cb0104");
         send = false;
         console.log('birthYear');
-
+        addError("{{__('error.birthYear')}}","error6");
     }else{
         $(year).css("border-bottom", "");
     }
@@ -88,7 +89,7 @@ function registerValidation(){
         $(email).css("border-bottom", "1px solid #cb0104");
         send = false;
         console.log('emailRegister');
-
+        addError("{{__('error.email')}}","error7");
     }else{
         $(email).css("border-bottom", "");
     }
@@ -96,7 +97,7 @@ function registerValidation(){
         $(repeatEmail).css("border-bottom", "1px solid #cb0104");
         send = false;
         console.log('repeatEmail');
-
+        addError("{{__('error.repeatEmail')}}","error8");
     }else{
         $(repeatEmail).css("border-bottom", "");
     }
@@ -106,7 +107,7 @@ function registerValidation(){
         $(address).css("border-bottom", "1px solid #cb0104");
         send = false;
         console.log('address');
-
+        addError("{{__('error.address')}}","error9");
     }else{
         $(address).css("border-bottom", "");
     }
@@ -116,17 +117,9 @@ function registerValidation(){
         $(phone).css("border-bottom", "1px solid #cb0104");
         send = false;
         console.log('telephone');
+        addError("{{__('error.telephone')}}","error10");
     }else{
         $(phone).css("border-bottom", "");
-    }
-    
-    if (!$("#checkbox :checked")) {
-        $("#checkbox").css("border-bottom", "1px solid #cb0104");
-        send = false;
-        console.log('checkbox');
-
-    }else{
-        $("#checkbox").css("border-bottom", "");
     }
     console.log(send);
     if(!send){
@@ -141,5 +134,9 @@ function validatePassword(password) {
 function validateEmail(email) {
     var regex = /[a-zA-Z0-9_\-\.\+]+\@[a-zA-Z0-9-]+\.[a-zA-Z]+/;
     return regex.test(email);
+}
+function changeVisible(text,id){
+    $('#error').append('<li id="'+id+'"; style="color: red;">'+text+'</li>');
+
 }
 // str = str.replace(/\s+/g, '');
