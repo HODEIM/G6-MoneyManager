@@ -47,5 +47,8 @@
     "terms3" : "de la web.",
     "profile" : "Perfil",
     "myaccounts" : "Mis Cuentas",
-    "accounts" : "Cuentas"
+    "accounts" : "Cuentas",
+    "error.email" : "El correo no existe",
+    "error.password" : "La contraseña no coincide",
+    "error.datos" : "El email no tiene buen formato"
 }

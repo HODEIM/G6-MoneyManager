@@ -1,3 +1,4 @@
+
 $('document').ready(function () {
     let height = $(window).height();
     height = height - 311.59;
@@ -14,6 +15,7 @@ function validarLogin(event) {
     var falso = true;
     if (email == "" || !checkEmail()) {
         $('#padreEmailLogin').css("border", "1px solid #cb0104");
+        emailIncorrecto();
         falso = false;
     } else {
         $('#padreEmailLogin').css("border", "1px solid #b5b5b5");
@@ -28,8 +30,13 @@ function validarLogin(event) {
         event.preventDefault();
         return false;
     }
-    
+
 }
+
+function emailIncorrecto() {
+    $("#error").text("El email no tiene buen formato");
+}
+
 function checkEmail() {
     var regex = /[a-zA-Z0-9_\-\.\+]+\@[a-zA-Z0-9-]+\.[a-zA-Z]+/;
     return regex.test($('#emailLogin').val());

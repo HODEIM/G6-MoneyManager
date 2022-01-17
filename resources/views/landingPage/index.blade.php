@@ -58,8 +58,8 @@
         </div>
     </nav>
     <!-- Login -->
-    <div class="modal hide fade in mt-5" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+    <div class="modal hide fade" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0" style="background: rgba(255, 255, 255, 0) !important;">
                 <div class="form-bg">
                     <div class="container">
@@ -80,8 +80,8 @@
                                             <span class="input-icon"><i class="fa fa-lock"></i></span>
                                             <input class="form-control" type="password" placeholder="{{ __('password') }}" name="password" id="passwordLogin">
                                         </div>
-                                        <span class="forgot-pass text-start m-2 text-danger">
-                                            @error('email') {{ $message }} @enderror
+                                        <span class="forgot-pass text-start m-2 text-danger" id="error">
+                                            @error('validation') {{ $message }} @enderror
                                         </span>
                                         <span class="forgot-pass text-start m-2">
                                             <label class="textoDecoracion">
