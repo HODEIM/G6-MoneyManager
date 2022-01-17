@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\LangController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 
 // LANDING PAGE VIEW
 Route::get('/', function () {
@@ -26,6 +27,10 @@ Route::post('/logoutControl', [Controller::class, 'logout']);
 // accounts ROUTES
 Route::get('/accounts', [AccountController::class, 'index'])->middleware("auth");
 
+// Admin ROUTES
+Route::get('/admin', [AdminController::class, 'index'])->middleware("auth");
+
+Route::get('/admin/{id}', [AdminController::class, 'index'])->middleware("auth");
 
 
 // UserController ROUTES

@@ -50,5 +50,8 @@
     "accounts" : "Cuentas",
     "error.email" : "El correo no existe",
     "error.password" : "La contraseña no coincide",
-    "error.datos" : "El email no tiene buen formato"
+    "error.datos" : "El email no tiene buen formato",
+    "mm.admin" : "Money Manager Administración",
+    "users" : "Lista de Usuarios",
+    "statistics": "Estadísticas"
 }
