@@ -16,7 +16,7 @@ class UserController extends Controller
 
         $request->validated();
 
-        $password = hash('sha256', $request->get('passwordRegister'));
+        $password = password_hash($request->get('passwordRegister'),PASSWORD_DEFAULT);
         User::create([
             'name' => $request->get('name'),
             'surname' => $request->get('surname'),
@@ -25,7 +25,7 @@ class UserController extends Controller
             'telephone' => (int)$request->get('telephone'),
             'address' => $request->get('address'),
             'image' => '',
-            'loqued' => false,
+            'locked' => false,
             'id_rol' => 2,
         ]);
 

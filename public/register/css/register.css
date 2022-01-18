@@ -1,7 +1,6 @@
 /*Register Personal css*/
 .tooltip {
     position: relative;
-    display: inline-block;
     border-bottom: 1px black;
 }
 .tooltip .tooltiptext {
@@ -14,13 +13,12 @@
     padding: 5px 0;
     position: absolute;
     z-index: 1;
-    bottom: 125%;
-    left: 50%;
+    bottom: 100%;
+    left: 30%;
     margin-left: -60px;
     opacity: 0;
     transition: opacity 0.3s;
 }
-  
 .tooltip .tooltiptext::after {
     content: "";
     position: absolute;
@@ -31,8 +29,51 @@
     border-style: solid;
     border-color: #cb0104 transparent transparent transparent;
 }
-  
-.tooltip .tooltiptext {
+.tooltip .nametooltip .tooltiptext {
+    visibility: hidden;
+    opacity: 1;
+}
+.tooltip .surnametooltip .tooltiptext {
+    visibility: hidden;
+    opacity: 1;
+}
+.tooltip .passwordtooltip .tooltiptext {
+    visibility: hidden;
+    opacity: 1;
+}
+.tooltip .repeatpasswordtooltip .tooltiptext {
+    visibility: hidden;
+    opacity: 1;
+}
+.tooltip .daytooltip .tooltiptext {
+    visibility: hidden;
+    opacity: 1;
+}
+.tooltip .monthtooltip .tooltiptext {
+    visibility: hidden;
+    opacity: 1;
+}
+.tooltip .yeartooltip .tooltiptext {
+    visibility: hidden;
+    opacity: 1;
+}
+.tooltip .emailtooltip .tooltiptext {
+    visibility: hidden;
+    opacity: 1;
+}
+.tooltip .repeatemailtooltip .tooltiptext {
+    visibility: hidden;
+    opacity: 1;
+}
+.tooltip .addresstooltip .tooltiptext {
+    visibility: hidden;
+    opacity: 1;
+}
+.tooltip .codetooltip .tooltiptext {
+    visibility: hidden;
+    opacity: 1;
+}
+.tooltip .telephonetooltip .tooltiptext {
     visibility: hidden;
     opacity: 1;
 }
