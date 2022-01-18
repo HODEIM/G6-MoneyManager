@@ -22,7 +22,7 @@ Route::post('/loginControl', [Controller::class, 'login']);
 
 // Auth::routes();
 
-Route::post('/logoutControl', [Controller::class, 'logout']);
+Route::post('/logoutControl', [Controller::class, 'logout'])->middleware("auth");;
 
 // accounts ROUTES
 Route::get('/accounts', [AccountController::class, 'index'])->middleware("auth");
@@ -30,7 +30,11 @@ Route::get('/accounts', [AccountController::class, 'index'])->middleware("auth")
 // Admin ROUTES
 Route::get('/admin', [AdminController::class, 'index'])->middleware("auth");
 
-Route::get('/admin/{id}', [AdminController::class, 'edit'])->middleware("auth");
+Route::get('/admin/{id}/edit', [AdminController::class, 'edit'])->middleware("auth");
+
+Route::patch('/admin/update', [AdminController::class, 'update'])->middleware("auth");
+
+Route::delete('/admin/{id}', [AdminController::class, 'destroy'])->middleware("auth");
 
 
 // UserController ROUTES

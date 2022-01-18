@@ -69,7 +69,9 @@
                 <h1>{{ __('users.edit') }}</h1>
             </div>
         </div>
-        <form>
+        <form method="POST" action="/admin/update">
+            @method("PATCH")
+            @csrf
             <div class="row m-auto" style="width: 80%">
                 <div class="col-lg-4">
                     <a href="/admin"><i class="fas fa-arrow-circle-left fa-lg" id="atras"></i></a>
@@ -81,47 +83,48 @@
                         <tr>
                             <th>Id:</th>
                             <td>{{$user->id }}</td>
+                            <input type="hidden" name="id" value="{{$user->id }}">
                         </tr>
                         <tr class="form-group">
                             <th>Nombre:</th>
                             <td class="form-label">
-                                <input type="text" value="{{$user->name}}" class="form-control">
+                                <input type="text" value="{{$user->name}}" class="form-control" name="name" placeholder="Nombre">
                             </td>
                         </tr>
                         <tr>
                             <th>Apellidos:</th>
                             <td>
-                                <input type="text" value="{{$user->surname}}" class="form-control">
+                                <input type="text" value="{{$user->surname}}" class="form-control" name="surname" placeholder="Apellidos">
                             </td>
                         </tr>
                         <tr>
                             <th>Contraseña:</th>
                             <td>
-                                <input type="password" placeholder="Contraseña" class="form-control">
+                                <input type="password" placeholder="Contraseña" class="form-control" name="password">
                             </td>
                         </tr>
                         <tr>
                             <th>Repetir Contraseña: </th>
                             <td>
-                                <input type="password" placeholder="Repetir Contraseña" class="form-control">
+                                <input type="password" placeholder="Repetir Contraseña" class="form-control" name="password_confirmation">
                             </td>
                         </tr>
                         <tr>
                             <th>Email:</th>
                             <td>
-                                <input type="email" value="{{$user->email}}" class="form-control">
+                                <input type="email" value="{{$user->email}}" class="form-control" name="email" placeholder="Email">
                             </td>
                         </tr>
                         <tr>
                             <th>Telefono:</th>
                             <td>
-                                <input type="text" value="{{$user->telephone}}" class="form-control">
+                                <input type="text" value="{{$user->telephone}}" class="form-control" name="telephone" placeholder="Telefono">
                             </td>
                         </tr>
                         <tr>
                             <th>Direccion:</th>
                             <td>
-                                <input type="text" value="{{$user->address}}" class="form-control">
+                                <input type="text" value="{{$user->address}}" class="form-control" name="address" placeholder="Direccion">
                             </td>
                         </tr>
                         <tr>
@@ -134,7 +137,11 @@
                             <th>Bloqueado:</th>
                             <td>
                                 <label class="switch">
-                                    <input type="checkbox">
+                                    @if ($user->locked == 1)
+                                    <input type="checkbox" checked name="locked">
+                                    @else
+                                    <input type="checkbox" name="locked">
+                                    @endif
                                     <span class="slider round"></span>
                                     <span class="absolute-no">NO</span>
                                 </label>
@@ -144,14 +151,18 @@
                             <td>
                                 <input type="submit" value="Guardar" class="btn btn-secondary" class="form-control">
                             </td>
+                        </form>
                             <td>
-                                <a class="btn btn-primary">Eliminar</a>
+                                <form method="post" action="/admin/{{$user->id}}">
+                                    @csrf
+                                    @method("delete")
+                                    <input type="submit" class="btn btn-primary"/>
+                                </form>
                             </td>
                         </tr>
                     </table>
                 </div>
             </div>
-        </form>
     </div>
     <!-- Footer-->
     <footer class="py-5 bg-black mt-5">

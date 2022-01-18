@@ -77,12 +77,15 @@
                     <tr>
                         <th>Id</th>
                         <th>Nombre</th>
-                        <th>Apellidos</th>
+                        <th class="d-flex justify-content-between">
+                            <div>Apellidos</div>
+                            <div><i class="far fa-plus-square fa-lg"></i></div>
+                        </th>
                     </tr>
                     </thead>
                     <tbody>
                         @foreach($users as $user)
-                        <tr class='clickable' data-href='url://link-for-first-row/'>
+                        <tr class='clickable'>
                             <td name="id">{{ $user->id }}</a></td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->surname }}</td>
