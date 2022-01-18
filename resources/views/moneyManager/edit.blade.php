@@ -1,3 +1,4 @@
+@if($user != null)
 <!DOCTYPE html>
 <html>
 
@@ -22,7 +23,6 @@
     <link href="{{ asset('aplicacion/css/styles.css') }}" rel="stylesheet" />
     <!-- Personal CSS-->
     <link href="{{ asset('aplicacion/css/miEstilo.css') }}" rel="stylesheet" />
-    <link href="{{ asset('aplicacion/css/footer.css') }}" rel="stylesheet" />
     <!-- Personal JavaScript-->
     <script src="{{ asset('aplicacion/js/movements.js') }}" type="text/javascript"></script>
 </head>
@@ -62,41 +62,100 @@
             </div>
         </div>
     </nav>
-
+    <!-- CONTENIDO -->
     <div class="container-fluid">
         <div class="row d-flex justify-content-center mt-3">
             <div class="col-lg-8 text-center">
-                <h1>{{ __('users.list') }}</h1>
+                <h1>{{ __('users.edit') }}</h1>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-4 m-auto">
-                @if(count($users) > 0)
-                <table class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Nombre</th>
-                        <th>Apellidos</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($users as $user)
-                        <tr class='clickable' data-href='url://link-for-first-row/'>
-                            <td name="id">{{ $user->id }}</a></td>
-                            <td>{{ $user->name }}</td>
-                            <td>{{ $user->surname }}</td>
+        <form>
+            <div class="row m-auto" style="width: 80%">
+                <div class="col-lg-4">
+                    <a href="/admin"><i class="fas fa-arrow-circle-left fa-lg" id="atras"></i></a>
+                    <img src="{{ asset('aplicacion/assets/menda.jpg')}}" width="100%" class="rounded-circle">
+                </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-7 mt-3">
+                    <table>
+                        <tr>
+                            <th>Id:</th>
+                            <td>{{$user->id }}</td>
                         </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-                @endif
+                        <tr class="form-group">
+                            <th>Nombre:</th>
+                            <td class="form-label">
+                                <input type="text" value="{{$user->name}}" class="form-control">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Apellidos:</th>
+                            <td>
+                                <input type="text" value="{{$user->surname}}" class="form-control">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Contraseña:</th>
+                            <td>
+                                <input type="password" placeholder="Contraseña" class="form-control">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Repetir Contraseña: </th>
+                            <td>
+                                <input type="password" placeholder="Repetir Contraseña" class="form-control">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Email:</th>
+                            <td>
+                                <input type="email" value="{{$user->email}}" class="form-control">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Telefono:</th>
+                            <td>
+                                <input type="text" value="{{$user->telephone}}" class="form-control">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Direccion:</th>
+                            <td>
+                                <input type="text" value="{{$user->address}}" class="form-control">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Miembro desde:</th>
+                            <td>
+                                <?php echo substr($user->created_at, 0, 11); ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Bloqueado:</th>
+                            <td>
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                    <span class="absolute-no">NO</span>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="submit" value="Guardar" class="btn btn-secondary" class="form-control">
+                            </td>
+                            <td>
+                                <a class="btn btn-primary">Eliminar</a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
     <!-- Footer-->
     <footer class="py-5 bg-black mt-5">
-        <div class="container ">
+        <div class="container">
             <div class="row d-flex justify-content-center">
                 <div class="col-6 text-center">
                     <i id="instagram" class="fab fa-instagram fa-lg mx-2"></i>
@@ -112,8 +171,10 @@
     </footer>
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="{{ asset('aplicacion/js/admin.js')}}"></script>
 </body>
 
 </html>
+
+@else
+
+@endif

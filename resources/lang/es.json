@@ -52,6 +52,7 @@
     "error.password" : "La contraseña no coincide",
     "error.datos" : "El email no tiene buen formato",
     "mm.admin" : "Money Manager Administración",
-    "users" : "Lista de Usuarios",
+    "users.list" : "Lista de Usuarios",
+    "users.edit" : "Editar Datos ",
     "statistics": "Estadísticas"
 }

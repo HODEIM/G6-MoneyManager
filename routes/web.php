@@ -30,7 +30,7 @@ Route::get('/accounts', [AccountController::class, 'index'])->middleware("auth")
 // Admin ROUTES
 Route::get('/admin', [AdminController::class, 'index'])->middleware("auth");
 
-Route::get('/admin/{id}', [AdminController::class, 'index'])->middleware("auth");
+Route::get('/admin/{id}', [AdminController::class, 'edit'])->middleware("auth");
 
 
 // UserController ROUTES

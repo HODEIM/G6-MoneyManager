@@ -52,6 +52,7 @@
     "error.password" : "Password does not match",
     "error.datos" : "The email format is incorrect",
     "mm.admin" : "Money Manager Administration",
-    "users" : "User list",
-    "statistics" : "statistics"
+    "users.list" : "User List",
+    "users.edit" : "Edit User",
+    "statistics" : "Statistics"
 }

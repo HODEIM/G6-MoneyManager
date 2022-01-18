@@ -22,6 +22,7 @@
     <link href="{{ asset('aplicacion/css/styles.css') }}" rel="stylesheet" />
     <!-- Personal CSS-->
     <link href="{{ asset('aplicacion/css/miEstilo.css') }}" rel="stylesheet" />
+    <link href="{{ asset('aplicacion/css/footer.css') }}" rel="stylesheet" />
     <!-- Personal JavaScript-->
     <script src="{{ asset('aplicacion/js/movements.js') }}" type="text/javascript"></script>
 </head>
