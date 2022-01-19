@@ -142,3 +142,15 @@ input:checked + .slider:before {
 #atras {
     color: black;
 }
+
+.no-controls::-webkit-outer-spin-button,
+.no-controls::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.no-controls {
+  -moz-appearance:textfield;
+}
+.mensajeErrores {
+  color:red;
+}

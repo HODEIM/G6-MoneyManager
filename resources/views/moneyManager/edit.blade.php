@@ -24,7 +24,7 @@
     <!-- Personal CSS-->
     <link href="{{ asset('aplicacion/css/miEstilo.css') }}" rel="stylesheet" />
     <!-- Personal JavaScript-->
-    <script src="{{ asset('aplicacion/js/movements.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('aplicacion/js/editarUsuarios.js') }}" type="text/javascript"></script>
 </head>
 
 <body>
@@ -78,53 +78,83 @@
                     <img src="{{ asset('aplicacion/assets/menda.jpg')}}" width="100%" class="rounded-circle">
                 </div>
                 <div class="col-lg-1"></div>
-                <div class="col-lg-7 mt-3">
+                <div class="col-lg-5 mt-3">
                     <table>
                         <tr>
                             <th>Id:</th>
                             <td>{{$user->id }}</td>
-                            <input type="hidden" name="id" value="{{$user->id }}">
+                            <input type="hidden" name="id" id="id" value="{{$user->id }}">
                         </tr>
                         <tr class="form-group">
                             <th>Nombre:</th>
                             <td class="form-label">
-                                <input type="text" value="{{$user->name}}" class="form-control" name="name" placeholder="Nombre">
+                                <input type="text" value="{{$user->name}}" id="name" class="form-control" name="name" placeholder="Nombre">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <div id="nameError" class="mensajeErrores"></div>
                             </td>
                         </tr>
                         <tr>
                             <th>Apellidos:</th>
                             <td>
-                                <input type="text" value="{{$user->surname}}" class="form-control" name="surname" placeholder="Apellidos">
+                                <input type="text" value="{{$user->surname}}" id="surname" class="form-control" name="surname" placeholder="Apellidos">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <div id="surnameError" class="mensajeErrores"></div>
                             </td>
                         </tr>
                         <tr>
                             <th>Contraseña:</th>
                             <td>
-                                <input type="password" placeholder="Contraseña" class="form-control" name="password">
+                                <input type="password" placeholder="Contraseña" id="password" class="form-control" name="password">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <div id="passwordError" class="mensajeErrores"></div>
                             </td>
                         </tr>
                         <tr>
                             <th>Repetir Contraseña: </th>
                             <td>
-                                <input type="password" placeholder="Repetir Contraseña" class="form-control" name="password_confirmation">
+                                <input type="password" placeholder="Repetir Contraseña" id="password_confirmation" class="form-control" name="password_confirmation">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <div id="password2Error" class="mensajeErrores"></div>
                             </td>
                         </tr>
                         <tr>
                             <th>Email:</th>
                             <td>
-                                <input type="email" value="{{$user->email}}" class="form-control" name="email" placeholder="Email">
+                                <input type="email" value="{{$user->email}}" class="form-control" id="emailInput" name="email" placeholder="Email">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <div id="emailError" class="mensajeErrores"></div>
                             </td>
                         </tr>
                         <tr>
                             <th>Telefono:</th>
                             <td>
-                                <input type="text" value="{{$user->telephone}}" class="form-control" name="telephone" placeholder="Telefono">
+                                <input type="number" value="{{$user->telephone}}" class="form-control no-controls" id="telephone" name="telephone" placeholder="Telefono">
                             </td>
                         </tr>
                         <tr>
                             <th>Direccion:</th>
                             <td>
-                                <input type="text" value="{{$user->address}}" class="form-control" name="address" placeholder="Direccion">
+                                <input type="text" value="{{$user->address}}" class="form-control" id="address" name="address" placeholder="Direccion">
                             </td>
                         </tr>
                         <tr>
@@ -134,13 +164,26 @@
                             </td>
                         </tr>
                         <tr>
+                            <th>Rol actual: {{$user->rol->rol}}</th>
+                            <td>
+                                <select class="form-select" name="rol" id="rol">
+                                    <option value="null" selected hidden>--Cambiar Rol--</option>
+                                    @if($rols != null)
+                                    @foreach($rols as $rol)
+                                    <option value="{{$rol->id}}">{{$rol->rol}}</option>
+                                    @endforeach
+                                    @endif
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
                             <th>Bloqueado:</th>
                             <td>
                                 <label class="switch">
                                     @if ($user->locked == 1)
-                                    <input type="checkbox" checked name="locked">
+                                    <input type="checkbox" id="locked" checked name="locked">
                                     @else
-                                    <input type="checkbox" name="locked">
+                                    <input type="checkbox" id="locked" name="locked">
                                     @endif
                                     <span class="slider round"></span>
                                     <span class="absolute-no">NO</span>
@@ -149,20 +192,21 @@
                         </tr>
                         <tr>
                             <td>
-                                <input type="submit" value="Guardar" class="btn btn-secondary" class="form-control">
+                                <input type="submit" value="Guardar" class="btn btn-secondary" class="form-control" id="guardar">
                             </td>
-                        </form>
-                            <td>
-                                <form method="post" action="/admin/{{$user->id}}">
-                                    @csrf
-                                    @method("delete")
-                                    <input type="submit" class="btn btn-primary"/>
-                                </form>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
+
+        </form>
+        <td>
+            <form method="post" action="/admin/{{$user->id}}">
+                @csrf
+                @method("delete")
+                <input type="submit" class="btn btn-primary" value="Eliminar" />
+            </form>
+        </td>
+        </tr>
+        </table>
+    </div>
+    </div>
     </div>
     <!-- Footer-->
     <footer class="py-5 bg-black mt-5">

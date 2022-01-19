@@ -9,3 +9,4 @@ function abrir() {
     window.location.href = '/admin/'+$($id).html()+'/edit';
     console.log($($id).html());
 }
+//// Aqui es la comprobacion del formulario editado

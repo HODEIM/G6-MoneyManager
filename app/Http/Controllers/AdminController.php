@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\User;
+use App\Models\Rol;
 
 class AdminController extends Controller
 {
@@ -16,7 +17,8 @@ class AdminController extends Controller
     public function edit($id)
     {
         $user = User::where("id", "=", $id)->first();
-        return view('moneyManager.edit', ['user' => $user]);
+        $rols = Rol::get();
+        return view('moneyManager.edit', ['user' => $user, 'rols' => $rols]);
     }
     public function update(Request $request)
     {
@@ -40,10 +42,13 @@ class AdminController extends Controller
         if ($request->address != null)
             $user->address = $request->address;
         $user->locked = request()->filled('locked');
+        if ($request->rol != "null")
+            $user->id_rol = $request->rol;
         $user->save();
         return redirect('/admin/' . $request->id . '/edit');
     }
-    public function destroy($id){
+    public function destroy($id)
+    {
         User::destroy($id);
         return redirect('/admin');
     }
