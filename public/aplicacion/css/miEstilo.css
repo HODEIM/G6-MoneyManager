@@ -4,12 +4,6 @@
     border-color: black;
 }
 
-footer {
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-}
-
 .lenguageNav {
     position: absolute;
     top: 0;
@@ -44,4 +38,119 @@ footer {
 
 #phone:hover {
     color: rgb(74, 198, 88);
+}
+/* A PARTIR DE AQUI ES PARA EL SI / NO */
+
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 20px;
+}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #f2f2f2;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  z-index: 2;
+  content: "";
+  height: 18px;
+  width: 18px;
+  background-color: darkslategrey;
+      -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.22);
+  -webkit-transition: .4s;
+  transition: all 0.4s ease-in-out;
+  margin-top: 1px;
+margin-left: 1px;
+}
+.slider:after {
+  position: absolute;
+  left: 0;
+  z-index: 1;
+  content: "YES";
+    font-size: 12px;
+    text-align: left !important;
+  padding-left: 0;
+    width: 50px;
+    color: #fff;
+    height: 20px;
+    border-radius: 100px;
+    background-color: #ff6418;
+    -webkit-transform: translateX(-32px);
+    -ms-transform: translateX(-32px);
+    transform: translateX(-30px);
+    transition: all 0.4s ease-in-out;
+    line-height: 20px;
+}
+
+input:checked + .slider:after {
+  -webkit-transform: translateX(0px);
+  -ms-transform: translateX(0px);
+  transform: translateX(0px);
+  /*width: 235px;*/
+  padding-left: 5px;
+}
+
+input:checked + .slider:before {
+  background-color: #fff;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(32px);
+  -ms-transform: translateX(32px);
+  transform: translateX(32px);
+  margin-top: 1px;
+  margin-left: -1px;
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 100px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+.absolute-no {
+	position: absolute;
+	left: 0;
+	color: darkslategrey;
+	text-align: right !important;
+    font-size: 12px;
+    width: calc(100% - 5px);
+    height: 20px;
+    cursor: pointer;
+    line-height: 20px;
+}
+/* FIN DE PARA EL SI / NO */
+
+#atras {
+    color: black;
+}
+
+.no-controls::-webkit-outer-spin-button,
+.no-controls::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.no-controls {
+  -moz-appearance:textfield;
+}
+.mensajeErrores {
+  color:red;
 }

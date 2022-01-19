@@ -49,7 +49,7 @@ class User extends Authenticatable
     ];
     public function rol()
     {
-        return $this->belongsTo('App\Models\Rol');
+        return $this->belongsTo('App\Models\Rol','id_rol');
     }
     public function accounts()
     {

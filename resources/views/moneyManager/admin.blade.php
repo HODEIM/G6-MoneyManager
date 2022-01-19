@@ -39,7 +39,7 @@
         <div class="container px-5">
             <a class="navbar-brand" href="/">
                 <img src="{{ asset('landing/assets/img/logo_blanco.png') }}" alt="logo" width="50" class="d-inline-block">
-                Money Manager
+                {{__('mm.admin')}}
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -50,8 +50,8 @@
                     <li class="nav-item"><a class="nav-link" href="#!">Estadísticas</a></li>
                 </ul> -->
                 <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#!">{{ __('statistics') }}</a></li>
                     <li class="nav-item"><a class="nav-link" href="#!">{{ __('profile') }}</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">{{ __('myaccounts') }}</a></li>
                     <li class="nav-item">
                         <form action="/logoutControl" method="POST">
                             @csrf
@@ -62,28 +62,38 @@
             </div>
         </div>
     </nav>
-    
+
     <div class="container-fluid">
         <div class="row d-flex justify-content-center mt-3">
             <div class="col-lg-8 text-center">
-                <h1>{{ __('accounts') }}</h1>
+                <h1>{{ __('users.list') }}</h1>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-4 m-auto">
+                @if(count($users) > 0)
                 <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th class="d-flex justify-content-between">
+                            <div>Apellidos</div>
+                            <div><i class="far fa-plus-square fa-lg"></i></div>
+                        </th>
+                    </tr>
+                    </thead>
                     <tbody>
-                        @if(count($accounts) > 0)
-                        @foreach($accounts as $account)
-                        <tr>
-                            <td name="accountID" hidden>{{ $account->id }}</td>
-                            <td>{{ $account->name }}</td>
-                            <td>{{ $account->description }}</td>
+                        @foreach($users as $user)
+                        <tr class='clickable'>
+                            <td name="id">{{ $user->id }}</a></td>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->surname }}</td>
                         </tr>
                         @endforeach
-                        @endif
                     </tbody>
                 </table>
+                @endif
             </div>
         </div>
     </div>
@@ -106,7 +116,7 @@
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
-    <script src="{{ asset('landing/js/scripts.js')}}"></script>
+    <script src="{{ asset('aplicacion/js/admin.js')}}"></script>
 </body>
 
 </html>

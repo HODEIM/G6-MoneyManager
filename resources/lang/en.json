@@ -50,5 +50,9 @@
     "accounts" : "Accounts",
     "error.email" : "Email doesnt exist",
     "error.password" : "Password does not match",
-    "error.datos" : "The email format is incorrect"
+    "error.datos" : "The email format is incorrect",
+    "mm.admin" : "Money Manager Administration",
+    "users.list" : "User List",
+    "users.edit" : "Edit User",
+    "statistics" : "Statistics"
 }

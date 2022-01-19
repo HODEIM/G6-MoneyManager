@@ -9,12 +9,12 @@ class AccountController extends Controller
 {
     public function index()
     {
-        $accounts = Account::all();
         $id = auth()->user()->id_rol;
         if ($id == "2") {
+            $accounts = Account::all();
             return view('moneyManager.accounts', ['accounts' => $accounts]);
         } else {
-            return view('moneyManager.admin', ['accounts' => $accounts]);
+            return redirect("/admin");
         }
     }
 }
