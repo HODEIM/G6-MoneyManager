@@ -11,6 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('register/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css') }}">
 	<!-- Main Style Css -->
 	<link rel="stylesheet" href="{{ asset('register/css/style.css') }}" />
+	<link rel="stylesheet" href="{{ asset('register/css/register.css') }}" />
 	<!--Jquery-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="{{ asset('register/js/script.js')}}"></script>
@@ -25,43 +26,78 @@
 					<h2>{{ __('titleregister') }}</h2>
 					<div class="form-group">
 						<div class="form-row form-row-1">
-							<input type="text" name="name" id="name" class="input-text" placeholder="{{ __('name') }}" required>
+							<div class="tooltip">
+								<input type="text" name="name" id="name" class="input-text" placeholder="{{ __('name') }}">
+								<div class="nametooltip">
+									<span class="tooltiptext">nombre</span>
+								</div>
+							</div>
 						</div>
 						<div class="form-row form-row-2">
-							<input type="text" name="surname" id="surname" class="input-text" placeholder="{{ __('surname') }}" required>
+							<div class="tooltip">
+								<input type="text" name="surname" id="surname" class="input-text" placeholder="{{ __('surname') }}">
+								<div class="surnametooltip">
+									<span class="tooltiptext">apellidos</span>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="form-row form-row-1">
-							<input type="password" name="passwordRegister" id="passwordRegister" class="input-text" placeholder="{{ __('password') }}" required>
+							<div class="tooltip">
+								<input type="password" name="passwordRegister" id="passwordRegister" class="input-text" placeholder="{{ __('password') }}">
+								<div class="passwordtooltip">
+									<span class="tooltiptext">password</span>
+								</div>
+							</div>
 						</div>
 						<div class="form-row form-row-2">
-							<input type="password" name="repeatPasswordRegister" id="repeatPasswordRegister" class="input-text" placeholder="{{ __('repeatpassword') }}" required>
+							<div class="tooltip">
+								<input type="password" name="repeatPasswordRegister" id="repeatPasswordRegister" class="input-text" placeholder="{{ __('repeatpassword') }}">
+								<div class="repeatpasswordtooltip">
+									<span class="tooltiptext">repeat</span>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="form-row form-row-1">
-							<input type="text" name="day" id="birthDay" class="input-text" placeholder="{{ __('day') }}" required>
+							<div class="tooltip">
+								<input type="text" name="day" id="birthDay" class="input-text" placeholder="{{ __('day') }}">
+								<div class="daytooltip">
+									<span class="tooltiptext">day</span>
+								</div>
+							</div>
 						</div>
 						<div class="form-row form-row-3">
-							<select name="month" id="birthMonth" class="input-text">
-								<option value="choose" selected hidden>{{ __('month') }}</option>
-								<option value="01">{{ __('january') }}</option>
-								<option value="02">{{ __('february') }}</option>
-								<option value="03">{{ __('march') }}</option>
-								<option value="04">{{ __('april') }}</option>
-								<option value="05">{{ __('may') }}</option>
-								<option value="06">{{ __('june') }}</option>
-								<option value="07">{{ __('july') }}</option>
-								<option value="08">{{ __('august') }}</option>
-								<option value="09">{{ __('september') }}</option>
-								<option value="10">{{ __('october') }}</option>
-								<option value="11">{{ __('november') }}</option>
-								<option value="12">{{ __('dicember') }}</option>
-							</select>
+							<div class="tooltip">
+								<select name="month" id="birthMonth" class="input-text">
+									<option value="choose" selected hidden>{{ __('month') }}</option>
+									<option value="01">{{ __('january') }}</option>
+									<option value="02">{{ __('february') }}</option>
+									<option value="03">{{ __('march') }}</option>
+									<option value="04">{{ __('april') }}</option>
+									<option value="05">{{ __('may') }}</option>
+									<option value="06">{{ __('june') }}</option>
+									<option value="07">{{ __('july') }}</option>
+									<option value="08">{{ __('august') }}</option>
+									<option value="09">{{ __('september') }}</option>
+									<option value="10">{{ __('october') }}</option>
+									<option value="11">{{ __('november') }}</option>
+									<option value="12">{{ __('dicember') }}</option>
+								</select>
+								<div class="monthtooltip">
+									<span class="tooltiptext">month</span>
+								</div>
+							</div>
 						</div>
 						<div class="form-row form-row-4">
-							<input type="text" name="year" id="birthYear" class="input-text" placeholder="{{ __('year') }}" required>
+							<div class="tooltip">
+								<input type="text" name="year" id="birthYear" class="input-text" placeholder="{{ __('year') }}">
+								<div class="yeartooltip">
+									<span class="tooltiptext">year</span>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="form-row">
@@ -71,31 +107,49 @@
 				<div class="form-right">
 					<h2>{{ __('title2register') }}</h2>
 					<div class="form-row">
-						<input type="email" name="emailRegister" id="emailRegister" class="emailRegister-text" required placeholder="{{ __('email') }}">
+						<div class="tooltip">
+							<input type="email" name="emailRegister" id="emailRegister" class="emailRegister-text" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="{{ __('email') }}">
+							<div class="emailtooltip" id="emailtooltip">
+								<span class="tooltiptext">email</span>
+							</div>
+						</div>
 					</div>
 					<div class="form-row">
-						<input type="email" name="repeatEmail" id="repeatEmail" class="repeatEmail-text" required placeholder="{{ __('repeatemail') }}">
+						<div class="tooltip">
+							<input type="email" name="repeatEmail" id="repeatEmail" class="repeatEmail-text" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="{{ __('repeatemail') }}">
+							<div class="repeatemailtooltip" id="repeatemailtooltip">
+								<span class="tooltiptext">repeat</span>
+							</div>
+						</div>
 					</div>
 					<div class="form-row">
-						<input type="text" name="address" class="address" id="address" placeholder="{{ __('address') }}" required>
+						<div class="tooltip">
+							<input type="text" name="address" class="address" id="address" placeholder="{{ __('address') }}">
+							<div class="addresstooltip" id="addresstooltip">
+								<span class="tooltiptext">address</span>
+							</div>
+						</div>
 					</div>
 					<div class="form-group">
-						<div class="form-row form-row-1">
-							<input type="text" name="code" class="code" id="code" placeholder="{{ __('code') }}" required>
-							<!-- <select name="code" id="code" class="code">
-								<option value="choose" selected  hidden>Prefijo +</option>	
-							</select> -->
+						<div class="form-row form-row-1 tooltip">
+							<div class="tooltip">
+								<input type="text" name="code" class="code"  placeholder="{{ __('code') }}">
+								<div class="codetooltip" id="codetooltip">
+									<span class="tooltiptext">code</span>
+								</div>
+								<!-- <select name="code" id="code" class="code">
+									<option value="choose" selected  hidden>Prefijo +</option>	
+								</select> -->
+							</div>
 						</div>
 						<div class="form-row form-row-2">
-							<input type="text" name="telephone" class="telephone" id="telephone" placeholder="{{ __('telephone') }}" required>
+							<div class="tooltip">
+								<input type="text" name="telephone" class="telephone" id="telephone" placeholder="{{ __('telephone') }}">
+								<div class="telephonetooltip" id="telephonetooltip">
+									<span class="tooltiptext">telephone</span>
+								</div>
+							</div>
 						</div>
-					</div>
-					<div class="form-checkbox">
-						<label class="container">
-							<p>{{ __('terms1') }} <a href="#" class="text">{{ __('terms2') }}</a> {{ __('terms3') }}</p>
-							<input type="checkbox" name="checkbox" required>
-							<span class="checkmark"></span>
-						</label>
 					</div>
 					<div class="form-row-last">
 						<input type="submit" name="register" class="register" id="registerSubmit" value="{{ __('send') }}">

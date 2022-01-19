@@ -15,10 +15,9 @@ class UserController extends Controller
 
     public function store(StoreUser $request)
     {
-
         $request->validated();
-        $password = password_hash($request->get('passwordRegister'), PASSWORD_DEFAULT);
-        //$password = hash('Bcrypt', $request->get('passwordRegister'));
+
+        $password = password_hash($request->get('passwordRegister'),PASSWORD_DEFAULT);
         User::create([
             'name' => $request->get('name'),
             'surname' => $request->get('surname'),

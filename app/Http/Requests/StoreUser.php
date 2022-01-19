@@ -26,9 +26,10 @@ class StoreUser extends FormRequest
         return [
             'name' => 'required',
             'surname' => 'required',
-            'emailRegister' => 'required|unique:App\Models\User,email',
-            'passwordRegister' => 'required|min:8',
-            'repeatPasswordRegister' => 'required|min:8',
+            'emailRegister' => 'required|unique:App\Models\User,email|same:repeatEmail|pattern:/[a-zA-Z0-9_\-\.\+]+\@[a-zA-Z0-9-]+\.[a-zA-Z]+/',
+            'repeatEmail' => 'required',
+            'passwordRegister' => 'required|same:repeatPasswordRegister|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/',
+            'repeatPasswordRegister' => 'required|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/',
             'telephone' => 'required',
             'address' => 'required'
         ];
@@ -39,8 +40,14 @@ class StoreUser extends FormRequest
             'name.required' => 'Dont leave the name empty',
             'surname.required' => 'Dont leave the Surname empty',
             'emailRegister.required' => 'Dont leave the email empty',
-            'passwordRegister.required' => 'Dont leave the passwordRegister empty',
-            'repeatPasswordRegister.required' => 'Dont leave the repeatPasswordRegister empty',
+            'emailRegister.unique' => 'The email is already registered',
+            'emailRegister.pattern' => 'The mail is not well formatted',
+            'emailRegister.same' => 'Emails do not match',
+            'passwordRegister.required' => 'Dont leave the password empty',
+            'passwordRegister.same' => 'Passwords do not match',
+            'passwordRegister.pattern' => 'The password is not well formatted',
+            'repeatPasswordRegister.required' => 'Dont leave the repeat password empty',
+            'repeatPasswordRegister.pattern' => 'The repeat password is not well formatted',
             'telephone.required' => 'Dont leave the telephone empty',
             'address.required' => 'Dont leave the address empty',
         ];
