@@ -21,8 +21,9 @@ function registerValidation(){
     let name = $('#name');
     if($(name).val() == ""){
         $(name).css("border-bottom", "1px solid #cb0104");
-        send = false;
         $('.nametooltip').children('.tooltiptext').css('visibility','visible');
+        $('.nametooltip').children('.tooltiptext').html("El nombre esta vacio");
+        send = false;
     }else{
         $('.nametooltip').children('.tooltiptext').css('visibility','hidden');
         $(name).css("border-bottom", "");
@@ -32,6 +33,7 @@ function registerValidation(){
     if($(surname).val() == ""){
         $(surname).css("border-bottom", "1px solid #cb0104");
         $('.surnametooltip').children('.tooltiptext').css('visibility','visible');
+        $('.surnametooltip').children('.tooltiptext').html("El apellido esta vacio");
         send = false;
     }else{
         $('.surnametooltip').children('.tooltiptext').css('visibility','hidden');
@@ -43,6 +45,8 @@ function registerValidation(){
     if(!validatePassword($(password).val())){
         $(password).css("border-bottom", "1px solid #cb0104");
         $('.passwordtooltip').children('.tooltiptext').css('visibility','visible');
+        $('.passwordtooltip').children('.tooltiptext').html("No cumple los requisitos<br> -> 8 caracteres<br> -Mayusculas<br> -Simbolos<br> -Numeros");
+
         send = false;
     }else{
         $(password).css("border-bottom", "");
@@ -52,6 +56,8 @@ function registerValidation(){
     if($(password).val() != $(repeatPassword).val() || $(repeatPassword).val() == ""){
         $(repeatPassword).css("border-bottom", "1px solid #cb0104");
         $('.repeatpasswordtooltip').children('.tooltiptext').css('visibility','visible');
+        $('.repeatpasswordtooltip').children('.tooltiptext').html("Las contraseñas no coinciden");
+        send = false;
     }else{
         $(repeatPassword).css("border-bottom", "");
         $('.repeatpasswordtooltip').children('.tooltiptext').css('visibility','hidden');
@@ -62,6 +68,7 @@ function registerValidation(){
     if(dayInt <= 0 || dayInt > 31  || $(day).val() == ""){
         $(day).css("border-bottom", "1px solid #cb0104");
         $('.daytooltip').children('.tooltiptext').css('visibility','visible');
+        $('.daytooltip').children('.tooltiptext').html("Dia del 1 al 31");
         send = false;
     }else{
         $(day).css("border-bottom", "");
@@ -73,6 +80,7 @@ function registerValidation(){
     if(month == "choose"){
         $("#birthMonth").css("border-bottom", "1px solid #cb0104");
         $('.monthtooltip').children('.tooltiptext').css('visibility','visible');
+        $('.monthtooltip').children('.tooltiptext').html("Seleccione un mes");
         send = false;
     }else{
         $("#birthMonth").css("border-bottom", "");
@@ -83,6 +91,7 @@ function registerValidation(){
     if($(year).val() == ""){
         $(year).css("border-bottom", "1px solid #cb0104");
         $('.yeartooltip').children('.tooltiptext').css('visibility','visible');
+        $('.yeartooltip').children('.tooltiptext').html("Seleccione un mes");
         send = false;
     }else{
         $(year).css("border-bottom", "");
@@ -94,6 +103,7 @@ function registerValidation(){
     if(!validateEmail($(email).val())){
         $(email).css("border-bottom", "1px solid #cb0104");
         $('.emailtooltip').children('.tooltiptext').css('visibility','visible');
+        $('.emailtooltip').children('.tooltiptext').html("No tiene buen formato");
         send = false;
     }else{
         $(email).css("border-bottom", "");
@@ -103,6 +113,7 @@ function registerValidation(){
     if(!validateEmail($(email).val()) || $(email).val() != $(repeatEmail).val()){
         $(repeatEmail).css("border-bottom", "1px solid #cb0104");
         $('.repeatemailtooltip').children('.tooltiptext').css('visibility','visible');
+        $('.repeatemailtooltip').children('.tooltiptext').html("No coinciden");
         send = false;
     }else{
         $(repeatEmail).css("border-bottom", "");
@@ -112,8 +123,9 @@ function registerValidation(){
     let address = $('#address');
     if($(address).val() == ""){
         $(address).css("border-bottom", "1px solid #cb0104");
-        send = false;
         $('.addresstooltip').children('.tooltiptext').css('visibility','visible');
+        $('.addresstooltip').children('.tooltiptext').html("No dejes vacío");
+        send = false;
     }else{
         $(address).css("border-bottom", "");
         $('.addresstooltip').children('.tooltiptext').css('visibility','hidden');
@@ -123,6 +135,7 @@ function registerValidation(){
     if($(phone).val() == ""){
         $(phone).css("border-bottom", "1px solid #cb0104");
         $('.telephonetooltip').children('.tooltiptext').css('visibility','visible');
+        $('.telephonetooltip').children('.tooltiptext').html("No dejes vacío");
         send = false;
     }else{
         $(phone).css("border-bottom", "");

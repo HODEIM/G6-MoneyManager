@@ -18,6 +18,7 @@
     margin-left: -60px;
     opacity: 0;
     transition: opacity 0.3s;
+    font-size: 10px;
 }
 .tooltip .tooltiptext::after {
     content: "";
@@ -32,6 +33,7 @@
 .tooltip .nametooltip .tooltiptext {
     visibility: hidden;
     opacity: 1;
+    z-index: 2;
 }
 .tooltip .surnametooltip .tooltiptext {
     visibility: hidden;
@@ -39,7 +41,9 @@
 }
 .tooltip .passwordtooltip .tooltiptext {
     visibility: hidden;
+    left: 70%;
     opacity: 1;
+    z-index: 1;
 }
 .tooltip .repeatpasswordtooltip .tooltiptext {
     visibility: hidden;

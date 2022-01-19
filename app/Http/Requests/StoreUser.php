@@ -28,8 +28,8 @@ class StoreUser extends FormRequest
             'surname' => 'required',
             'emailRegister' => 'required|unique:App\Models\User,email|same:repeatEmail|pattern:/[a-zA-Z0-9_\-\.\+]+\@[a-zA-Z0-9-]+\.[a-zA-Z]+/',
             'repeatEmail' => 'required',
-            'passwordRegister' => 'required|same:repeatPasswordRegister|pattern:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/',
-            'repeatPasswordRegister' => 'required|pattern:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/',
+            'passwordRegister' => 'required|same:repeatPasswordRegister|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/',
+            'repeatPasswordRegister' => 'required|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/',
             'telephone' => 'required',
             'address' => 'required'
         ];
