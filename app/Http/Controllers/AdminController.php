@@ -23,7 +23,9 @@ class AdminController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'email' => 'required'
+            'name' => 'required',
+            'surname' => 'required',
+            'email' => 'required|regex:/[a-zA-Z0-9_\-\.\+]+\@[a-zA-Z0-9-]+\.[a-zA-Z]+/'
         ]);
         $user = User::find($request->id);
         if ($request->name != null)
@@ -32,7 +34,7 @@ class AdminController extends Controller
             $user->surname = $request->surname;
         if ($request->password != null) {
             $request->validate([
-                'password' => "same:password_confirmation"
+                'password' => "same:password_confirmation|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/",
             ]);
             $user->password = password_hash($request->password, PASSWORD_DEFAULT);
         }
