@@ -25,6 +25,7 @@
     <link href="{{ asset('aplicacion/css/miEstilo.css') }}" rel="stylesheet" />
     <!-- Personal JavaScript-->
     <script src="{{ asset('aplicacion/js/editarUsuarios.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('aplicacion/js/movements.js') }}" type="text/javascript"></script>
 </head>
 
 <body>
