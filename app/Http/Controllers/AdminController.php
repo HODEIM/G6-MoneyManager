@@ -23,11 +23,15 @@ class AdminController extends Controller
     public function update(Request $request)
     {
         $request->validate([
+            'avatar' => 'image',
             'name' => 'required',
             'surname' => 'required',
             'email' => 'required|regex:/[a-zA-Z0-9_\-\.\+]+\@[a-zA-Z0-9-]+\.[a-zA-Z]+/'
         ]);
         $user = User::find($request->id);
+        if ($request->hasFile('avatar')) {
+            $user->image = $request->file('avatar')->store('public');
+        }
         if ($request->name != null)
             $user->name = $request->name;
         if ($request->surname != null)

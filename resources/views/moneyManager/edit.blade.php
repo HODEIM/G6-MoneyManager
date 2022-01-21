@@ -69,16 +69,24 @@
                 <h1>{{ __('users.edit') }}</h1>
             </div>
         </div>
-        <form method="POST" action="/admin/update">
+        <form method="POST" action="/admin/update" enctype="multipart/form-data">
             @method("PATCH")
             @csrf
-            <div class="row m-auto" style="width: 80%">
-                <div class="col-lg-4">
-                    <a href="/admin"><i class="fas fa-arrow-circle-left fa-lg" id="atras"></i></a>
-                    <img src="{{ asset('aplicacion/assets/menda.jpg')}}" width="100%" class="rounded-circle">
+            <div class="row m-auto d-flex justify-content-around" style="width: 80%">
+                <div class="col-lg-4 col-md-6">
+                    <a href="/admin" style="float:left"><i class="fas fa-arrow-circle-left fa-lg" id="atras"></i></a>
+                    <div id="divImagenUsuario">
+                        <label>
+                            <div class="divOculto">
+                                <h3>Cambiar imagen</h3>
+                            </div>
+                            <img src="{{Storage::url($user->image)}}" class="rounded-circle" id="imagenPersonal">
+                            <input type="file" name="avatar" hidden />
+                        </label>
+                    </div>
                 </div>
-                <div class="col-lg-1"></div>
-                <div class="col-lg-5 mt-3">
+                <div class="col-lg-1 col-1"></div>
+                <div class="col-lg-7 col-md-5 mt-3">
                     <table>
                         <tr>
                             <th>Id:</th>

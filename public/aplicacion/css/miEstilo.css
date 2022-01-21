@@ -1,13 +1,13 @@
 #tabla {
-    border-style: solid;
-    border-width: 2px;
-    border-color: black;
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
 }
 
 .lenguageNav {
-    position: absolute;
-    top: 0;
-    left: 4px;
+  position: absolute;
+  top: 0;
+  left: 4px;
 }
 
 #info,
@@ -16,29 +16,30 @@
 #twitter,
 #facebook,
 #phone {
-    color: white;
-    font-family: "Catamaran", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  color: white;
+  font-family: "Catamaran", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 #email:hover {
-    color: gray;
+  color: gray;
 }
 
 #instagram:hover {
-    color: rgb(190, 75, 219);
+  color: rgb(190, 75, 219);
 }
 
 #twitter:hover {
-    color: rgb(29, 161, 242);
+  color: rgb(29, 161, 242);
 }
 
 #facebook:hover {
-    color: rgb(64, 100, 172);
+  color: rgb(64, 100, 172);
 }
 
 #phone:hover {
-    color: rgb(74, 198, 88);
+  color: rgb(74, 198, 88);
 }
+
 /* A PARTIR DE AQUI ES PARA EL SI / NO */
 
 
@@ -49,7 +50,9 @@
   height: 20px;
 }
 
-.switch input {display:none;}
+.switch input {
+  display: none;
+}
 
 .slider {
   position: absolute;
@@ -71,34 +74,35 @@
   height: 18px;
   width: 18px;
   background-color: darkslategrey;
-      -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.22);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.22);
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.22);
   -webkit-transition: .4s;
   transition: all 0.4s ease-in-out;
   margin-top: 1px;
-margin-left: 1px;
+  margin-left: 1px;
 }
+
 .slider:after {
   position: absolute;
   left: 0;
   z-index: 1;
   content: "YES";
-    font-size: 12px;
-    text-align: left !important;
+  font-size: 12px;
+  text-align: left !important;
   padding-left: 0;
-    width: 50px;
-    color: #fff;
-    height: 20px;
-    border-radius: 100px;
-    background-color: #ff6418;
-    -webkit-transform: translateX(-32px);
-    -ms-transform: translateX(-32px);
-    transform: translateX(-30px);
-    transition: all 0.4s ease-in-out;
-    line-height: 20px;
+  width: 50px;
+  color: #fff;
+  height: 20px;
+  border-radius: 100px;
+  background-color: #ff6418;
+  -webkit-transform: translateX(-32px);
+  -ms-transform: translateX(-32px);
+  transform: translateX(-30px);
+  transition: all 0.4s ease-in-out;
+  line-height: 20px;
 }
 
-input:checked + .slider:after {
+input:checked+.slider:after {
   -webkit-transform: translateX(0px);
   -ms-transform: translateX(0px);
   transform: translateX(0px);
@@ -106,11 +110,11 @@ input:checked + .slider:after {
   padding-left: 5px;
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
   background-color: #fff;
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
   -webkit-transform: translateX(32px);
   -ms-transform: translateX(32px);
   transform: translateX(32px);
@@ -126,21 +130,23 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
 .absolute-no {
-	position: absolute;
-	left: 0;
-	color: darkslategrey;
-	text-align: right !important;
-    font-size: 12px;
-    width: calc(100% - 5px);
-    height: 20px;
-    cursor: pointer;
-    line-height: 20px;
+  position: absolute;
+  left: 0;
+  color: darkslategrey;
+  text-align: right !important;
+  font-size: 12px;
+  width: calc(100% - 5px);
+  height: 20px;
+  cursor: pointer;
+  line-height: 20px;
 }
+
 /* FIN DE PARA EL SI / NO */
 
 #atras {
-    color: black;
+  color: black;
 }
 
 .no-controls::-webkit-outer-spin-button,
@@ -148,9 +154,59 @@ input:checked + .slider:before {
   -webkit-appearance: none;
   margin: 0;
 }
+
 .no-controls {
-  -moz-appearance:textfield;
+  -moz-appearance: textfield;
 }
+
 .mensajeErrores {
-  color:red;
+  color: red;
 }
+
+#botonAnadir {
+  color: black;
+}
+
+#imagenPersonal {
+  width: 50vh;
+  height: 50vh;
+}
+
+#cambiarImagen {
+  position: absolute;
+  margin: auto;
+}
+
+#divImagenUsuario {
+  padding: 0;
+  margin: 0;
+  position: relative;
+  float: left;
+  width: 50vh;
+  height: 50vh;
+  overflow: hidden;
+  margin: 0 15px 15px 0;
+}
+
+
+.divOculto {
+  border-radius: 50%;
+  display: none;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  z-index: 10;
+  background: rgba(128, 128, 128, 0.6);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#50000000, endColorstr=#50000000);
+  width: 100%;
+  color: #FFF;
+  padding: 10px;
+}
+.divOculto h3 {
+  padding-top: 45%;
+  padding-left: 17%;
+}
+
+#divImagenUsuario :hover .divOculto {
+  display: block;
+  }
