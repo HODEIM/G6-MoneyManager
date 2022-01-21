@@ -1,47 +1,4 @@
-#tabla {
-    border-style: solid;
-    border-width: 2px;
-    border-color: black;
-}
-
-.lenguageNav {
-    position: absolute;
-    top: 0;
-    left: 4px;
-}
-
-#info,
-#email,
-#instagram,
-#twitter,
-#facebook,
-#phone {
-    color: white;
-    font-family: "Catamaran", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-}
-
-#email:hover {
-    color: gray;
-}
-
-#instagram:hover {
-    color: rgb(190, 75, 219);
-}
-
-#twitter:hover {
-    color: rgb(29, 161, 242);
-}
-
-#facebook:hover {
-    color: rgb(64, 100, 172);
-}
-
-#phone:hover {
-    color: rgb(74, 198, 88);
-}
-/* A PARTIR DE AQUI ES PARA EL SI / NO */
-
-
+/**** Edit User CheckBox ****/
 .switch {
   position: relative;
   display: inline-block;
@@ -137,12 +94,12 @@ input:checked + .slider:before {
     cursor: pointer;
     line-height: 20px;
 }
-/* FIN DE PARA EL SI / NO */
+/**** End Edit User CheckBox ****/
 
 #atras {
     color: black;
 }
-
+/**** No Rows Input Number ****/
 .no-controls::-webkit-outer-spin-button,
 .no-controls::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -151,6 +108,10 @@ input:checked + .slider:before {
 .no-controls {
   -moz-appearance:textfield;
 }
+/**** End No Rows Input Number ****/
+
+/**** Edit User Error Message ****/
 .mensajeErrores {
   color:red;
 }
+/**** End Edit User Error Message ****/

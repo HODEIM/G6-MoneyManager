@@ -7,7 +7,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Movimientos</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('aplicacion/assets/logo_negro.ico') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/logo/logo_negro.ico') }}" />
     <!-- Font Awesome icons (free version)-->
 
     <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
@@ -18,13 +18,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Core theme CSS (includes Bootstrap)-->
-
-    <link href="{{ asset('aplicacion/css/styles.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
     <!-- Personal CSS-->
     <link href="{{ asset('aplicacion/css/miEstilo.css') }}" rel="stylesheet" />
-    <link href="{{ asset('aplicacion/css/footer.css') }}" rel="stylesheet" />
+    <link href="{{ asset('aplicacion/css/fixedFooter.css') }}" rel="stylesheet" />
     <!-- Personal JavaScript-->
-    <script src="{{ asset('aplicacion/js/movements.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('aplicacion/js/logOut.js') }}" type="text/javascript"></script>
 </head>
 
 <body>
@@ -62,7 +61,7 @@
             </div>
         </div>
     </nav>
-    
+
     <div class="container-fluid">
         <div class="row d-flex justify-content-center mt-3">
             <div class="col-lg-8 text-center">
@@ -87,8 +86,9 @@
             </div>
         </div>
     </div>
-        <!-- Footer-->
-        @include('partials.footer')
+    <!-- Footer-->
+    @include('partials.footer')
+    
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->

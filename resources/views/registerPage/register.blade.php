@@ -4,6 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Registro</title>
+	<link rel="icon" type="image/x-icon" href="{{ asset('assets/logo/logo_negro.ico') }}" />
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<!-- Font-->

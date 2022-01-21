@@ -1,5 +1,5 @@
 $('document').ready(iniciar);
-
+/**** User edit validation****/
 function iniciar() {
     $("#guardar").click(comprobar);
 }
@@ -82,6 +82,4 @@ function validateEmail(email) {
     var regex = /[a-zA-Z0-9_\-\.\+]+\@[a-zA-Z0-9-]+\.[a-zA-Z]+/;
     return regex.test(email);
 }
-function validateTelephone(telephone) {
-
-}
+/**** End User edit validation****/

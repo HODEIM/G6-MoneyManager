@@ -7,7 +7,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Money Manager</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('landing/assets/logo_negro.ico') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/logo/logo_negro.ico') }}" />
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
@@ -17,11 +17,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Core theme CSS (includes Bootstrap)-->
-
-    <link href="{{ asset('landing/css/styles.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
     <!-- Personal CSS-->
-    <link href="{{ asset('landing/css/main.css') }}" rel="stylesheet" />
-    <link href="{{ asset('landing/css/login.css') }}" rel="stylesheet" />
+    <link href="{{ asset('landing/css/landing.css') }}" rel="stylesheet" />
 </head>
 
 <body id="page-top">
@@ -67,7 +65,7 @@
                             <div>
                                 <div class="form-container">
                                     <div class="form-icon">
-                                        <img src="{{asset('landing/assets/logo_blanco.ico')}}" width="100px">
+                                        <img src="{{ asset('assets/logo/logo_blanco.ico') }}" width="100px">
                                     </div>
                                     <form method="POST" class="form-horizontal" action="/loginControl" id="loginForm">
                                         @csrf
@@ -223,9 +221,9 @@
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
-    <script src="{{ asset('landing/js/scripts.js')}}"></script>
+    <script src="{{ asset('landing/js/landing.js')}}"></script>
     @if($errors->any() )
-    <script src="{{ asset('aplicacion/js/scriptModal.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('landing/js/scriptModal.js') }}" type="text/javascript"></script>
     @endif
 
 </body>

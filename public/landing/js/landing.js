@@ -1,4 +1,3 @@
-
 $('document').ready(function () {
     let height = $(window).height();
     height = height - 311.59;
@@ -8,7 +7,7 @@ $('document').ready(function () {
     $('#enviar').click(validarLogin);
 });
 
-
+/**** Login Validation ****/
 function validarLogin(event) {
     var email = $('#emailLogin').val();
     var password = $('#passwordLogin').val();
@@ -43,3 +42,4 @@ function checkEmail() {
     var regex = /[a-zA-Z0-9_\-\.\+]+\@[a-zA-Z0-9-]+\.[a-zA-Z]+/;
     return regex.test($('#emailLogin').val());
 }
+/**** End Login Validation ****/
