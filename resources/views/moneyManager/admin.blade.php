@@ -7,9 +7,8 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Movimientos</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('aplicacion/assets/logo_negro.ico') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/logo/logo_negro.ico') }}" />
     <!-- Font Awesome icons (free version)-->
-
     <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
@@ -17,14 +16,12 @@
     <!--Jquery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <!-- Core theme CSS (includes Bootstrap)-->
-
-    <link href="{{ asset('aplicacion/css/styles.css') }}" rel="stylesheet" />
-    <!-- Personal CSS-->
+    <!-- CSS -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
     <link href="{{ asset('aplicacion/css/miEstilo.css') }}" rel="stylesheet" />
-    <link href="{{ asset('aplicacion/css/footer.css') }}" rel="stylesheet" />
+    <link href="{{ asset('aplicacion/css/fixedFooter.css') }}" rel="stylesheet" />
     <!-- Personal JavaScript-->
-    <script src="{{ asset('aplicacion/js/movements.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('aplicacion/js/logOut.js') }}" type="text/javascript"></script>
 </head>
 
 <body>
@@ -55,7 +52,7 @@
                     <li class="nav-item">
                         <form action="/logoutControl" method="POST">
                             @csrf
-                            <a href="#" class="nav-link" id="logout"><i class="fas fa-sign-out-alt fa-lg"></i></a>
+                            <a  class="nav-link" id="logout"><i class="fas fa-sign-out-alt fa-lg"></i></a>
                         </form>
                     </li>
                 </ul>
@@ -83,7 +80,7 @@
                         </th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="usersTable">
                         @foreach($users as $user)
                         <tr class='clickable'>
                             <td name="id">{{ $user->id }}</a></td>
@@ -98,21 +95,8 @@
         </div>
     </div>
     <!-- Footer-->
-    <footer class="py-5 bg-black mt-5">
-        <div class="container ">
-            <div class="row d-flex justify-content-center">
-                <div class="col-6 text-center">
-                    <i id="instagram" class="fab fa-instagram fa-lg mx-2"></i>
-                    <i id="twitter" class="fab fa-twitter fa-lg mx-2"></i>
-                    <i id="facebook" class="fab fa-facebook fa-lg mx-2"></i>
-                    <i id="phone" class="fas fa-phone fa-lg mx-2"></i>
-                </div>
-            </div>
-            <div class="row my-2">
-                <p class="m-0 text-center text-white small">Copyright &copy; Money Manager 2021</p>
-            </div>
-        </div>
-    </footer>
+    @include('partials.footer')
+
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
