@@ -79,7 +79,7 @@
                         <th>Nombre</th>
                         <th class="d-flex justify-content-between">
                             <div>Apellidos</div>
-                            <div><i class="far fa-plus-square fa-lg"></i></div>
+                            <div><a href="/signup/create" id="botonAnadir"><i class="far fa-plus-square fa-lg"></i></a></div>
                         </th>
                     </tr>
                     </thead>
