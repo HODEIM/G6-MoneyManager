@@ -48,7 +48,7 @@
                 </ul> -->
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#!">{{ __('statistics') }}</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">{{ __('profile') }}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/profile/edit">{{ __('profile') }}</a></li>
                     <li class="nav-item">
                         <form action="/logoutControl" method="POST">
                             @csrf
