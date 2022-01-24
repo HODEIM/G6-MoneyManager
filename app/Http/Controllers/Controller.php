@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use App\Models\Rol;
 
 class Controller extends BaseController
 {
@@ -49,5 +50,9 @@ class Controller extends BaseController
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect("/");
+    }
+    public function profile()
+    {
+        return view("moneyManager.profile");
     }
 }

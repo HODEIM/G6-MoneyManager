@@ -22,7 +22,18 @@ Route::post('/loginControl', [Controller::class, 'login']);
 
 // Auth::routes();
 
-Route::post('/logoutControl', [Controller::class, 'logout'])->middleware("auth");;
+Route::post('/logoutControl', [Controller::class, 'logout'])->middleware("auth");
+
+Route::get('/logoutControl', [Controller::class, 'logout'])->middleware("auth");
+
+Route::get('/locked', function () {
+    return view('locked');
+});
+
+Route::get('/noPermissions', function () {
+    return view('noPermissions');
+});
+
 
 // accounts ROUTES
 Route::get('/accounts', [AccountController::class, 'index'])->middleware("auth");
@@ -36,12 +47,13 @@ Route::patch('/admin/update', [AdminController::class, 'update'])->middleware("a
 
 Route::delete('/admin/{id}', [AdminController::class, 'destroy'])->middleware("auth");
 
-Route::get('/locked', function () {
-    return view('locked');
-});
 
+// User ROUTES
+Route::get('/profile/edit', [Controller::class, 'profile'])->middleware("auth");
 
+Route::patch('/profile/update', [UserController::class, 'update'])->middleware("auth");
 
+Route::patch('/profile/lock', [UserController::class, 'lock'])->middleware("auth");
 
 // UserController ROUTES
 Route::get('/signup/create', [UserController::class, 'create']);

@@ -1,4 +1,6 @@
-@if($user != null)
+<?php
+$user = auth()->user();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -7,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Editar datos</title>
+    <title>Perfil</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/logo/logo_negro.ico') }}" />
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
@@ -46,7 +48,7 @@
                 </ul> -->
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#!">{{ __('statistics') }}</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/profile/edit">{{ __('profile') }}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!">{{ __('profile') }}</a></li>
                     <li class="nav-item">
                         <form action="/logoutControl" method="POST">
                             @csrf
@@ -61,15 +63,15 @@
     <div class="container-fluid">
         <div class="row d-flex justify-content-center mt-3">
             <div class="col-lg-8 text-center">
-                <h1>{{ __('users.edit') }}</h1>
+                <h1>Perfil</h1>
             </div>
         </div>
-        <form method="POST" action="/admin/update" enctype="multipart/form-data" class="mb-5">
+        <form method="POST" action="/profile/update" enctype="multipart/form-data" class="mb-5">
             @method("PATCH")
             @csrf
             <div class="row m-auto d-flex justify-content-around" style="width: 80%">
                 <div class="col-lg-5 col-md-6 col-12 d-flex justify-content-center">
-                    <a href="/admin" style="float:left"><i class="fas fa-arrow-circle-left fa-lg" id="atras"></i></a>
+                    <a href="/accounts" style="float:left"><i class="fas fa-arrow-circle-left fa-lg" id="atras"></i></a>
                     <div id="divImagenUsuario">
                         <label>
                             <div class="divOculto">
@@ -165,33 +167,7 @@
                                 <?php echo substr($user->created_at, 0, 11); ?>
                             </td>
                         </tr>
-                        <tr>
-                            <th>Rol actual: {{$user->rol->rol}}</th>
-                            <td>
-                                <select class="form-select" name="rol" id="rol">
-                                    <option value="null" selected hidden>--Cambiar Rol--</option>
-                                    @if($rols != null)
-                                    @foreach($rols as $rol)
-                                    <option value="{{$rol->id}}">{{$rol->rol}}</option>
-                                    @endforeach
-                                    @endif
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Bloqueado:</th>
-                            <td>
-                                <label class="switch">
-                                    @if ($user->locked == 1)
-                                    <input type="checkbox" id="locked" checked name="locked">
-                                    @else
-                                    <input type="checkbox" id="locked" name="locked">
-                                    @endif
-                                    <span class="slider round"></span>
-                                    <span class="absolute-no">NO</span>
-                                </label>
-                            </td>
-                        </tr>
+
                         <tr>
                             <td>
                                 <input type="submit" value="Guardar" class="btn btn-secondary" class="form-control" id="guardar">
@@ -199,10 +175,10 @@
 
         </form>
         <td>
-            <form method="post" action="/admin/{{$user->id}}">
+            <form method="post" action="/profile/lock">
                 @csrf
-                @method("delete")
-                <input type="submit" class="btn btn-primary" value="Eliminar" />
+                @method("PATCH")
+                <input type="submit" class="btn btn-primary" value="Dar de baja" />
             </form>
         </td>
         </tr>
@@ -221,7 +197,3 @@
 </body>
 
 </html>
-
-@else
-
-@endif
