@@ -36,6 +36,12 @@ Route::patch('/admin/update', [AdminController::class, 'update'])->middleware("a
 
 Route::delete('/admin/{id}', [AdminController::class, 'destroy'])->middleware("auth");
 
+Route::get('/locked', function () {
+    return view('locked');
+});
+
+
+
 
 // UserController ROUTES
 Route::get('/signup/create', [UserController::class, 'create']);

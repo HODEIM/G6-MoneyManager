@@ -25,7 +25,11 @@ class Controller extends BaseController
         if ($mail != null) {
             $credentials = request()->only('email', 'password');
             $remember = request()->filled('remember');
+            if ($mail->locked == 1)
+                return redirect("/locked");
+
             if (Auth::attempt($credentials, $remember)) {
+
                 request()->session()->regenerate();
                 return redirect("/accounts");
             } else {
@@ -33,7 +37,7 @@ class Controller extends BaseController
                     'validation' => __('error.password'),
                 ]);
             }
-        }else {
+        } else {
             throw ValidationException::withMessages([
                 'validation' => __('error.email'),
             ]);
