@@ -49,7 +49,7 @@
                     <li class="nav-item"><a class="nav-link" href="#!">Estadísticas</a></li>
                 </ul> -->
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#!">{{ __('myaccounts') }}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/accounts">{{ __('myaccounts') }}</a></li>
                     <li class="nav-item"><a class="nav-link" href="/profile/edit">{{ __('profile') }}</a></li>
                     <li class="nav-item">
                         <form action="/logoutControl" method="POST">
@@ -71,7 +71,7 @@
         <div class="row">
             <div class="col-lg-4 m-auto">
                 <table class="table table-hover">
-                    <tbody>
+                    <tbody id="accountsTable">
                         @if(count($accounts) > 0)
                         @foreach($accounts as $account)
                         <tr>
@@ -88,11 +88,12 @@
     </div>
     <!-- Footer-->
     @include('partials.footer')
-    
+
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script src="{{ asset('landing/js/scripts.js')}}"></script>
+    <script src="{{ asset('aplicacion/js/user.js')}}"></script>
 </body>
 
 </html>

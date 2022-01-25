@@ -38,6 +38,8 @@ Route::get('/noPermissions', function () {
 // accounts ROUTES
 Route::get('/accounts', [AccountController::class, 'index'])->middleware("auth");
 
+Route::get('/account/{id}', [AccountController::class, 'accounts'])->middleware("auth");
+
 // Admin ROUTES
 Route::get('/admin', [AdminController::class, 'index'])->middleware("auth");
 

@@ -17,4 +17,12 @@ class AccountController extends Controller
             return redirect("/admin");
         }
     }
+    public function accounts($id)
+    {
+        $account = Account::where(['id' => $id])->first();
+        if ($account != null)
+            return view('moneyManager.movements', ['account' => $account]);
+        else
+            return redirect("/accounts");
+    }
 }

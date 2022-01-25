@@ -36,7 +36,7 @@ $user = auth()->user();
         <div class="container px-5">
             <a class="navbar-brand" href="/">
                 <img src="{{ asset('landing/assets/img/logo_blanco.png') }}" alt="logo" width="50" class="d-inline-block">
-                {{__('mm.admin')}}
+                {{__('Money manager')}}
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -47,8 +47,8 @@ $user = auth()->user();
                     <li class="nav-item"><a class="nav-link" href="#!">Estadísticas</a></li>
                 </ul> -->
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#!">{{ __('statistics') }}</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">{{ __('profile') }}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/accounts">{{ __('myaccounts') }}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/profile/edit">{{ __('profile') }}</a></li>
                     <li class="nav-item">
                         <form action="/logoutControl" method="POST">
                             @csrf

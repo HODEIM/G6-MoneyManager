@@ -98,11 +98,13 @@ input:checked+.slider:before {
   cursor: pointer;
   line-height: 20px;
 }
+
 /**** End Edit User CheckBox ****/
 
 #atras {
   color: black;
 }
+
 /**** No Rows Input Number ****/
 .no-controls::-webkit-outer-spin-button,
 .no-controls::-webkit-inner-spin-button {
@@ -113,26 +115,31 @@ input:checked+.slider:before {
 .no-controls {
   -moz-appearance: textfield;
 }
+
 /**** End No Rows Input Number ****/
 
 /**** Edit User Error Message ****/
 .mensajeErrores {
   color: red;
 }
+
 /**** End Edit User Error Message ****/
 
 /**** Change Picture Style****/
 #botonAnadir {
   color: black;
 }
+
 #imagenPersonal {
   width: 50vh;
   height: 50vh;
 }
+
 #cambiarImagen {
   position: absolute;
   margin: auto;
 }
+
 #divImagenUsuario {
   padding: 0;
   margin: 0;
@@ -143,6 +150,7 @@ input:checked+.slider:before {
   overflow: hidden;
   margin: 0 15px 15px 0;
 }
+
 .divOculto {
   border-radius: 50%;
   display: none;
@@ -156,12 +164,52 @@ input:checked+.slider:before {
   color: #FFF;
   padding: 10px;
 }
+
 .divOculto h3 {
   padding-top: 45%;
   padding-left: 17%;
 }
+
 #divImagenUsuario :hover .divOculto {
   display: block;
 }
+
 /**** End Change Picture Style****/
 
+/** Collapse **/
+.collapsibleCollapse {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.active, .collapsibleCollapse:hover {
+  background-color: #555;
+}
+
+.collapsibleCollapse:after {
+  content: '\002B';
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.contentCollapse {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
+}
+/** End Collapse **/
