@@ -55,17 +55,86 @@
         <div style="width:80%;" class="mt-4 text-center">
             <h2>{{ $account->name }}</h2>
             <div class="mt-4 row d-flex justify-content-center">
-                <div class="col-lg-3">
-                    <button type="button" class="btn mb-2 collapsibleCollapse" id="anadirBoton">Añadir</button>
-                    <div class="contentCollapse">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    </div>
-                    <button type="button" class="collapsibleCollapse btn">Busqueda Avanzada</button>
-                    <div class="contentCollapse">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <div class="col-xl-4 col-lg-5 col-12">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-6">
+                            <button type="button" class="btn collapsibleCollapse" id="anadirBoton"><span class="grande">Añadir</span></button>
+                            <div class="contentCollapse pt-2">
+                                <form method="post" action="/movement">
+                                    @csrf
+                                    <table style="width:100%" id="tablaAnadir">
+                                        <tr>
+                                            <th>
+                                                Tipo:
+                                            </th>
+                                            <td>
+                                                <select class="form-select" style="width:90%">
+                                                    <option selected hidden>--Tipo Movimiento--</option>
+                                                    <option value="1">Ingreso</option>
+                                                    <option value="2">Gasto</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                Importe:
+                                            </th>
+                                            <td>
+                                                <input type="text" placeholder="Importe" style="width:90%" class="form-control"></input>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                Concepto:
+                                            </th>
+                                            <td class="d-flex justify-content-between align-items-center" style="width:90%">
+                                                <div>
+                                                    <select class="form-select" aria-label="Default select example">
+                                                        <option selected>Open this select menu</option>
+                                                        <option value="1">One</option>
+                                                        <option value="2">Two</option>
+                                                        <option value="3">Three</option>
+                                                    </select>
+                                                </div>
+                                                <div>
+                                                    <a href="#" id="botonAnadir" style="padding-left: 5px;"><i class="far fa-plus-square fa-lg"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                Descripcion:
+                                            </th>
+                                            <td>
+                                                <textarea placeholder="Descripcion" rows="3" style="width:90%; resize:none;" class="form-control"></textarea>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                Fecha:
+                                            </th>
+                                            <td>
+                                                <input type="date" placeholder="Descripcion" style="width:90%" class="form-control"></input>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <input type="submit" class="btn btn-primary" value="Añadir">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-6 mt-2">
+                            <button type="button" class="collapsibleCollapse btn"><span class="grande">Busqueda Avanzada</span></button>
+                            <div class="contentCollapse">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-xl-5 col-lg-7 col-12">
                     <table class="table table-hover">
                         <thead>
                             <tr>
@@ -103,7 +172,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-3">
+                <div class="col-xl-3">
                     <h2>Resumen</h2>
                 </div>
             </div>

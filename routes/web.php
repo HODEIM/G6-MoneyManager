@@ -40,6 +40,8 @@ Route::get('/accounts', [AccountController::class, 'index'])->middleware("auth")
 
 Route::get('/account/{id}', [AccountController::class, 'accounts'])->middleware("auth");
 
+Route::post('/movement', [AccountController::class, 'add'])->middleware("auth");
+
 // Admin ROUTES
 Route::get('/admin', [AdminController::class, 'index'])->middleware("auth");
 

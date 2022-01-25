@@ -213,3 +213,10 @@ input:checked+.slider:before {
   background-color: #f1f1f1;
 }
 /** End Collapse **/
+
+#tablaAnadir tr th{
+  text-align: left;
+}
+.grande {
+  font-size: 20px;
+}
