@@ -3,10 +3,10 @@
 use App\Http\Controllers\AccountController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\LangController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\LangController;
 
 // LANDING PAGE VIEW
 Route::get('/', function () {
@@ -15,12 +15,11 @@ Route::get('/', function () {
 
 Route::get('/lang/{lang}', [LangController::class, 'change'])->name('lang.change');
 
+Auth::routes(['verify' => true]);
+
+
 // Controller ROUTES
 Route::post('/loginControl', [Controller::class, 'login']);
-
-// ... ROUTES
-
-// Auth::routes();
 
 Route::post('/logoutControl', [Controller::class, 'logout'])->middleware("auth");;
 

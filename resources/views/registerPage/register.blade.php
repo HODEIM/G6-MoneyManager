@@ -8,20 +8,20 @@
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<!-- Font-->
-	<link rel="stylesheet" type="text/css" href="{{ asset('register/css/montserrat-font.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('register/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('registerStyle/css/montserrat-font.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('registerStyle/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css') }}">
 	<!-- Main Style Css -->
-	<link rel="stylesheet" href="{{ asset('register/css/style.css') }}" />
-	<link rel="stylesheet" href="{{ asset('register/css/register.css') }}" />
+	<link rel="stylesheet" href="{{ asset('registerStyle/css/style.css') }}" />
+	<link rel="stylesheet" href="{{ asset('registerStyle/css/register.css') }}" />
 	<!--Jquery-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="{{ asset('register/js/script.js')}}"></script>
+	<script src="{{ asset('registerStyle/js/script.js')}}"></script>
 </head>
 
 <body class="form-v10">
 	<div class="page-content">
 		<div class="form-v10-content">
-			<form class="form-detail" action="/signup" method="post" id="registerFrom">
+			<form class="form-detail" action="{{ route('register') }}" method="post" id="registerFrom">
 				@csrf
 				<div class="form-left">
 					<h2>{{ __('titleregister') }}</h2>
@@ -46,7 +46,7 @@
 					<div class="form-group">
 						<div class="form-row form-row-1">
 							<div class="tooltip">
-								<input type="password" name="passwordRegister" id="passwordRegister" class="input-text" placeholder="{{ __('password') }}">
+								<input type="password" name="password" id="passwordRegister" class="input-text" placeholder="{{ __('password') }}">
 								<div class="passwordtooltip">
 									<span class="tooltiptext">password</span>
 								</div>
@@ -109,7 +109,7 @@
 					<h2>{{ __('title2register') }}</h2>
 					<div class="form-row">
 						<div class="tooltip">
-							<input type="email" name="emailRegister" id="emailRegister" class="emailRegister-text" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="{{ __('email') }}">
+							<input type="email" name="email" id="emailRegister" class="emailRegister-text" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="{{ __('email') }}">
 							<div class="emailtooltip" id="emailtooltip">
 								<span class="tooltiptext">email</span>
 							</div>

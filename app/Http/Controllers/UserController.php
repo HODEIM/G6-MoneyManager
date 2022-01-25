@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUser;
 use Illuminate\Http\Request;
-use App\Models\User;
+    use App\Models\User;
+    use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+
     public function create()
     {
         return view('registerPage.register');
@@ -18,7 +20,7 @@ class UserController extends Controller
         $request->validated();
 
         $password = password_hash($request->get('passwordRegister'),PASSWORD_DEFAULT);
-        User::create([
+        $user = User::create([
             'name' => $request->get('name'),
             'surname' => $request->get('surname'),
             'email' => $request->get('emailRegister'),
@@ -29,6 +31,8 @@ class UserController extends Controller
             'locked' => false,
             'id_rol' => 2,
         ]);
-        return redirect('/accounts');
+        Auth::login($user);
+        return view('auth.verify');
+        //return redirect('/accounts');
     }
 }
