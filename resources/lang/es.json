@@ -5,7 +5,7 @@
     "repeatemail" : "Repetir Email",
     "password" : "Contraseña",
     "repeatpassword" : "Repetir contraseña",
-    "login" : "INICIAR SESIóN",
+    "login" : "INICIAR SESIÓN",
     "forgot" : "Recuperar Contraseña",
     "title1" : "Gestiona tu dinero",
     "subtitle1" : "de manera fácil",
@@ -52,6 +52,7 @@
     "error.password" : "La contraseña no coincide",
     "error.datos" : "El email no tiene buen formato",
     "mm.admin" : "Money Manager Administración",
+    "mm" : "Money Manager",
     "users.list" : "Lista de Usuarios",
     "users.edit" : "Editar Datos ",
     "statistics": "Estadísticas"

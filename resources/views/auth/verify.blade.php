@@ -20,6 +20,7 @@
                         @csrf
                         <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
                     </form>
+                    <h1>{{ auth()->user()->email}}</h1>
                 </div>
             </div>
         </div>

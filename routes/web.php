@@ -10,7 +10,7 @@ use App\Http\Controllers\LangController;
 
 // LANDING PAGE VIEW
 Route::get('/', function () {
-    return view('landingPage.index');
+    return view('auth.v1');
 });
 
 Route::get('/lang/{lang}', [LangController::class, 'change'])->name('lang.change');

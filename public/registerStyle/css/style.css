@@ -1,3 +1,4 @@
+/**** Register Page Style ****/
 body {
     margin: 0;
 }
@@ -452,3 +453,171 @@ body {
         margin: 44px 0 30px;
     }
 }
+
+/**** End Verify Page Style ****/
+
+/**** Verify Page Style ****/
+.test {
+    position: relative;
+    width: auto;
+    margin: 0.5rem;
+    pointer-events: none;
+}
+
+@media (min-width: 576px) {
+    .test {
+        max-width: 500px;
+        margin: 1.75rem auto;
+    }
+}
+.test {
+    max-width: 600px;
+  }
+.verify {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0.3rem;
+    outline: 0;
+}
+
+.verify {
+    overflow: hidden;
+    border: none;
+    position: relative;
+    padding: 0 !important;
+    -webkit-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+    -moz-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+    box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+}
+
+.verify .verify-head {
+    position: relative;
+    padding: 0;
+    border: none;
+    height: 230px;
+    background: #915eff;
+    background: -moz-linear-gradient(45deg, #915eff 0%, #ff8e59 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, #915eff), color-stop(100%, #ff8e59));
+    background: -webkit-linear-gradient(45deg, #915eff 0%, #ff8e59 100%);
+    background: -o-linear-gradient(45deg, #915eff 0%, #ff8e59 100%);
+    background: -ms-linear-gradient(45deg, #915eff 0%, #ff8e59 100%);
+    background: linear-gradient(45deg, #915eff 0%, #ff8e59 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#915eff', endColorstr='#ff8e59', GradientType=1);
+}
+
+.verify-head {
+    /* position: relative;
+    background: linear-gradient(45deg, #e61920 0%, #ff8e59 100%);
+    width: 60%;
+    height: 230px; */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 1rem 1rem;
+    border-bottom: 1px solid #dee2e6;
+    border-top-left-radius: 0.3rem;
+    border-top-right-radius: 0.3rem;
+}
+
+.verify .verify-body {
+    border: none;
+    overflow: hidden;
+    margin-top: -180px;
+    z-index: 2;
+}
+
+.verify-body {
+    /* position: relative;
+    width: 60%;
+    height: 230px; */
+    position: relative;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1rem;
+}
+.text-center {
+    text-align: center !important;
+}
+.verify .verify-body h2{
+    color: white;
+}
+.verify-body h4{
+    font-size: 22px;
+    line-height: 1.5;
+    font-weight: 400;
+}
+.verify-body h3{
+    font-weight: 800;
+    font-size: 22px;
+}
+.verify .verify-body .icon {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    font-size: 30px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.ftco-degree-bg {
+    position: relative;
+}
+
+.ftco-degree-bg:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -30px;
+    overflow: visible;
+    width: 50%;
+    height: 60px;
+    z-index: 1;
+    -webkit-transform: skewY(-10deg);
+    -moz-transform: skewY(-10deg);
+    -ms-transform: skewY(-10deg);
+    -o-transform: skewY(-10deg);
+    transform: skewY(-10deg);
+    background-color: #fff;
+}
+
+.ftco-degree-bg:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -30px;
+    overflow: visible;
+    width: 50%;
+    height: 60px;
+    z-index: 1;
+    -webkit-transform: skewY(10deg);
+    -moz-transform: skewY(10deg);
+    -ms-transform: skewY(10deg);
+    -o-transform: skewY(10deg);
+    transform: skewY(10deg);
+    background-color: #fff;
+}
+
+/**** End Verify Page Style ****/
