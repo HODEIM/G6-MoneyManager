@@ -18,6 +18,7 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
     <!-- Personal CSS-->
+
     <link href="{{ asset('aplicacion/css/miEstilo.css') }}" rel="stylesheet" />
 </head>
 
@@ -32,7 +33,7 @@
         </div>
         <div class="container px-5">
             <a class="navbar-brand" href="/">
-                <img src="{{ asset('landing/assets/img/logo_blanco.png') }}" alt="logo" width="50" class="d-inline-block">
+                <img src="{{ asset('assets/logo/logo_blanco.ico') }}" alt="logo" width="50" class="d-inline-block">
                 Money Manager
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"><span class="navbar-toggler-icon"></span></button>
@@ -57,7 +58,7 @@
             <div class="mt-4 row d-flex justify-content-center">
                 <div class="col-xl-4 col-lg-5 col-12">
                     <div class="row">
-                        <div class="col-xl-12 col-lg-12 col-md-6">
+                        <div class="col-xl-12 col-lg-12 col-md-6 mb-2">
                             <button type="button" class="btn collapsibleCollapse" id="anadirBoton"><span class="grande">Añadir</span></button>
                             <div class="contentCollapse pt-2">
                                 <form method="post" action="/movement">
@@ -90,14 +91,14 @@
                                             <td class="d-flex justify-content-between align-items-center" style="width:90%">
                                                 <div>
                                                     <select class="form-select" aria-label="Default select example">
-                                                        <option selected>Open this select menu</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
+                                                        <option selected hidden>--Concepto--</option>
+                                                        @foreach($concepts as $concept)
+                                                        <option value="2">{{ $concept->concept }}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                                 <div>
-                                                    <a href="#" id="botonAnadir" style="padding-left: 5px;"><i class="far fa-plus-square fa-lg"></i></a>
+                                                    <a href="#" id="botonAnadir" style="padding-left: 5px;" data-toggle="modal" data-target="#modalConcepto"><i class="far fa-plus-square fa-lg"></i></a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -126,8 +127,8 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="col-xl-12 col-lg-12 col-md-6 mt-2">
-                            <button type="button" class="collapsibleCollapse btn"><span class="grande">Busqueda Avanzada</span></button>
+                        <div class="col-xl-12 col-lg-12 col-md-6">
+                            <button type="button" class="collapsibleCollapse btn"><span class="grande">Filtrar datos</span></button>
                             <div class="contentCollapse">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                             </div>
@@ -179,7 +180,34 @@
         </div>
     </div>
 
-
+    <!--------- MODAL DE CONCEPTOS  -------->
+    <div class="modal fade" id="modalConcepto" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header img">
+                    <button type="button" class="close d-flex align-items-center justify-content-center" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="fas fa-times"></span>
+                    </button>
+                </div>
+                <div class="modal-body pt-md-0 pb-5 px-4 px-md-5 text-center">
+                    <h2>Conceptos</h2>
+                    <div class="icon d-flex align-items-center justify-content-center">
+                        <img src="{{ asset('assets/logo/logo_negro.ico') }}" alt="" class="img-fluid">
+                    </div>
+                    <h4 class="mb-2">Añadir un nuevo concepto</h4>
+                    <form method="POST" class="subscribe-form" action="/concept/store">
+                        <div class="form-group d-flex">
+                            @csrf
+                            <input type="hidden" value="{{$account->id}}" name="accountId">
+                            <input type="text" class="form-control rounded-left" placeholder="Ingrese concepto nuevo" name="conceptName">
+                            <input type="submit" value="Añadir" class="form-control submit px-3">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--------- FIN MODAL DE CONCEPTOS  -------->
 
 </body>
 
@@ -191,6 +219,10 @@
 <!-- Core theme JS-->
 <script src="{{ asset('aplicacion/js/user.js')}}"></script>
 <script src="{{ asset('aplicacion/js/logOut.js')}}"></script>
+
+<script src=" {{ asset('aplicacion/js/bootstrap/popper.js') }} "></script>
+<script src=" {{ asset('aplicacion/js/bootstrap/bootstrap.min.js') }}"></script>
+<script src=" {{ asset('aplicacion/js/bootstrap/main.js') }}"></script>
 </body>
 
 </html>
