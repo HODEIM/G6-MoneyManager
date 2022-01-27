@@ -1,4 +1,11 @@
 {
+    "mm" : "Money Manager",
+    "mm.admin" : "Money Manager Administración",
+    "title.register":"Registrar",
+    "title.admin":"Administrador",
+    "title.movements":"Movimientos",
+    "title.verify":"Verificar el mail",
+    "title.accounts":"Cuentas",
     "signup" : "REGISTRATE",
     "signin" : "ACCEDER",
     "email" : "Correo Electronico",
@@ -51,9 +58,13 @@
     "error.email" : "El correo no existe",
     "error.password" : "La contraseña no coincide",
     "error.datos" : "El email no tiene buen formato",
-    "mm.admin" : "Money Manager Administración",
-    "mm" : "Money Manager",
     "users.list" : "Lista de Usuarios",
     "users.edit" : "Editar Datos ",
-    "statistics": "Estadísticas"
+    "statistics": "Estadísticas",
+    "verify.gotmail": "¡Tienes un correo!",
+    "verify.sentlink": "Hemos enviado el enlace de confirmación a:",
+    "verify.resent": "Hemos reenviado el enlade de confirmacion a:",
+    "verify.resend": "Si no ha recibido el correo electrónico",
+    "verify.resendlink": "pulse aquí para solicitar otro."
 }
+

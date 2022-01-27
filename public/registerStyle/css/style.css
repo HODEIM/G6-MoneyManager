@@ -457,7 +457,7 @@ body {
 /**** End Verify Page Style ****/
 
 /**** Verify Page Style ****/
-.test {
+.verify-container {
     position: relative;
     width: auto;
     margin: 0.5rem;
@@ -465,12 +465,12 @@ body {
 }
 
 @media (min-width: 576px) {
-    .test {
+    .verify-container {
         max-width: 500px;
         margin: 1.75rem auto;
     }
 }
-.test {
+.verify-container {
     max-width: 600px;
   }
 .verify {
@@ -507,13 +507,13 @@ body {
     border: none;
     height: 230px;
     background: #915eff;
-    background: -moz-linear-gradient(45deg, #915eff 0%, #ff8e59 100%);
-    background: -webkit-gradient(left bottom, right top, color-stop(0%, #915eff), color-stop(100%, #ff8e59));
-    background: -webkit-linear-gradient(45deg, #915eff 0%, #ff8e59 100%);
-    background: -o-linear-gradient(45deg, #915eff 0%, #ff8e59 100%);
-    background: -ms-linear-gradient(45deg, #915eff 0%, #ff8e59 100%);
-    background: linear-gradient(45deg, #915eff 0%, #ff8e59 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#915eff', endColorstr='#ff8e59', GradientType=1);
+    background: -moz-linear-gradient(45deg, #e61920 0%, #ff8e59 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, #e61920), color-stop(100%, #ff8e59));
+    background: -webkit-linear-gradient(45deg, #e61920 0%, #ff8e59 100%);
+    background: -o-linear-gradient(45deg, #e61920 0%, #ff8e59 100%);
+    background: -ms-linear-gradient(45deg, #e61920 0%, #ff8e59 100%);
+    background: linear-gradient(45deg, #e61920 0%, #ff8e59 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e61920', endColorstr='#ff8e59', GradientType=1);
 }
 
 .verify-head {
