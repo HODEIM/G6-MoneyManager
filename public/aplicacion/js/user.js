@@ -5,7 +5,7 @@ function iniciar() {
 }
 function account() {
     $idAccount = $(this).children().first();
-    window.location.href = '/movement/' + $($idAccount).html();
+    window.location.href = '/account/' + $($idAccount).html();
     console.log($($idAccount).html());
 }
 

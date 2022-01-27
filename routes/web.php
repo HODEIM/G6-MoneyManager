@@ -43,7 +43,9 @@ Route::get('/accounts', [AccountController::class, 'index'])->middleware("auth")
 
 // movements ROUTES
 
-Route::get('/movement/{id}', [MovementController::class, 'index'])->middleware("auth");
+Route::get('/account/{id}', [MovementController::class, 'index'])->middleware("auth");
+
+Route::post('/movement/store', [MovementController::class, 'store'])->middleware("auth");
 
 // concept ROUTES
 

@@ -60,19 +60,20 @@
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-6 mb-2">
                             <button type="button" class="btn collapsibleCollapse" id="anadirBoton"><span class="grande">Añadir</span></button>
-                            <div class="contentCollapse pt-2">
-                                <form method="post" action="/movement">
+                            <div class="contentCollapse ">
+                                <form method="POST" action="/movement/store">
+                                    <input type="hidden" value="{{$account->id}}" name="accountId">
                                     @csrf
                                     <table style="width:100%" id="tablaAnadir">
                                         <tr>
                                             <th>
                                                 Tipo:
                                             </th>
-                                            <td>
-                                                <select class="form-select" style="width:90%">
-                                                    <option selected hidden>--Tipo Movimiento--</option>
-                                                    <option value="1">Ingreso</option>
-                                                    <option value="2">Gasto</option>
+                                            <td class="pt-2">
+                                                <select class="form-select" style="width:90%" name="tipo">
+                                                    <option selected hidden value="">--Tipo Movimiento--</option>
+                                                    <option value="Ingreso">Ingreso</option>
+                                                    <option value="Gasto">Gasto</option>
                                                 </select>
                                             </td>
                                         </tr>
@@ -81,7 +82,7 @@
                                                 Importe:
                                             </th>
                                             <td>
-                                                <input type="text" placeholder="Importe" style="width:90%" class="form-control"></input>
+                                                <input type="text" placeholder="Importe" style="width:90%" class="form-control" name="importe"></input>
                                             </td>
                                         </tr>
                                         <tr>
@@ -90,10 +91,10 @@
                                             </th>
                                             <td class="d-flex justify-content-between align-items-center" style="width:90%">
                                                 <div>
-                                                    <select class="form-select" aria-label="Default select example">
-                                                        <option selected hidden>--Concepto--</option>
+                                                    <select class="form-select" name="concepto">
+                                                        <option selected hidden value="">--Concepto--</option>
                                                         @foreach($concepts as $concept)
-                                                        <option value="2">{{ $concept->concept }}</option>
+                                                        <option value="{{ $concept->id }}">{{ $concept->concept  }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -107,7 +108,7 @@
                                                 Descripcion:
                                             </th>
                                             <td>
-                                                <textarea placeholder="Descripcion" rows="3" style="width:90%; resize:none;" class="form-control"></textarea>
+                                                <textarea placeholder="Descripcion" rows="3" style="width:90%; resize:none;" class="form-control" name="descripcion"></textarea>
                                             </td>
                                         </tr>
                                         <tr>
@@ -115,7 +116,7 @@
                                                 Fecha:
                                             </th>
                                             <td>
-                                                <input type="date" placeholder="Descripcion" style="width:90%" class="form-control"></input>
+                                                <input type="date" placeholder="Descripcion" style="width:90%" class="form-control" name="fecha"></input>
                                             </td>
                                         </tr>
                                         <tr>
@@ -145,31 +146,27 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @if (count($movements) != 0)
+                            @foreach($movements as $movement)
                             <tr>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
+                                @if ($movement->type == "Ingreso")
+                                <td style="color:green;">{{$movement->amount}}&#8364</td>
+                                @else
+                                <td style="color:red;">-{{$movement->amount}}&#8364</td>
+                                @endif
+                                @if($concepts != null)
+                                @foreach($concepts as $concept)
+                                @if($concept->id == $movement->id_concept)
+                                <td>{{$concept->concept}}</td>
+                                @endif
+                                @endforeach
+                                @endif
+                                <td>{{$movement->user}}</td>
                             </tr>
-                            <tr>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
+                            @endforeach
+                            @else
+                            <td colspan="3">La cuenta no tiene ningún movimiento</td>
+                            @endif
                         </tbody>
                     </table>
                 </div>
