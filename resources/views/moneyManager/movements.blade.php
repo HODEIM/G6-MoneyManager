@@ -59,8 +59,10 @@
                 <div class="col-xl-4 col-lg-5 col-12">
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-6 mb-2">
-                            <button type="button" class="btn collapsibleCollapse" id="anadirBoton"><span class="grande">Añadir</span></button>
-                            <div class="contentCollapse ">
+                            <button type="button" class="btn collapsibleCollapse" id="anadirBoton">
+                                <span class="grande">Añadir</span>
+                            </button>
+                            <div class="contentCollapse">
                                 <form method="POST" action="/movement/store">
                                     <input type="hidden" value="{{$account->id}}" name="accountId">
                                     @csrf
@@ -70,7 +72,7 @@
                                                 Tipo:
                                             </th>
                                             <td class="pt-2">
-                                                <select class="form-select" style="width:90%" name="tipo">
+                                                <select class="form-select" style="width:90%" name="tipo" id="tipo">
                                                     <option selected hidden value="">--Tipo Movimiento--</option>
                                                     <option value="Ingreso">Ingreso</option>
                                                     <option value="Gasto">Gasto</option>
@@ -78,12 +80,20 @@
                                             </td>
                                         </tr>
                                         <tr>
+                                            <td></td>
+                                            <td><div id="tipoError" class="ponerRojo"></div></td>
+                                        </tr>
+                                        <tr>
                                             <th>
                                                 Importe:
                                             </th>
                                             <td>
-                                                <input type="text" placeholder="Importe" style="width:90%" class="form-control" name="importe"></input>
+                                                <input type="number" placeholder="Importe" style="width:90%" class="form-control" name="importe" id="importe"></input>
                                             </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td><div id="importeError" class="ponerRojo"></div></td>
                                         </tr>
                                         <tr>
                                             <th>
@@ -91,7 +101,7 @@
                                             </th>
                                             <td class="d-flex justify-content-between align-items-center" style="width:90%">
                                                 <div>
-                                                    <select class="form-select" name="concepto">
+                                                    <select class="form-select" name="concepto" id="concepto">
                                                         <option selected hidden value="">--Concepto--</option>
                                                         @foreach($concepts as $concept)
                                                         <option value="{{ $concept->id }}">{{ $concept->concept  }}</option>
@@ -104,6 +114,10 @@
                                             </td>
                                         </tr>
                                         <tr>
+                                            <td></td>
+                                            <td><div id="conceptoError" class="ponerRojo"></div></td>
+                                        </tr>
+                                        <tr>
                                             <th>
                                                 Descripcion:
                                             </th>
@@ -112,16 +126,24 @@
                                             </td>
                                         </tr>
                                         <tr>
+                                            <td></td>
+                                            <td><div id="descripcionError" class="ponerRojo"></div></td>
+                                        </tr>
+                                        <tr>
                                             <th>
                                                 Fecha:
                                             </th>
                                             <td>
-                                                <input type="date" placeholder="Descripcion" style="width:90%" class="form-control" name="fecha"></input>
+                                                <input type="date" placeholder="Descripcion" style="width:90%" class="form-control" name="fecha" id="fecha"></input>
                                             </td>
                                         </tr>
                                         <tr>
+                                            <td></td>
+                                            <td><div id="fechaError" class="ponerRojo"></div></td>
+                                        </tr>
+                                        <tr>
                                             <td colspan="2">
-                                                <input type="submit" class="btn btn-primary" value="Añadir">
+                                                <input type="submit" class="btn btn-primary" id="anadir" value="Añadir">
                                             </td>
                                         </tr>
                                     </table>

@@ -683,3 +683,9 @@ a.close.disabled {
   pointer-events: none;
 }
 /** END MODAL **/
+
+
+.ponerRojo {
+  color:red;
+  text-align: left;
+}
