@@ -7,6 +7,8 @@ use App\Http\Controllers\LangController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\MovementController;
+use App\Http\Controllers\ConceptController;
 
 // LANDING PAGE VIEW
 Route::get('/', function () {
@@ -37,6 +39,17 @@ Route::get('/noPermissions', function () {
 
 // accounts ROUTES
 Route::get('/accounts', [AccountController::class, 'index'])->middleware("auth");
+
+
+// movements ROUTES
+
+Route::get('/account/{id}', [MovementController::class, 'index'])->middleware("auth");
+
+Route::post('/movement/store', [MovementController::class, 'store'])->middleware("auth");
+
+// concept ROUTES
+
+Route::post('/concept/store', [ConceptController::class, 'store'])->middleware("auth");
 
 // Admin ROUTES
 Route::get('/admin', [AdminController::class, 'index'])->middleware("auth");

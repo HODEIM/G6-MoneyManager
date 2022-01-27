@@ -1,14 +1,20 @@
 $('document').ready(iniciar);
-/**** When you click on the user in the list of users you will edit that user ****/
+/**** When you click on the user in the list of users you will edit that user and open accounts ****/
 function iniciar() {
     $('#usersTable tr').click(abrir);
     $("#guardar").click(comprobar);
+    $('#accountsTable tr').click(account);
 }
 
 function abrir() {
     $id = $(this).children().first();
-    window.location.href = '/admin/'+$($id).html()+'/edit';
+    window.location.href = '/admin/' + $($id).html() + '/edit';
     console.log($($id).html());
+}
+function account() {
+    $idAccount = $(this).children().first();
+    window.location.href = '/account/' + $($idAccount).html();
+    console.log($($idAccount).html());
 }
 /**** End****/
 
@@ -36,7 +42,7 @@ function comprobar() {
         $('#name').css("border-color", "red");
         $('#nameError').append("-El nombre no puede estar vacio<br>");
         correcto = false;
-    }else {
+    } else {
         $('#name').css("border-color", "#ced4da");
     }
 
@@ -44,7 +50,7 @@ function comprobar() {
         $('#surname').css("border-color", "red");
         $('#surnameError').append("-El apellido no puede estar vacio<br>");
         correcto = false;
-    }else {
+    } else {
         $('#surname').css("border-color", "#ced4da");
     }
 
@@ -71,11 +77,11 @@ function comprobar() {
             $('#password_confirmation').css("border-color", "red");
             $('#passwordError').append("-La contraseña no cumple los requisitos minimos<br>");
             correcto = false;
-        }else {
+        } else {
             $('#password').css("border-color", "#ced4da");
             $('#password_confirmation').css("border-color", "#ced4da");
         }
-    }else {
+    } else {
         $('#password').css("border-color", "#ced4da");
         $('#password_confirmation').css("border-color", "#ced4da");
     }
