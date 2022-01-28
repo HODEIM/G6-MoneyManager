@@ -24,21 +24,16 @@ Route::post('/loginControl', [Controller::class, 'login']);
 Route::post('/logoutControl', [Controller::class, 'logout'])->middleware("auth");;
 
 // accounts ROUTES
-Route::get('/accounts', [AccountController::class, 'index'])->middleware("auth");
+Route::get('/accounts', [AccountController::class, 'index'])->middleware(["auth","verified"]);
 
 // Admin ROUTES
-Route::get('/admin', [AdminController::class, 'index'])->middleware("auth");
+Route::get('/admin', [AdminController::class, 'index'])->middleware(["auth","verified"]);
 
-Route::get('/admin/{id}/edit', [AdminController::class, 'edit'])->middleware("auth");
+Route::get('/admin/{id}/edit', [AdminController::class, 'edit'])->middleware(["auth","verified"]);
 
-Route::patch('/admin/update', [AdminController::class, 'update'])->middleware("auth");
+Route::patch('/admin/update', [AdminController::class, 'update'])->middleware(["auth","verified"]);
 
-Route::delete('/admin/{id}', [AdminController::class, 'destroy'])->middleware("auth");
-
-
-// UserController ROUTES
-Route::get('/signup/create', [UserController::class, 'create']);
-Route::post('/signup', [UserController::class, 'store']);
+Route::delete('/admin/{id}', [AdminController::class, 'destroy'])->middleware(["auth","verified"]);
 
 Route::get('/img/email-notify',function(){
     return asset('assets/logo/logo_negro.ico');

@@ -106,10 +106,13 @@
 					</div>
 				</div>
 				<div class="form-right">
-					<h2>{{ __('title2register') }}</h2>
+					<div class="rightLogo">
+						<img src="{{ asset('assets/logo/logo_negro.ico') }}" >
+					</div>
+					<h2 class="text-end">{{ __('title2register') }}</h2>
 					<div class="form-row">
 						<div class="tooltip">
-							<input type="email" name="email" id="emailRegister" class="emailRegister-text" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="{{ __('email') }}">
+							<input type="email" name="email" id="emailRegister" class="emailRegister-text text-end" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="{{ __('email') }}">
 							<div class="emailtooltip" id="emailtooltip">
 								<span class="tooltiptext">email</span>
 							</div>
@@ -117,7 +120,7 @@
 					</div>
 					<div class="form-row">
 						<div class="tooltip">
-							<input type="email" name="repeatEmail" id="repeatEmail" class="repeatEmail-text" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="{{ __('repeatemail') }}">
+							<input type="email" name="repeatEmail" id="repeatEmail" class="repeatEmail-text text-end" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="{{ __('repeatemail') }}">
 							<div class="repeatemailtooltip" id="repeatemailtooltip">
 								<span class="tooltiptext">repeat</span>
 							</div>
@@ -125,7 +128,7 @@
 					</div>
 					<div class="form-row">
 						<div class="tooltip">
-							<input type="text" name="address" class="address" id="address" placeholder="{{ __('address') }}">
+							<input type="text" name="address" class="address text-end" id="address" placeholder="{{ __('address') }}">
 							<div class="addresstooltip" id="addresstooltip">
 								<span class="tooltiptext">address</span>
 							</div>
@@ -134,7 +137,7 @@
 					<div class="form-group">
 						<div class="form-row form-row-1 tooltip">
 							<div class="tooltip">
-								<input type="text" name="code" class="code"  placeholder="{{ __('code') }}">
+								<input type="text" name="code" class="code text-end" placeholder="{{ __('code') }}">
 								<div class="codetooltip" id="codetooltip">
 									<span class="tooltiptext">code</span>
 								</div>
@@ -145,7 +148,7 @@
 						</div>
 						<div class="form-row form-row-2">
 							<div class="tooltip">
-								<input type="text" name="telephone" class="telephone" id="telephone" placeholder="{{ __('telephone') }}">
+								<input type="text" name="telephone" class="telephone text-end" id="telephone" placeholder="{{ __('telephone') }}">
 								<div class="telephonetooltip" id="telephonetooltip">
 									<span class="tooltiptext">telephone</span>
 								</div>

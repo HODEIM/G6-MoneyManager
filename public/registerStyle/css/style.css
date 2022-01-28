@@ -20,9 +20,9 @@ body {
     -ms-align-items: center;
     -moz-align-items: center;
     -webkit-align-items: center;
-    background-image: -moz-linear-gradient(136deg, rgb(149, 153, 226) 0%, rgb(139, 198, 236) 100%);
-    background-image: -webkit-linear-gradient(136deg, rgb(149, 153, 226) 0%, rgb(139, 198, 236) 100%);
-    background-image: -ms-linear-gradient(136deg, rgb(149, 153, 226) 0%, rgb(139, 198, 236) 100%);
+    background-image: -moz-linear-gradient(-136deg, #ff8e59  0%, #e61920  100%);
+    background-image: -webkit-linear-gradient(-136deg, #ff8e59  0%, #e61920  100%);
+    background-image: -ms-linear-gradient(-136deg, #ff8e59  0%, #e61920  100%);
 }
 
 .form-v10-content {
@@ -453,8 +453,10 @@ body {
         margin: 44px 0 30px;
     }
 }
-
-/**** End Verify Page Style ****/
+.text-end{
+    text-align: end !important;
+}
+/**** End Register Page Style ****/
 
 /**** Verify Page Style ****/
 .verify-container {
@@ -544,9 +546,6 @@ body {
 }
 
 .verify-body {
-    /* position: relative;
-    width: 60%;
-    height: 230px; */
     position: relative;
     -webkit-box-flex: 1;
     -ms-flex: 1 1 auto;
@@ -621,3 +620,15 @@ body {
 }
 
 /**** End Verify Page Style ****/
+
+/**** Logo style ****/
+
+.rightLogo
+{
+    position: relative;
+}
+.rightLogo img{
+    position: absolute;
+    left: -20px;
+}
+/**** End Logo style ****/
