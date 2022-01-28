@@ -39,3 +39,7 @@ Route::delete('/admin/{id}', [AdminController::class, 'destroy'])->middleware("a
 // UserController ROUTES
 Route::get('/signup/create', [UserController::class, 'create']);
 Route::post('/signup', [UserController::class, 'store']);
+
+Route::get('/img/email-notify',function(){
+    return asset('assets/logo/logo_negro.ico');
+});
