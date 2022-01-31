@@ -63,48 +63,67 @@
     </nav>
 
     <div class="container-fluid">
-        <div class="row d-flex justify-content-center mt-3">
-            <div class="col-lg-5 col-md-6 text-center">
-                <div class=" d-flex flex-direction-row justify-content-around align-items-center">
-                    <h1>{{ __('accounts') }}</h1>
-                    <a href="/accounts/create">
-                        <i class="no-decoration far fa-plus-square fa-lg"></i>
-                    </a>
-                </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-xl-5 col-lg-5 col-md-7 col-10 text-center mt-3">
+                <h1>Añadir cuenta nueva</h1>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-5 col-md-6 m-auto">
-                <table class="table table-hover">
-                    <tbody id="accountsTable">
-                        @if(count($accounts) > 0)
-                        @foreach($accounts as $account)
+        <div class="row d-flex justify-content-center">
+            <div class="col-xl-5 col-lg-5 col-md-7 col-10 mt-3 m-auto">
+                <form method="POST" action="/accounts/store">
+                    @csrf
+                    <table class="miTabla">
                         <tr>
-                            <td name="accountID" hidden>{{ $account->id }}</td>
-                            <td>{{ $account->name }}</td>
-                            <td>{{ $account->description }}</td>
-                        </tr>
-                        @endforeach
-                        @else
-                        <tr>
-                            <td colspan="3" class="text-center">
-                                No tiene ninguna cuenta
+                            <td>
+                                Nombre:
+                            </td>
+                            <td>
+                                <input type="text" class="form-control mt-2" placeholder="Nombre" name="name" id="name">
                             </td>
                         </tr>
-                        @endif
-                    </tbody>
-                </table>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <div id="nameError" class="mensajeErrores"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Descripcion:
+                            </td>
+                            <td>
+                                <input type="text" class="form-control mt-2" placeholder="Descripcion" name="description" id="description">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <div id="descriptionError" class="mensajeErrores"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <div class="text-center">
+                                    <input type="submit" class="btn btn-primary mt-2" value="Crear cuenta" id="create">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
             </div>
         </div>
     </div>
+
+
+
+
     <!-- Footer-->
     @include('partials.footer')
 
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="{{ asset('landing/js/scripts.js')}}"></script>
-    <script src="{{ asset('aplicacion/js/user.js')}}"></script>
+    <script src="{{ asset('aplicacion/js/account.js')}}"></script>
+
 </body>
 
 </html>

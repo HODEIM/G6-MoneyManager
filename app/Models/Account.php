@@ -22,6 +22,6 @@ class Account extends Model
     }
     public function user()
     {
-        return $this->belongsToMany('App\Models\User');
+        return $this->belongsToMany('App\Models\User', 'account_user', 'id_account', 'id_user')->withPivot('active', 'id_permission');
     }
 }

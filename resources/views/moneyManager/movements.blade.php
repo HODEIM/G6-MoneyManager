@@ -81,7 +81,9 @@
                                         </tr>
                                         <tr>
                                             <td></td>
-                                            <td><div id="tipoError" class="ponerRojo"></div></td>
+                                            <td>
+                                                <div id="tipoError" class="ponerRojo"></div>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <th>
@@ -93,7 +95,9 @@
                                         </tr>
                                         <tr>
                                             <td></td>
-                                            <td><div id="importeError" class="ponerRojo"></div></td>
+                                            <td>
+                                                <div id="importeError" class="ponerRojo"></div>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <th>
@@ -115,7 +119,9 @@
                                         </tr>
                                         <tr>
                                             <td></td>
-                                            <td><div id="conceptoError" class="ponerRojo"></div></td>
+                                            <td>
+                                                <div id="conceptoError" class="ponerRojo"></div>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <th>
@@ -127,7 +133,9 @@
                                         </tr>
                                         <tr>
                                             <td></td>
-                                            <td><div id="descripcionError" class="ponerRojo"></div></td>
+                                            <td>
+                                                <div id="descripcionError" class="ponerRojo"></div>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <th>
@@ -139,7 +147,9 @@
                                         </tr>
                                         <tr>
                                             <td></td>
-                                            <td><div id="fechaError" class="ponerRojo"></div></td>
+                                            <td>
+                                                <div id="fechaError" class="ponerRojo"></div>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td colspan="2">
@@ -165,6 +175,7 @@
                                 <th scope="col">Importe</th>
                                 <th scope="col">Concepto</th>
                                 <th scope="col">Quien</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -184,16 +195,42 @@
                                 @endforeach
                                 @endif
                                 <td>{{$movement->user}}</td>
+                                <td>
+                                    <a href="#" style="color:black" onclick="event.preventDefault(); document.getElementById('destroyMovement{{$movement->id}}').submit();">
+                                        <i class="fas fa-trash fa-lg"></i></a>
+                                    <form method="POST" action="/movement/{{$movement->id}}" id="destroyMovement{{$movement->id}}">
+                                        @csrf
+                                        @method('delete')
+                                    </form>
+                                </td>
                             </tr>
                             @endforeach
                             @else
-                            <td colspan="3">La cuenta no tiene ningún movimiento</td>
+                            <td colspan="4">La cuenta no tiene ningún movimiento</td>
                             @endif
                         </tbody>
                     </table>
                 </div>
-                <div class="col-xl-3">
+                <div class="col-xl-3 mt-lg-3 mt-md-3">
                     <h2>Resumen</h2>
+                </div>
+            </div>
+            <div class="row my-5 d-flex justify-content-center" id="divInvitar">
+                <div class="col-lg-6 col-md-8 col-12 p-4" id="invitar">
+                    <h1>INVITAR</h1>
+                    <img src="{{asset('assets/logo/logo_negro.ico')}}" style="width: 40%" class="mb-2">
+                    <h2>Invita usuarios a tu cuenta</h2>
+                    <p>Comparte la cuenta con quien tú quieras y empieza a añadir movimientos con tus amigos</p>
+                    <div class="inputUtilizame">
+                        <input id="compartir" type="text" class="form-control alto" value="AARON FEO" readonly />
+                        <div class="tooltipPersonal">
+                            <span class="tooltiptextPersonal" id="myTooltipPersonal">Copiar enlace</span>
+                            <a href="#nadadenada" id="copiar" style="color:black">
+                                <label for="compartir" class="far fa-copy fa-lg input-icon" />
+                            </a>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -238,6 +275,7 @@
 <!-- Core theme JS-->
 <script src="{{ asset('aplicacion/js/user.js')}}"></script>
 <script src="{{ asset('aplicacion/js/logOut.js')}}"></script>
+<script src="{{ asset('aplicacion/js/movements.js')}}"></script>
 
 <script src=" {{ asset('aplicacion/js/bootstrap/popper.js') }} "></script>
 <script src=" {{ asset('aplicacion/js/bootstrap/bootstrap.min.js') }}"></script>

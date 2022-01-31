@@ -53,6 +53,6 @@ class User extends Authenticatable
     }
     public function accounts()
     {
-        return $this->belongsToMany('App\Models\Account');
+        return $this->belongsToMany('App\Models\Account', 'account_user','id_user', 'id_account')->withPivot('active', 'id_permission');
     }
 }
