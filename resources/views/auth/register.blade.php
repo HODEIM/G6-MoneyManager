@@ -16,6 +16,13 @@
 	<!--Jquery-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="{{ asset('registerStyle/js/script.js')}}"></script>
+	<style>
+		@media screen and (max-width: 767px) {
+			.logo img {
+				content: url("{{ asset('assets/logo/logo_negro.ico') }}");
+			}
+		}
+	</style>
 </head>
 
 <body class="form-v10">
@@ -25,6 +32,9 @@
 				@csrf
 				<div class="form-left">
 					<h2>{{ __('titleregister') }}</h2>
+					<div class="logo">
+						<img src="{{ asset('assets/logo/logo_unificado.ico') }}">
+					</div>
 					<div class="form-group">
 						<div class="form-row form-row-1">
 							<div class="tooltip">
@@ -62,41 +72,43 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<div class="form-row form-row-1">
-							<div class="tooltip">
-								<input type="text" name="day" id="birthDay" class="input-text" placeholder="{{ __('day') }}">
-								<div class="daytooltip">
-									<span class="tooltiptext">day</span>
+						<div class="form-3">
+							<div class="form-row form-row-1">
+								<div class="tooltip">
+									<input type="text" name="day" id="birthDay" class="input-text" placeholder="{{ __('day') }}">
+									<div class="daytooltip">
+										<span class="tooltiptext">day</span>
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="form-row form-row-3">
-							<div class="tooltip">
-								<select name="month" id="birthMonth" class="input-text">
-									<option value="choose" selected hidden>{{ __('month') }}</option>
-									<option value="01">{{ __('january') }}</option>
-									<option value="02">{{ __('february') }}</option>
-									<option value="03">{{ __('march') }}</option>
-									<option value="04">{{ __('april') }}</option>
-									<option value="05">{{ __('may') }}</option>
-									<option value="06">{{ __('june') }}</option>
-									<option value="07">{{ __('july') }}</option>
-									<option value="08">{{ __('august') }}</option>
-									<option value="09">{{ __('september') }}</option>
-									<option value="10">{{ __('october') }}</option>
-									<option value="11">{{ __('november') }}</option>
-									<option value="12">{{ __('dicember') }}</option>
-								</select>
-								<div class="monthtooltip">
-									<span class="tooltiptext">month</span>
+							<div class="form-row form-row-3">
+								<div class="tooltip">
+									<select name="month" id="birthMonth" class="input-text">
+										<option value="choose" selected hidden>{{ __('month') }}</option>
+										<option value="01">{{ __('january') }}</option>
+										<option value="02">{{ __('february') }}</option>
+										<option value="03">{{ __('march') }}</option>
+										<option value="04">{{ __('april') }}</option>
+										<option value="05">{{ __('may') }}</option>
+										<option value="06">{{ __('june') }}</option>
+										<option value="07">{{ __('july') }}</option>
+										<option value="08">{{ __('august') }}</option>
+										<option value="09">{{ __('september') }}</option>
+										<option value="10">{{ __('october') }}</option>
+										<option value="11">{{ __('november') }}</option>
+										<option value="12">{{ __('dicember') }}</option>
+									</select>
+									<div class="monthtooltip">
+										<span class="tooltiptext">month</span>
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="form-row form-row-4">
-							<div class="tooltip">
-								<input type="text" name="year" id="birthYear" class="input-text" placeholder="{{ __('year') }}">
-								<div class="yeartooltip">
-									<span class="tooltiptext">year</span>
+							<div class="form-row form-row-4">
+								<div class="tooltip">
+									<input type="text" name="year" id="birthYear" class="input-text" placeholder="{{ __('year') }}">
+									<div class="yeartooltip">
+										<span class="tooltiptext">year</span>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -106,13 +118,10 @@
 					</div>
 				</div>
 				<div class="form-right">
-					<div class="rightLogo">
-						<img src="{{ asset('assets/logo/logo_negro.ico') }}" >
-					</div>
-					<h2 class="text-end">{{ __('title2register') }}</h2>
+					<h2 class="text-alignment">{{ __('title2register') }}</h2>
 					<div class="form-row">
 						<div class="tooltip">
-							<input type="email" name="email" id="emailRegister" class="emailRegister-text text-end" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="{{ __('email') }}">
+							<input type="email" name="email" id="emailRegister" class="emailRegister-text text-alignment" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="{{ __('email') }}">
 							<div class="emailtooltip" id="emailtooltip">
 								<span class="tooltiptext">email</span>
 							</div>
@@ -120,7 +129,7 @@
 					</div>
 					<div class="form-row">
 						<div class="tooltip">
-							<input type="email" name="repeatEmail" id="repeatEmail" class="repeatEmail-text text-end" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="{{ __('repeatemail') }}">
+							<input type="email" name="repeatEmail" id="repeatEmail" class="repeatEmail-text text-alignment" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="{{ __('repeatemail') }}">
 							<div class="repeatemailtooltip" id="repeatemailtooltip">
 								<span class="tooltiptext">repeat</span>
 							</div>
@@ -128,7 +137,7 @@
 					</div>
 					<div class="form-row">
 						<div class="tooltip">
-							<input type="text" name="address" class="address text-end" id="address" placeholder="{{ __('address') }}">
+							<input type="text" name="address" class="address text-alignment" id="address" placeholder="{{ __('address') }}">
 							<div class="addresstooltip" id="addresstooltip">
 								<span class="tooltiptext">address</span>
 							</div>
@@ -137,7 +146,7 @@
 					<div class="form-group">
 						<div class="form-row form-row-1 tooltip">
 							<div class="tooltip">
-								<input type="text" name="code" class="code text-end" placeholder="{{ __('code') }}">
+								<input type="text" name="code" class="code text-alignment" placeholder="{{ __('code') }}">
 								<div class="codetooltip" id="codetooltip">
 									<span class="tooltiptext">code</span>
 								</div>
@@ -148,7 +157,7 @@
 						</div>
 						<div class="form-row form-row-2">
 							<div class="tooltip">
-								<input type="text" name="telephone" class="telephone text-end" id="telephone" placeholder="{{ __('telephone') }}">
+								<input type="text" name="telephone" class="telephone text-alignment" id="telephone" placeholder="{{ __('telephone') }}">
 								<div class="telephonetooltip" id="telephonetooltip">
 									<span class="tooltiptext">telephone</span>
 								</div>
