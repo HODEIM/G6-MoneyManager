@@ -182,7 +182,20 @@
             </div>
         </div>
     </section>
-
+    <section>
+        <div class="callBody">
+            <h2>Registrate</h2>
+            <div class="separatorBar">
+                <div class="bar"></div>
+            </div>
+            <h4>Registrate ahora pada poder gestionar tus gastos</h4>
+            <div>
+            <form class="callFrom">
+                <input type="submit" class="callForm-btn" value="Registrarse"/>
+            </form>
+            </div>
+        </div>
+    </section>
     <!-- Contact -->
     <section>
         <div class="container px-5 pt-5">

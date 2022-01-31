@@ -39,18 +39,18 @@ Route::get('/noPermissions', function () {
 // accounts ROUTES
 Route::get('/accounts', [AccountController::class, 'index'])->middleware(["auth","verified"]);
 
-Route::get('/accounts/create', [AccountController::class, 'create'])->middleware("auth");
+Route::get('/accounts/create', [AccountController::class, 'create'])->middleware(["auth","verified"]);
 
-Route::post('/accounts/store', [AccountController::class, 'store'])->middleware("auth");
+Route::post('/accounts/store', [AccountController::class, 'store'])->middleware(["auth","verified"]);
 
 
 // movements ROUTES
 
-Route::get('/account/{id}', [MovementController::class, 'index'])->middleware("auth");
+Route::get('/account/{id}', [MovementController::class, 'index'])->middleware(["auth","verified"]);
 
-Route::post('/movement/store', [MovementController::class, 'store'])->middleware("auth");
+Route::post('/movement/store', [MovementController::class, 'store'])->middleware(["auth","verified"]);
 
-Route::delete('/movement/{id}', [MovementController::class, 'destroy'])->middleware("auth");
+Route::delete('/movement/{id}', [MovementController::class, 'destroy'])->middleware(["auth","verified"]);
 
 // concept ROUTES
 
