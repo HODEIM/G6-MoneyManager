@@ -698,6 +698,7 @@ a.close.disabled {
 #invitar {
   background-color: white;
   box-shadow: 5px 10px 18px #888888;
+  border-radius: 6px;
 }
 
 .input-icon {
@@ -755,3 +756,12 @@ a.close.disabled {
 .alto {
   height: 60px;
 }
+
+.no-decoration {
+  color: black;
+}
+
+.miTabla {
+  width: 100%;
+}
+

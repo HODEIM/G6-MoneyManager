@@ -40,6 +40,10 @@ Route::get('/noPermissions', function () {
 // accounts ROUTES
 Route::get('/accounts', [AccountController::class, 'index'])->middleware("auth");
 
+Route::get('/accounts/create', [AccountController::class, 'create'])->middleware("auth");
+
+Route::post('/accounts/store', [AccountController::class, 'store'])->middleware("auth");
+
 
 // movements ROUTES
 
@@ -56,7 +60,9 @@ Route::post('/concept/store', [ConceptController::class, 'store'])->middleware("
 // Admin ROUTES
 Route::get('/admin', [AdminController::class, 'index'])->middleware("auth");
 
-Route::get('/admin/{id}/edit/{account}', [AdminController::class, 'edit'])->middleware("auth");
+//Route::get('/admin/{id}/edit/{account}', [AdminController::class, 'edit'])->middleware("auth");
+
+Route::get('/admin/{id}/edit', [AdminController::class, 'edit'])->middleware("auth");
 
 Route::patch('/admin/update', [AdminController::class, 'update'])->middleware("auth");
 

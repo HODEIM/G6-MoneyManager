@@ -37,6 +37,9 @@ class MovementController extends Controller
         $importe = number_format(floatval($importe), 2);
         $importe = str_replace(",", "", $importe);
         $importe = doubleval($importe);
+        if ($importe < 0)
+            $importe = 0 - $importe;
+
         if (!is_numeric($importe))
             $todoOk = false;
 
