@@ -1,3 +1,4 @@
+/**** Register Page Style ****/
 body {
     margin: 0;
 }
@@ -19,9 +20,9 @@ body {
     -ms-align-items: center;
     -moz-align-items: center;
     -webkit-align-items: center;
-    background-image: -moz-linear-gradient(136deg, rgb(149, 153, 226) 0%, rgb(139, 198, 236) 100%);
-    background-image: -webkit-linear-gradient(136deg, rgb(149, 153, 226) 0%, rgb(139, 198, 236) 100%);
-    background-image: -ms-linear-gradient(136deg, rgb(149, 153, 226) 0%, rgb(139, 198, 236) 100%);
+    background-image: -moz-linear-gradient(-136deg, #ff8e59 0%, #e61920 100%);
+    background-image: -webkit-linear-gradient(-136deg, #ff8e59 0%, #e61920 100%);
+    background-image: -ms-linear-gradient(-136deg, #ff8e59 0%, #e61920 100%);
 }
 
 .form-v10-content {
@@ -89,10 +90,21 @@ body {
     padding-right: 50px;
 }
 
+.form-3 {
+    display: flex;
+    flex-direction: rows;
+}
+
 .form-v10-content .form-detail .form-left .form-group .form-row.form-row-1 {
     width: 50%;
     padding: 0 12px 0 60px;
 }
+
+.form-v10-content .form-detail .form-left .form-group .form-3 .form-row.form-row-1 {
+    width: 50%;
+    padding: 0 12px 0 60px;
+}
+
 
 .form-v10-content .form-detail .form-left .form-group .form-row.form-row-2 {
     width: 50%;
@@ -104,7 +116,17 @@ body {
     padding: 0 0px 0 0px;
 }
 
+.form-v10-content .form-detail .form-left .form-group .form-3 .form-row.form-row-3 {
+    width: 73%;
+    padding: 0 0px 0 0px;
+}
+
 .form-v10-content .form-detail .form-left .form-group .form-row.form-row-4 {
+    width: 50%;
+    padding: 0 50px 0 12px;
+}
+
+.form-v10-content .form-detail .form-left .form-group .form-3 .form-row.form-row-4 {
     width: 50%;
     padding: 0 50px 0 12px;
 }
@@ -363,12 +385,43 @@ body {
 }
 
 @media screen and (max-width: 991px) and (min-width: 768px) {
+    .page-content{
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
     .form-v10-content .form-detail .form-group {
         flex-direction: column;
         -o-flex-direction: column;
         -ms-flex-direction: column;
         -moz-flex-direction: column;
         -webkit-flex-direction: column;
+    }
+
+    .form-v10-content .form-detail h2 {
+        font-weight: 500;
+        font-size: 25px;
+        margin-bottom: 34px;
+        padding: 0 50px 0px 60px;
+    }
+
+    .form-3 {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .form-3 .form-row-1 {
+        width: 30% !important;
+        padding: 0 0 0 60px !important;
+    }
+
+    .form-3 .form-row-3 {
+        width: 30% !important;
+        padding: 0 12px 0 12px !important;
+    }
+
+    .form-3 .form-row-4 {
+        width: 30% !important;
+        padding: 0 50px 0 0 !important;
     }
 
     .form-v10-content .form-detail .form-left .form-group .form-row.form-row-1,
@@ -390,6 +443,16 @@ body {
 }
 
 @media screen and (max-width: 767px) {
+    .page-content{
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .form-v10-content {
+
+        overflow-y: auto;
+        height: 100vh;
+    }
+
     .form-v10-content .form-detail {
         flex-direction: column;
         -o-flex-direction: column;
@@ -427,6 +490,10 @@ body {
         width: auto;
         padding: 0 30px;
     }
+    .form-v10-content .form-detail .form-left .form-group .form-3 .form-row.form-row-1 {
+        width: 50%;
+        padding: 0 12px 0 30px !important;
+    }
 
     .form-v10-content .form-detail .select-btn,
     .form-v10-content .form-detail .form-left .form-group .form-row.form-row-4 .select-btn,
@@ -452,3 +519,216 @@ body {
         margin: 44px 0 30px;
     }
 }
+
+.text-alignment {
+    text-align: end !important;
+}
+
+/**** End Register Page Style ****/
+
+/**** Verify Page Style ****/
+.verify-container {
+    position: relative;
+    width: auto;
+    margin: 0.5rem;
+    pointer-events: none;
+}
+
+@media (min-width: 576px) {
+    .verify-container {
+        max-width: 500px;
+        margin: 1.75rem auto;
+    }
+}
+
+.verify-container {
+    max-width: 600px;
+}
+
+.verify {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0.3rem;
+    outline: 0;
+}
+
+.verify {
+    overflow: hidden;
+    border: none;
+    position: relative;
+    padding: 0 !important;
+    -webkit-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+    -moz-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+    box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+}
+
+.verify .verify-head {
+    position: relative;
+    padding: 0;
+    border: none;
+    height: 230px;
+    background: #915eff;
+    background: -moz-linear-gradient(45deg, #e61920 0%, #ff8e59 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, #e61920), color-stop(100%, #ff8e59));
+    background: -webkit-linear-gradient(45deg, #e61920 0%, #ff8e59 100%);
+    background: -o-linear-gradient(45deg, #e61920 0%, #ff8e59 100%);
+    background: -ms-linear-gradient(45deg, #e61920 0%, #ff8e59 100%);
+    background: linear-gradient(45deg, #e61920 0%, #ff8e59 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e61920', endColorstr='#ff8e59', GradientType=1);
+}
+
+.verify-head {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 1rem 1rem;
+    border-bottom: 1px solid #dee2e6;
+    border-top-left-radius: 0.3rem;
+    border-top-right-radius: 0.3rem;
+}
+
+.verify .verify-body {
+    border: none;
+    overflow: hidden;
+    margin-top: -180px;
+    z-index: 2;
+}
+
+.verify-body {
+    position: relative;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1rem;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.verify .verify-body h2 {
+    color: white;
+}
+
+.verify-body h4 {
+    font-size: 22px;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+.verify-body h3 {
+    font-weight: 800;
+    font-size: 22px;
+}
+
+.verify .verify-body .icon {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    font-size: 30px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.ftco-degree-bg {
+    position: relative;
+}
+
+.ftco-degree-bg:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -30px;
+    overflow: visible;
+    width: 50%;
+    height: 60px;
+    z-index: 1;
+    -webkit-transform: skewY(-10deg);
+    -moz-transform: skewY(-10deg);
+    -ms-transform: skewY(-10deg);
+    -o-transform: skewY(-10deg);
+    transform: skewY(-10deg);
+    background-color: #fff;
+}
+
+.ftco-degree-bg:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -30px;
+    overflow: visible;
+    width: 50%;
+    height: 60px;
+    z-index: 1;
+    -webkit-transform: skewY(10deg);
+    -moz-transform: skewY(10deg);
+    -ms-transform: skewY(10deg);
+    -o-transform: skewY(10deg);
+    transform: skewY(10deg);
+    background-color: #fff;
+}
+
+/**** End Verify Page Style ****/
+
+/**** Logo style ****/
+
+.logo {
+    position: relative;
+}
+
+.logo img {
+    position: absolute;
+    bottom: -45px;
+    right: -15%;
+    width: 30%;
+}
+@media screen and (max-width: 767px) {
+    .logo img {
+        position: absolute;
+        bottom: 5px;
+        right: 10%;
+        width: 100px;
+        height: 100px;
+    }
+    .text-alignment {
+        text-align: start !important;
+    }
+}
+@media (max-width: 576px) {
+    .logo img {
+        position: absolute;
+        bottom: 5px;
+        right: 5%;
+        width: 100px;
+        height: 100px;
+    }
+}
+@media (max-width: 460px) {
+    .form-v10-content .form-detail .form-left h2 {
+        width: 60%;
+    }
+}
+
+/**** End Logo style ****/

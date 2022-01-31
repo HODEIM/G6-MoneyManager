@@ -26,7 +26,7 @@ class StoreUser extends FormRequest
         return [
             'name' => 'required',
             'surname' => 'required',
-            'emailRegister' => 'required|unique:App\Models\User,email|same:repeatEmail|pattern:/[a-zA-Z0-9_\-\.\+]+\@[a-zA-Z0-9-]+\.[a-zA-Z]+/',
+            'emailRegister' => 'required|unique:App\Models\User,email|same:repeatEmail|regex:/[a-zA-Z0-9_\-\.\+]+\@[a-zA-Z0-9-]+\.[a-zA-Z]+/',
             'repeatEmail' => 'required',
             'passwordRegister' => 'required|same:repeatPasswordRegister|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/',
             'repeatPasswordRegister' => 'required|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/',

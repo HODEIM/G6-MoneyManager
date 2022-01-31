@@ -34,7 +34,7 @@
         </div>
         <div class="container px-5">
             <a class="navbar-brand" href="#page-top">
-                <img src="{{ asset('landing/assets/img/logo_blanco.png') }}" alt="" width="60" class="d-inline-block ">
+                <img src="{{ asset('assets/logo/logo_blanco.ico') }}" alt="" width="60" class="d-inline-block ">
                 Money Manager
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -43,7 +43,7 @@
                     @auth
 
                     @else
-                    <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="/signup" href="/signup/create">{{ __('signup') }}</a></li>
+                    <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="/signup" href="{{ route('register') }}">{{ __('signup') }}</a></li>
                     @endauth
 
                     @auth
