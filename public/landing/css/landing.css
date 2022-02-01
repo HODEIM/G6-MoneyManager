@@ -815,6 +815,55 @@ section .callBody {
     padding-top: 1rem;
     padding-bottom: 1rem;
     color: rgba(31, 41, 55, 1);
+    border: none;
 }
+
+.custom-btn {
+    border-radius: 9999px;
+    padding: 10px 25px;
+    border: 2px solid #ffffff;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+}
+
+.btn-15 {
+    background: #ffffff;
+    color: #000;
+    z-index: 1;
+}
+
+.btn-15:after {
+    border-radius: 9999px;
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    background: #000;
+    transition: all 0.3s ease;
+}
+
+.btn-15:hover {
+    color: #ffffff;
+}
+
+.btn-15:hover:after {
+    left: 0;
+    width: 100%;
+}
+
+.btn-15:active {
+    top: 2px;
+}
+
+
+
 
 /**** End Call To Action ****/

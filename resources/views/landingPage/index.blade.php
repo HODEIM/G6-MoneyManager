@@ -191,7 +191,7 @@
             <h4>Registrate ahora pada poder gestionar tus gastos</h4>
             <div>
             <form class="callFrom">
-                <input type="submit" class="callForm-btn" value="Registrarse"/>
+                <button class="custom-btn btn-15">Read More</button>
             </form>
             </div>
         </div>
