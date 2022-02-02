@@ -191,9 +191,9 @@
             </div>
             <h4>Registrate ahora pada poder gestionar tus gastos</h4>
             <div>
-            <form class="callFrom" method="{{ route('register') }}">
-                <button class="custom-btn btn-15">Read More</button>
-            </form>
+                <form class="callFrom" method="get" action="{{ route('register') }}">
+                    <button class="custom-btn btn-15">{{ __('signup') }}</button>
+                </form>
             </div>
         </div>
     </section>
