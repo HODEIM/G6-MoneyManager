@@ -35,7 +35,7 @@
         <div class="container px-5">
             <a class="navbar-brand" href="#page-top">
                 <img src="{{ asset('assets/logo/logo_blanco.ico') }}" alt="" width="60" class="d-inline-block ">
-                Money Manager
+                {{__('mm')}}
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -88,7 +88,7 @@
                                             </label>
                                         </span>
                                         <input type="submit" class="btn signin" value="{{ __('login') }}" id="enviar" />
-                                        <span class="forgot-pass"><a href="#">{{ __('forgot') }}</a></span>
+                                        <span class="forgot-pass"><a href="{{ route('password.request')}}">{{ __('forgot') }}</a></span>
                                     </form>
                                 </div>
                             </div>
@@ -98,7 +98,7 @@
             </div>
         </div>
     </div>
-
+    <!-- End Login -->
     <!-- Header-->
     <header class="masthead text-center text-white">
         <div class="masthead-content">
