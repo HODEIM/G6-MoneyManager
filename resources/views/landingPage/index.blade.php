@@ -182,6 +182,7 @@
             </div>
         </div>
     </section>
+    <!-- Call To Action -->
     <section>
         <div class="callBody">
             <h2>Registrate</h2>
@@ -190,12 +191,13 @@
             </div>
             <h4>Registrate ahora pada poder gestionar tus gastos</h4>
             <div>
-            <form class="callFrom">
+            <form class="callFrom" method="{{ route('register') }}">
                 <button class="custom-btn btn-15">Read More</button>
             </form>
             </div>
         </div>
     </section>
+    <!-- End Call To Action-->
     <!-- Contact -->
     <section>
         <div class="container px-5 pt-5">

@@ -790,6 +790,8 @@ section .callBody {
     width: 100%;
     display: flex;
     justify-content: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 
 }
 
@@ -806,22 +808,14 @@ section .callBody {
     padding-top: 1rem;
     padding-bottom: 2rem;
 }
-
-.callForm-btn {
-    background-color: rgb(255, 255, 255);
+.callFrom{
     border-radius: 9999px;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    color: rgba(31, 41, 55, 1);
-    border: none;
+    padding-bottom: 2rem;
 }
-
 .custom-btn {
     border-radius: 9999px;
-    padding: 10px 25px;
-    border: 2px solid #ffffff;
+    padding: 1rem 2rem;
+    border: 2px solid #000;
     font-family: 'Lato', sans-serif;
     font-weight: 500;
     background: transparent;
@@ -832,8 +826,9 @@ section .callBody {
 }
 
 .btn-15 {
-    background: #ffffff;
-    color: #000;
+    border-radius: 9999px;
+    background: #000;
+    color: #fff;
     z-index: 1;
 }
 
@@ -842,20 +837,22 @@ section .callBody {
     position: absolute;
     content: "";
     width: 0;
-    height: 100%;
-    top: 0;
+    height: 0;
+    top: 50%;
     right: 0;
     z-index: -1;
-    background: #000;
-    transition: all 0.3s ease;
+    background: #fff;
+    transition: all 0.5s ease;
 }
 
 .btn-15:hover {
-    color: #ffffff;
+    color: #000;
 }
 
 .btn-15:hover:after {
     left: 0;
+    top: 0;
+    height: 100%;
     width: 100%;
 }
 
