@@ -163,7 +163,7 @@
                         <div class="col-xl-12 col-lg-12 col-md-6">
                             <button type="button" class="collapsibleCollapse btn"><span class="grande">Filtrar datos</span></button>
                             <div class="contentCollapse">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                <p class="p-2">Próximamente</p>
                             </div>
                         </div>
                     </div>
