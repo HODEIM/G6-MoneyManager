@@ -26,13 +26,6 @@
 
 <body>
     <nav id="nav1" class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top">
-        <div class="lenguageNav">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/lang/es">ES</a></li>
-                <li class="breadcrumb-item"><a href="/lang/en">EN</a></li>
-                <!-- <li class="breadcrumb-item"><a class="nav-link" href="/lang/eu">EU</a></li> -->
-            </ol>
-        </div>
         <div class="container px-5">
             <a class="navbar-brand" href="/">
                 <img src="{{ asset('landing/assets/img/logo_blanco.png') }}" alt="logo" width="50" class="d-inline-block">
@@ -52,10 +45,11 @@
                     <li class="nav-item">
                         <form action="/logoutControl" method="POST">
                             @csrf
-                            <a  class="nav-link" id="logout"><i class="fas fa-sign-out-alt fa-lg"></i></a>
+                            <a class="nav-link" id="logout"><i class="fas fa-sign-out-alt fa-lg"></i></a>
                         </form>
                     </li>
                 </ul>
+                @include('partials.languageNav')
             </div>
         </div>
     </nav>
@@ -71,14 +65,14 @@
                 @if(count($users) > 0)
                 <table class="table table-hover">
                     <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Nombre</th>
-                        <th class="d-flex justify-content-between">
-                            <div>Apellidos</div>
-                            <div><a href="/signup/create" id="botonAnadir"><i class="far fa-plus-square fa-lg"></i></a></div>
-                        </th>
-                    </tr>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th class="d-flex justify-content-between">
+                                <div>Apellidos</div>
+                                <div><a href="/signup/create" id="botonAnadir"><i class="far fa-plus-square fa-lg"></i></a></div>
+                            </th>
+                        </tr>
                     </thead>
                     <tbody id="usersTable">
                         @foreach($users as $user)

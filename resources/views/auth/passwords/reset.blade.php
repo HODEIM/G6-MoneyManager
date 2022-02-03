@@ -24,13 +24,6 @@
 
 <body>
     <nav id="nav1" class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top">
-        <div class="lenguageNav">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/lang/es">ES</a></li>
-                <li class="breadcrumb-item"><a href="/lang/en">EN</a></li>
-                <!-- <li class="breadcrumb-item"><a class="nav-link" href="/lang/eu">EU</a></li> -->
-            </ol>
-        </div>
         <div class="container px-5">
             <a class="navbar-brand" href="/">
                 <img src="{{ asset('assets/logo/logo_blanco.ico') }}" alt="logo" width="50" class="d-inline-block">
@@ -42,6 +35,7 @@
                     <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="/signup" href="{{ route('register') }}">{{ __('signup') }}</a></li>
                     <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="#login" href="#">{{ __('signin') }}</a></li>
                 </ul>
+                @include('partials.languageNav')
             </div>
         </div>
     </nav>
