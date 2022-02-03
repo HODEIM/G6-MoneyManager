@@ -213,6 +213,7 @@
                 </div>
                 <div class="col-xl-3 mt-lg-3 mt-md-3">
                     <h2>Resumen</h2>
+                    <p>Próximamente</p>
                 </div>
             </div>
             <div class="row my-5 d-flex justify-content-center" id="divInvitar">
