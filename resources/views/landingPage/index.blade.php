@@ -200,25 +200,29 @@
     <!-- End Call To Action-->
     <!-- Contact -->
     <section>
+        @if($errors->any())
+        {{dd('a')}}
+        @endif
         <div class="container px-5 pt-5">
             <div class="row gx-5 mb-5 d-flex justify-content-center">
                 <div class="col-lg-5 order-lg-2 text-center">
                     <h2 class="display-4">{{ __('ContactTitle') }}</h2>
-                    <form>
+                    <form method="POST" action="/send/mail">
+                        @csrf
                         <!-- Name && Email address  input -->
                         <div class="mb-3">
                             <div class="row">
                                 <div class="col-6">
-                                    <input class="form-control" id="name" type="text" placeholder="{{ __('name') }}" />
+                                    <input class="form-control" name="name" id="name" type="text" placeholder="{{ __('name') }}" />
                                 </div>
                                 <div class="col-6">
-                                    <input class="form-control" id="emailAddress" type="email" placeholder="{{ __('email') }}" />
+                                    <input class="form-control" name="email" id="emailAddress" type="email" placeholder="{{ __('email') }}" />
                                 </div>
                             </div>
                         </div>
                         <!-- Message input -->
                         <div class="mb-3">
-                            <textarea class="form-control" id="message" type="text" placeholder="{{ __('message') }}" style="height: 10rem;"></textarea>
+                            <textarea class="form-control" name="msg" id="message" type="text" placeholder="{{ __('message') }}" style="height: 10rem;"></textarea>
                         </div>
                         <!-- Form submit button -->
                         <div class="d-grid">

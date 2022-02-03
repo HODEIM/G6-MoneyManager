@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MovementController;
 use App\Http\Controllers\ConceptController;
 use App\Http\Controllers\LangController;
+use App\Http\Controllers\MailMessagesController;
 
 // LANDING PAGE VIEW
 Route::get('/', function () {
@@ -72,6 +73,9 @@ Route::get('/profile/edit', [Controller::class, 'profile'])->middleware("auth");
 Route::patch('/profile/update', [UserController::class, 'update'])->middleware("auth");
 
 Route::patch('/profile/lock', [UserController::class, 'lock'])->middleware("auth");
+
+//Contact Us
+Route::post('/send/mail', [MailMessagesController::class, 'store']);
 
 // Invitation
 Route::get('/account/{idAccount}/invite/{idUser}', [AccountController::class, 'invite'])->middleware("auth");
