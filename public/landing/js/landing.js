@@ -7,12 +7,15 @@ $('document').ready(function () {
     $('#enviar').click(validarLogin);
 });
 
-
+/**** Login Validation ****/
 function validarLogin(event) {
     var email = $('#emailLogin').val();
     var password = $('#passwordLogin').val();
     var falso = true;
     if (email == "" || !checkEmail()) {
+        if (email != "") {
+            emailIncorrecto();
+        }
         $('#padreEmailLogin').css("border", "1px solid #cb0104");
         falso = false;
     } else {
@@ -28,9 +31,15 @@ function validarLogin(event) {
         event.preventDefault();
         return false;
     }
-    
+
 }
+
+function emailIncorrecto() {
+    $("#error").text("El email no tiene buen formato");
+}
+
 function checkEmail() {
     var regex = /[a-zA-Z0-9_\-\.\+]+\@[a-zA-Z0-9-]+\.[a-zA-Z]+/;
     return regex.test($('#emailLogin').val());
 }
+/**** End Login Validation ****/

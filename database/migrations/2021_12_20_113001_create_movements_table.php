@@ -19,6 +19,7 @@ class CreateMovementsTable extends Migration
             $table->double('amount');
             $table->string('description');
             $table->date('date');
+            $table->string('user');
             $table->unsignedBigInteger('id_concept');
             $table->unsignedBigInteger('id_account');
             $table->timestamps();

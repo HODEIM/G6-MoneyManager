@@ -7,7 +7,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Money Manager</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('landing/assets/logo_negro.ico') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/logo/logo_negro.ico') }}" />
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
@@ -17,11 +17,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Core theme CSS (includes Bootstrap)-->
-
-    <link href="{{ asset('landing/css/styles.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
     <!-- Personal CSS-->
-    <link href="{{ asset('landing/css/main.css') }}" rel="stylesheet" />
-    <link href="{{ asset('landing/css/login.css') }}" rel="stylesheet" />
+    <link href="{{ asset('landing/css/landing.css') }}" rel="stylesheet" />
 </head>
 
 <body id="page-top">
@@ -36,8 +34,8 @@
         </div>
         <div class="container px-5">
             <a class="navbar-brand" href="#page-top">
-                <img src="{{ asset('landing/assets/img/logo_blanco.png') }}" alt="" width="60" class="d-inline-block ">
-                Money Manager
+                <img src="{{ asset('assets/logo/logo_blanco.ico') }}" alt="" width="60" class="d-inline-block ">
+                {{__('mm')}}
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -45,7 +43,7 @@
                     @auth
 
                     @else
-                    <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="/signup" href="/signup/create">{{ __('signup') }}</a></li>
+                    <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="/signup" href="{{ route('register') }}">{{ __('signup') }}</a></li>
                     @endauth
 
                     @auth
@@ -58,8 +56,8 @@
         </div>
     </nav>
     <!-- Login -->
-    <div class="modal hide fade in mt-5" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+    <div class="modal hide fade" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0" style="background: rgba(255, 255, 255, 0) !important;">
                 <div class="form-bg">
                     <div class="container">
@@ -67,7 +65,7 @@
                             <div>
                                 <div class="form-container">
                                     <div class="form-icon">
-                                        <img src="{{asset('landing/assets/logo_blanco.ico')}}" width="100px">
+                                        <img src="{{ asset('assets/logo/logo_blanco.ico') }}" width="100px">
                                     </div>
                                     <form method="POST" class="form-horizontal" action="/loginControl" id="loginForm">
                                         @csrf
@@ -80,8 +78,8 @@
                                             <span class="input-icon"><i class="fa fa-lock"></i></span>
                                             <input class="form-control" type="password" placeholder="{{ __('password') }}" name="password" id="passwordLogin">
                                         </div>
-                                        <span class="forgot-pass text-start m-2 text-danger">
-                                            @error('email') {{ $message }} @enderror
+                                        <span class="forgot-pass text-start m-2 text-danger" id="error">
+                                            @error('validation') {{ $message }} @enderror
                                         </span>
                                         <span class="forgot-pass text-start m-2">
                                             <label class="textoDecoracion">
@@ -90,8 +88,7 @@
                                             </label>
                                         </span>
                                         <input type="submit" class="btn signin" value="{{ __('login') }}" id="enviar" />
-                                        <span class="forgot-pass"><a href="#">{{ __('forgot') }}</a></span>
-                                        >>>>>>> Multilingual
+                                        <span class="forgot-pass"><a href="{{ route('password.request')}}">{{ __('forgot') }}</a></span>
                                     </form>
                                 </div>
                             </div>
@@ -101,6 +98,7 @@
             </div>
         </div>
     </div>
+    <!-- End Login -->
     <!-- Header-->
     <header class="masthead text-center text-white">
         <div class="masthead-content">
@@ -182,27 +180,44 @@
             </div>
         </div>
     </section>
+    <!-- Call To Action -->
+    <section>
+        <div class="callBody">
+            <h2>Registrate</h2>
+            <div class="separatorBar">
+                <div class="bar"></div>
+            </div>
+            <h4>Registrate ahora pada poder gestionar tus gastos</h4>
+            <div>
+                <form class="callFrom" method="get" action="{{ route('register') }}">
+                    <button class="custom-btn btn-15">{{ __('signup') }}</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- End Call To Action-->
     <!-- Contact -->
     <section>
         <div class="container px-5 pt-5">
             <div class="row gx-5 mb-5 d-flex justify-content-center">
                 <div class="col-lg-5 order-lg-2 text-center">
                     <h2 class="display-4">{{ __('ContactTitle') }}</h2>
-                    <form>
+                    <form method="POST" action="/send/mail">
+                        @csrf
                         <!-- Name && Email address  input -->
                         <div class="mb-3">
                             <div class="row">
                                 <div class="col-6">
-                                    <input class="form-control" id="name" type="text" placeholder="{{ __('name') }}" />
+                                    <input class="form-control" name="name" id="name" type="text" placeholder="{{ __('name') }}" />
                                 </div>
                                 <div class="col-6">
-                                    <input class="form-control" id="emailAddress" type="email" placeholder="{{ __('email') }}" />
+                                    <input class="form-control" name="email" id="emailAddress" type="email" placeholder="{{ __('email') }}" />
                                 </div>
                             </div>
                         </div>
                         <!-- Message input -->
                         <div class="mb-3">
-                            <textarea class="form-control" id="message" type="text" placeholder="{{ __('message') }}" style="height: 10rem;"></textarea>
+                            <textarea class="form-control" name="msg" id="message" type="text" placeholder="{{ __('message') }}" style="height: 10rem;"></textarea>
                         </div>
                         <!-- Form submit button -->
                         <div class="d-grid">
@@ -214,30 +229,15 @@
             </div>
         </div>
     </section>
-
     <!-- Footer-->
-    <footer class="py-5 bg-black">
-        <div class="container">
-            <div class="row d-flex justify-content-center">
-                <div class="col-6 text-center">
-                    <i id="instagram" class="fab fa-instagram fa-lg mx-2"></i>
-                    <i id="twitter" class="fab fa-twitter fa-lg mx-2"></i>
-                    <i id="facebook" class="fab fa-facebook fa-lg mx-2"></i>
-                    <i id="phone" class="fas fa-phone fa-lg mx-2"></i>
-                </div>
-            </div>
-            <div class="row my-2">
-                <p class="m-0 text-center text-white small">Copyright &copy; Money Manager 2021</p>
-            </div>
-        </div>
-    </footer>
+    @include('partials.footer')
 
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
-    <script src="{{ asset('landing/js/scripts.js')}}"></script>
+    <script src="{{ asset('landing/js/landing.js')}}"></script>
     @if($errors->any() )
-    <script src="{{ asset('aplicacion/js/scriptModal.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('landing/js/scriptModal.js') }}" type="text/javascript"></script>
     @endif
 
 </body>

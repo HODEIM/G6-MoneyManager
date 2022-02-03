@@ -7,7 +7,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Movimientos</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('aplicacion/assets/logo_negro.ico') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/logo/logo_negro.ico') }}" />
     <!-- Font Awesome icons (free version)-->
 
     <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
@@ -18,12 +18,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Core theme CSS (includes Bootstrap)-->
-
-    <link href="{{ asset('aplicacion/css/styles.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
     <!-- Personal CSS-->
     <link href="{{ asset('aplicacion/css/miEstilo.css') }}" rel="stylesheet" />
+    <link href="{{ asset('aplicacion/css/fixedFooter.css') }}" rel="stylesheet" />
     <!-- Personal JavaScript-->
-    <script src="{{ asset('aplicacion/js/movements.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('aplicacion/js/logOut.js') }}" type="text/javascript"></script>
 </head>
 
 <body>
@@ -49,8 +49,8 @@
                     <li class="nav-item"><a class="nav-link" href="#!">Estadísticas</a></li>
                 </ul> -->
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#!">{{ __('profile') }}</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">{{ __('myaccounts') }}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/accounts">{{ __('myaccounts') }}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/profile/edit">{{ __('profile') }}</a></li>
                     <li class="nav-item">
                         <form action="/logoutControl" method="POST">
                             @csrf
@@ -61,17 +61,22 @@
             </div>
         </div>
     </nav>
-    
+
     <div class="container-fluid">
         <div class="row d-flex justify-content-center mt-3">
-            <div class="col-lg-8 text-center">
-                <h1>{{ __('accounts') }}</h1>
+            <div class="col-lg-5 col-md-6 text-center">
+                <div class=" d-flex flex-direction-row justify-content-around align-items-center">
+                    <h1>{{ __('accounts') }}</h1>
+                    <a href="/accounts/create">
+                        <i class="no-decoration far fa-plus-square fa-lg"></i>
+                    </a>
+                </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-4 m-auto">
+            <div class="col-lg-5 col-md-6 m-auto">
                 <table class="table table-hover">
-                    <tbody>
+                    <tbody id="accountsTable">
                         @if(count($accounts) > 0)
                         @foreach($accounts as $account)
                         <tr>
@@ -80,6 +85,12 @@
                             <td>{{ $account->description }}</td>
                         </tr>
                         @endforeach
+                        @else
+                        <tr>
+                            <td colspan="3" class="text-center">
+                                No tiene ninguna cuenta
+                            </td>
+                        </tr>
                         @endif
                     </tbody>
                 </table>
@@ -87,25 +98,13 @@
         </div>
     </div>
     <!-- Footer-->
-    <footer class="py-5 bg-black mt-5">
-        <div class="container ">
-            <div class="row d-flex justify-content-center">
-                <div class="col-6 text-center">
-                    <i id="instagram" class="fab fa-instagram fa-lg mx-2"></i>
-                    <i id="twitter" class="fab fa-twitter fa-lg mx-2"></i>
-                    <i id="facebook" class="fab fa-facebook fa-lg mx-2"></i>
-                    <i id="phone" class="fas fa-phone fa-lg mx-2"></i>
-                </div>
-            </div>
-            <div class="row my-2">
-                <p class="m-0 text-center text-white small">Copyright &copy; Money Manager 2021</p>
-            </div>
-        </div>
-    </footer>
+    @include('partials.footer')
+
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script src="{{ asset('landing/js/scripts.js')}}"></script>
+    <script src="{{ asset('aplicacion/js/user.js')}}"></script>
 </body>
 
 </html>
