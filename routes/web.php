@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MovementController;
 use App\Http\Controllers\ConceptController;
 use App\Http\Controllers\LangController;
+use App\Http\Controllers\MailMessagesController;
 
 // LANDING PAGE VIEW
 Route::get('/', function () {
@@ -72,6 +73,8 @@ Route::patch('/profile/update', [UserController::class, 'update'])->middleware("
 
 Route::patch('/profile/lock', [UserController::class, 'lock'])->middleware("auth");
 
-// UserController ROUTES
-Route::get('/signup/create', [UserController::class, 'create']);
-Route::post('/signup', [UserController::class, 'store']);
+Route::post('/send/mail', [MailMessagesController::class, 'store']);
+
+Route::get('signup/create', function(){
+    return redirect('/register');
+});
