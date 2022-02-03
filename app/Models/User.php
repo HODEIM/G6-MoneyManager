@@ -49,10 +49,10 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
     public function rol()
     {
-        return $this->belongsTo('App\Models\Rol','id_rol');
+        return $this->belongsTo('App\Models\Rol', 'id_rol');
     }
     public function accounts()
     {
-        return $this->belongsToMany('App\Models\Account', 'account_users','id_user', 'id_account')->withPivot('active', 'id_permission');
+        return $this->belongsToMany('App\Models\Account', 'account_users', 'id_user', 'id_account')->withPivot('active', 'id_permission')->withTimestamps();
     }
 }

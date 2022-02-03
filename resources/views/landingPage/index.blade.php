@@ -200,9 +200,6 @@
     <!-- End Call To Action-->
     <!-- Contact -->
     <section>
-        @if($errors->any())
-        {{dd('a')}}
-        @endif
         <div class="container px-5 pt-5">
             <div class="row gx-5 mb-5 d-flex justify-content-center">
                 <div class="col-lg-5 order-lg-2 text-center">

@@ -79,3 +79,7 @@ Route::post('/send/mail', [MailMessagesController::class, 'store']);
 
 // Invitation
 Route::get('/account/{idAccount}/invite/{idUser}', [AccountController::class, 'invite'])->middleware("auth");
+
+Route::get('/signup/create', function () {
+    return view('auth.register');
+});

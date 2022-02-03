@@ -45,7 +45,6 @@ class AccountController extends Controller
         $user = $user->name;
         $account = Account::find($idAccount);
         return view('moneyManager.invite', ['account' => $account, 'user' => $user]);
-        dd($idAccount, $idUser);
     }
     public function acceptInvitation(Request $request)
     {
@@ -55,7 +54,7 @@ class AccountController extends Controller
         $nCuentas = $user->accounts->where('id', '=', $request->id);
 
         if (count($nCuentas) == 0) {
-            $account->user()->attach($id, ['active' => '1', 'id_permission' => '1']);
+            $account->user()->attach($id, ['active' => '1', 'id_permission' => '2']);
             return redirect('/account/' . $request->id);
         } else
             return redirect()->back()->withErrors(['existes' => "Ya estás unido a la cuenta"]);

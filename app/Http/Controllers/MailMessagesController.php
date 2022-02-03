@@ -22,7 +22,7 @@ class MailMessagesController extends Controller
             'msg.required' => 'mensaje requerido',
             'msg.min' => 'msg minimo 10 caracteres',
         ]);
-        Mail::to('moneymanager.ad50@gmail.com')->send(new MailMessageReceived($msg));
+        Mail::to('moneymanager.ad50@gmail.com')->queue(new MailMessageReceived($msg));
         return redirect()->back();
     }
 }

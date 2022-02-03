@@ -59,8 +59,8 @@
     </nav>
 
 
-    <div class="container-fluid d-flex justify-content-center">
-        <div style="width:80%;" class="mt-4 text-center">
+    <div class="container-fluid d-flex justify-content-center mb-5">
+        <div style="width:80%;" class="mt-4 mb-5 text-center">
             <div class="row my-5 d-flex justify-content-center" id="divInvitar">
                 <div class="col-lg-6 col-md-8 col-12 p-4" id="invitar">
                     <h1>INVITACION</h1>
