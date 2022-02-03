@@ -20,7 +20,7 @@ class AccountController extends Controller
         } else {
             return redirect("/admin");
         }
-    }   
+    }
     public function create()
     {
         return view('moneyManager.createAccount');
@@ -38,5 +38,26 @@ class AccountController extends Controller
         $id = auth()->user()->id;
         $account->user()->attach($id, ['active' => '1', 'id_permission' => '1']);
         return redirect('/accounts');
+    }
+    public function invite($idAccount, $idUser)
+    {
+        $user = User::find($idUser);
+        $user = $user->name;
+        $account = Account::find($idAccount);
+        return view('moneyManager.invite', ['account' => $account, 'user' => $user]);
+        dd($idAccount, $idUser);
+    }
+    public function acceptInvitation(Request $request)
+    {
+        $account = Account::find($request->id);
+        $id = auth()->user()->id;
+        $user = User::find($id);
+        $nCuentas = $user->accounts->where('id', '=', $request->id);
+
+        if (count($nCuentas) == 0) {
+            $account->user()->attach($id, ['active' => '1', 'id_permission' => '1']);
+            return redirect('/account/' . $request->id);
+        } else
+            return redirect()->back()->withErrors(['existes' => "Ya estás unido a la cuenta"]);
     }
 }

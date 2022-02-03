@@ -43,6 +43,7 @@ Route::get('/accounts/create', [AccountController::class, 'create'])->middleware
 
 Route::post('/accounts/store', [AccountController::class, 'store'])->middleware(["auth", "verified"]);
 
+Route::post('/accounts/acceptInvitation', [AccountController::class, 'acceptInvitation'])->middleware("auth");
 
 // movements ROUTES
 
@@ -72,6 +73,5 @@ Route::patch('/profile/update', [UserController::class, 'update'])->middleware("
 
 Route::patch('/profile/lock', [UserController::class, 'lock'])->middleware("auth");
 
-// UserController ROUTES
-Route::get('/signup/create', [UserController::class, 'create']);
-Route::post('/signup', [UserController::class, 'store']);
+// Invitation
+Route::get('/account/{idAccount}/invite/{idUser}', [AccountController::class, 'invite'])->middleware("auth");

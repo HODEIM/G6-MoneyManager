@@ -222,7 +222,7 @@
                     <h2>Invita usuarios a tu cuenta</h2>
                     <p>Comparte la cuenta con quien tú quieras y empieza a añadir movimientos con tus amigos</p>
                     <div class="inputUtilizame">
-                        <input id="compartir" type="text" class="form-control alto" value="AARON FEO" readonly />
+                        <input id="compartir" type="text" class="form-control alto" value="{{$url}}" readonly />
                         <div class="tooltipPersonal">
                             <span class="tooltiptextPersonal" id="myTooltipPersonal">Copiar enlace</span>
                             <a href="#nadadenada" id="copiar" style="color:black">
@@ -230,7 +230,7 @@
                             </a>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>

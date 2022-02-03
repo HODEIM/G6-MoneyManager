@@ -14,9 +14,16 @@ class MovementController extends Controller
         $account = Account::where(['id' => $id])->first();
         $concepts = Concept::where('id_account', '=', $id)->get();
         $movements = Movement::where('id_account', '=', $id)->get();
-        if ($account != null)
-            return view('moneyManager.movements', ['account' => $account, 'concepts' => $concepts, 'movements' => $movements]);
-        else
+        if ($account != null) {
+            if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
+                $url = "https://";
+            else
+                $url = "http://";
+            $url .= $_SERVER['HTTP_HOST'];
+            $url .= $_SERVER['REQUEST_URI'];
+            $url .= "/invite/".auth()->user()->id;
+            return view('moneyManager.movements', ['account' => $account, 'concepts' => $concepts, 'movements' => $movements, 'url' => $url]);
+        } else
             return redirect("/accounts");
     }
     public function store(Request $request)
