@@ -47,7 +47,7 @@
     </nav>
 
     <div class="container-fluid d-flex justify-content-center">
-        <div style="width:80%;" class="mt-4 text-center">
+        <div style="width:90%;" class="mt-4 text-center">
             <h2>{{ $account->name }}</h2>
             <div class="mt-4 row d-flex justify-content-center">
                 <div class="col-xl-4 col-lg-5 col-12">
@@ -84,7 +84,7 @@
                                                 Importe:
                                             </th>
                                             <td>
-                                                <input type="number" placeholder="Importe" style="width:90%" class="form-control" name="importe" id="importe"></input>
+                                                <input type="number" step="0.01" placeholder="Importe" style="width:90%" class="form-control" name="importe" id="importe"></input>
                                             </td>
                                         </tr>
                                         <tr>
@@ -207,28 +207,195 @@
                 </div>
                 <div class="col-xl-3 mt-lg-3 mt-md-3">
                     <h2>Resumen</h2>
-                    <p>Próximamente</p>
+
+                    @if(count($usuarios) > 0)
+                    @if(count($usuarios) > 1)
+                    @foreach($usuarios as $usuario)
+                    <?php $gastoTotal = 0 ?>
+                    @foreach($gastosUsuario as $gastos)
+                    @if($gastos->user == $usuario->user)
+                    <?php $gastoTotal += $gastos->amount ?>
+                    @endif
+                    @endforeach
+
+                    <?php $ingresoTotal = 0 ?>
+                    @foreach($ingresosUsuario as $ingresos)
+                    @if($ingresos->user == $usuario->user)
+                    <?php $ingresoTotal += $ingresos->amount ?>
+                    @endif
+                    @endforeach
+                    <?php
+                    $totalUsuario = $ingresoTotal - $gastoTotal;
+                    $media = $mediaCuenta / 2;
+                    $cadauno = $media - $totalUsuario;
+                    $cadauno = 0 - $cadauno;
+                    ?>
+                    {{ $cadauno }}
+                    @if($cadauno > 0)
+                    <div class="d-flex">
+                        <div class="d-flex flex-row-reverse" style="width:50%;">
+                            <div class="progress d-flex flex-row-reverse no-bordered-left" style="width:100%; height: 30px;">
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="" style="width:50%;">
+                            <div class="progress no-bordered-right" style="width:100%; height: 30px;">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 0%; " aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div style="padding-top: 7px; padding-left: 5px;">
+                                {{ $usuario->user }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    @elseif($cadauno < 0) <div class="d-flex">
+                        <div class="d-flex flex-row-reverse" style="width:50%;">
+                            <div class="progress d-flex flex-row-reverse no-bordered-left" style="width:100%; height: 30px;">
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div style="padding-top: 7px; padding-right: 5px;">
+                                {{ $usuario->user }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="" style="width:50%;">
+                            <div class="progress no-bordered-right" style="width:100%; height: 30px;">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 25%; " aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
                 </div>
-            </div>
-            <div class="row my-5 d-flex justify-content-center" id="divInvitar">
-                <div class="col-lg-6 col-md-8 col-12 p-4" id="invitar">
-                    <h1>INVITAR</h1>
-                    <img src="{{asset('assets/logo/logo_negro.ico')}}" style="width: 40%" class="mb-2">
-                    <h2>Invita usuarios a tu cuenta</h2>
-                    <p>Comparte la cuenta con quien tú quieras y empieza a añadir movimientos con tus amigos</p>
-                    <div class="inputUtilizame">
-                        <input id="compartir" type="text" class="form-control alto" value="{{$url}}" readonly />
-                        <div class="tooltipPersonal">
-                            <span class="tooltiptextPersonal" id="myTooltipPersonal">Copiar enlace</span>
-                            <a href="#nadadenada" id="copiar" style="color:black">
-                                <label for="compartir" class="far fa-copy fa-lg input-icon" />
-                            </a>
+                <br>
+                @else
+                <div class="d-flex">
+                    <div class="d-flex flex-row-reverse" style="width:50%;">
+                        <div class="progress d-flex flex-row-reverse no-bordered-left" style="width:100%; height: 30px;">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div style="padding-top: 7px; padding-right: 5px;">
+                                Hodei
+                            </div>
+                        </div>
+                    </div>
+                    <div class="" style="width:50%;">
+                        <div class="progress no-bordered-right" style="width:100%; height: 30px;">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 25%; " aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div style="padding-top: 7px; padding-left: 5px;">
+                                Aaron
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                @endif
+                @endforeach
+                @else
+                <?php $gastoTotal = 0 ?>
+                @foreach($gastosUsuario as $gastos)
+
+                <?php $gastoTotal += $gastos->amount ?>
+
+                @endforeach
+
+                <?php $ingresoTotal = 0 ?>
+                @foreach($ingresosUsuario as $ingresos)
+
+                <?php $ingresoTotal += $ingresos->amount ?>
+
+                @endforeach
+                <?php
+                $totalUsuario = $ingresoTotal - $gastoTotal;
+                ?>
+                @if($totalUsuario > 0)
+                <?php
+                $todo = $ingresoTotal + $gastoTotal;
+                $porcentaje = $totalUsuario * 100 / $todo;
+                
+                ?>
+                <div class="d-flex">
+                    <div class="d-flex flex-row-reverse" style="width:50%;">
+                        <div class="progress d-flex flex-row-reverse no-bordered-left" style="width:100%; height: 30px;">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div style="padding-top: 7px; padding-right: 5px;">
+                                @foreach($usuarios as $usuario)
+                                {{ $usuario->user }}
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    <div class="" style="width:50%;">
+                        <div class="progress no-bordered-right" style="width:100%; height: 30px;">
+                            <div class="progress-bar bg-success" role="progressbar" style='width:<?php echo $porcentaje?>%;' aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span>{{ $totalUsuario }}&#8364</span></div>
+                           
+                        </div>
+                    </div>
+                </div>
+                <br>
+                @elseif($totalUsuario < 0)
+                <?php
+                $todo = $ingresoTotal + $gastoTotal;
+                $porcentaje = $totalUsuario * 100 / $todo;
+                $porcentaje = 0 - $porcentaje;
+                
+                ?>
+                <div class="d-flex">
+                    <div class="d-flex flex-row-reverse" style="width:50%;">
+                        <div class="progress d-flex flex-row-reverse no-bordered-left" style="width:100%; height: 30px;">
+                            <div class="progress-bar bg-danger" role="progressbar"style='width:<?php echo $porcentaje?>%;' aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span>{{ $totalUsuario }}&#8364</span></div>
+    
                         </div>
                     </div>
 
+
+                    <div class="" style="width:50%;">
+                        <div class="progress no-bordered-right" style="width:100%; height: 30px;">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 0%; " aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div style="padding-top: 7px; padding-left: 5px;">
+                                @foreach($usuarios as $usuario)
+                                {{ $usuario->user }}
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <br>
+                @else 
+                <div class="d-flex">
+                    <div class="" style="width:100%;">
+                        <div class="progress borderBar" style="width:100%; height: 30px;">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 0%; " aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div style="padding-top: 5px; padding-left: 5px; margin:auto">
+                                @foreach($usuarios as $usuario)
+                                {{ $usuario->user }}
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                @endif
+                @endif
+                @else
+
+                @endif
             </div>
         </div>
+        <div class="row my-5 d-flex justify-content-center" id="divInvitar">
+            <div class="col-lg-6 col-md-8 col-12 p-4" id="invitar">
+                <h1>INVITAR</h1>
+                <img src="{{asset('assets/logo/logo_negro.ico')}}" style="width: 40%" class="mb-2">
+                <h2>Invita usuarios a tu cuenta</h2>
+                <p>Comparte la cuenta con quien tú quieras y empieza a añadir movimientos con tus amigos</p>
+                <div class="inputUtilizame">
+                    <input id="compartir" type="text" class="form-control alto" value="{{$url}}" readonly />
+                    <div class="tooltipPersonal">
+                        <span class="tooltiptextPersonal" id="myTooltipPersonal">Copiar enlace</span>
+                        <a href="#nadadenada" id="copiar" style="color:black">
+                            <label for="compartir" class="far fa-copy fa-lg input-icon" />
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
     </div>
 
     <!--------- MODAL DE CONCEPTOS  -------->

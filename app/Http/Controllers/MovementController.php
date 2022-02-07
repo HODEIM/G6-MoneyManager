@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Concept;
 use App\Models\Account;
 use App\Models\Movement;
+use Illuminate\Support\Facades\DB;
 
 class MovementController extends Controller
 {
@@ -14,6 +15,15 @@ class MovementController extends Controller
         $account = Account::where(['id' => $id])->first();
         $concepts = Concept::where('id_account', '=', $id)->get();
         $movements = Movement::where('id_account', '=', $id)->get();
+        $usuarios = DB::select('select user from movements where id_account = :id group by user', ['id' => $id]);
+
+        $gastosUsuario = DB::select('select * from movements where id_account = :id and type = "Gasto"', ['id' => $id]);
+        $ingresosUsuario = DB::select('select * from movements where id_account = :id and type = "Ingreso"', ['id' => $id]);
+
+        $gastos = DB::select('select sum(amount) as amount from movements where id_account = :id and type = "Gasto"', ['id' => $id]);
+        $ingresos = DB::select('select sum(amount) as amount from movements where id_account = :id and type = "Ingreso"', ['id' => $id]);
+        $mediaCuenta = $ingresos[0]->amount - $gastos[0]->amount;
+
         if ($account != null) {
             if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
                 $url = "https://";
@@ -21,8 +31,8 @@ class MovementController extends Controller
                 $url = "http://";
             $url .= $_SERVER['HTTP_HOST'];
             $url .= $_SERVER['REQUEST_URI'];
-            $url .= "/invite/".auth()->user()->id;
-            return view('moneyManager.movements', ['account' => $account, 'concepts' => $concepts, 'movements' => $movements, 'url' => $url]);
+            $url .= "/invite/" . auth()->user()->id;
+            return view('moneyManager.movements', ['account' => $account, 'concepts' => $concepts, 'movements' => $movements, 'url' => $url, 'usuarios' => $usuarios, 'ingresosUsuario' => $ingresosUsuario, 'gastosUsuario' => $gastosUsuario, 'mediaCuenta' => $mediaCuenta]);
         } else
             return redirect("/accounts");
     }

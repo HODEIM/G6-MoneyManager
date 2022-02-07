@@ -765,3 +765,14 @@ a.close.disabled {
   width: 100%;
 }
 
+.no-bordered-right {
+  border-radius:0px 25px 25px 0px ;
+}
+
+.no-bordered-left {
+  border-radius:25px 0px 0px 25px ;
+}
+
+.borderBar {
+  border-radius:25px 25px 25px 25px ;
+}
