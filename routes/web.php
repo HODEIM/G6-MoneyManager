@@ -13,7 +13,8 @@ use App\Http\Controllers\MailMessagesController;
 
 // LANDING PAGE VIEW
 Route::get('/', function () {
-    return view('landingPage.index');
+    // return view('landingPage.index');
+    return view('moneyManager.exchanger');
 });
 
 Route::get('/lang/{lang}', [LangController::class, 'change'])->name('lang.change');
