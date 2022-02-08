@@ -15,8 +15,9 @@ class MovementController extends Controller
         $account = Account::where(['id' => $id])->first();
         $concepts = Concept::where('id_account', '=', $id)->get();
         $movements = Movement::where('id_account', '=', $id)->get();
-        $usuarios = DB::select('select user from movements where id_account = :id group by user', ['id' => $id]);
-
+        $usuarios = $account->user;
+        //    $usuarios = DB::select('select id_user from movements where id_account = :id group by user', ['id' => $id]);
+        
         $gastosUsuario = DB::select('select * from movements where id_account = :id and type = "Gasto"', ['id' => $id]);
         $ingresosUsuario = DB::select('select * from movements where id_account = :id and type = "Ingreso"', ['id' => $id]);
 
