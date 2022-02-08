@@ -27,11 +27,12 @@
         <div class="container px-5">
             <a class="navbar-brand" href="/">
                 <img src="{{ asset('assets/logo/logo_blanco.ico') }}" alt="logo" width="50" class="d-inline-block">
-                Money Manager
+                {{ __('mm') }}
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/exchange">{{ __('exchange') }}</a></li>
                     <li class="nav-item"><a class="nav-link" href="/accounts">{{ __('myaccounts') }}</a></li>
                     <li class="nav-item"><a class="nav-link" href="/profile/edit">{{ __('profile') }}</a></li>
                     <li class="nav-item">

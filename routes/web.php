@@ -15,6 +15,9 @@ use App\Http\Controllers\MailMessagesController;
 Route::get('/', function () {
     return view('landingPage.index');
 });
+Route::get('/exchange', function () {
+    return view('moneyManager.exchanger');
+})->middleware(["auth", "verified"]);
 
 Route::get('/lang/{lang}', [LangController::class, 'change'])->name('lang.change');
 

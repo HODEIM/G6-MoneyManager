@@ -40,6 +40,11 @@ $user = auth()->user();
                     <li class="nav-item"><a class="nav-link" href="#!">Estadísticas</a></li>
                 </ul> -->
                 <ul class="navbar-nav ms-auto">
+                    @if ($user->locked == 1)
+                    <li class="nav-item"><a class="nav-link" href="/accounts">{{ __('statistics') }}</a></li>
+                    @else
+                    <li class="nav-item"><a class="nav-link" href="/accounts">{{ __('myaccounts') }}</a></li>
+                    @endif
                     <li class="nav-item"><a class="nav-link" href="/accounts">{{ __('myaccounts') }}</a></li>
                     <li class="nav-item"><a class="nav-link" href="/profile/edit">{{ __('profile') }}</a></li>
                     <li class="nav-item">

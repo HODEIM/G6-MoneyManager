@@ -1,4 +1,4 @@
-<div class="lenguageNav">
+<div class="lenguageNav ">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/lang/es">ES</a></li>
         <li class="breadcrumb-item"><a href="/lang/en">EN</a></li>
