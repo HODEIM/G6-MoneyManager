@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->integer('telephone');
             $table->string('address');
-            $table->string('image')->default('public/Default.png');
+            $table->string('image')->default('Default.png');
             $table->boolean('locked');
             $table->unsignedBigInteger('id_rol');
             $table->rememberToken();
