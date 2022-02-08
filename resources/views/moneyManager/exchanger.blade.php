@@ -19,6 +19,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
     <!-- Personal CSS-->
     <link href="{{ asset('aplicacion/css/fixedFooter.css') }}" rel="stylesheet" />
+    <link href="{{ asset('exchanger/css/main.css') }}" rel="stylesheet" />
 </head>
 
 <body>
@@ -29,7 +30,7 @@
                 {{__('mm')}}
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
+            <div class="collapse navbar-collapse  text-end" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="/accounts">{{ __('myaccounts') }}</a></li>
                     <li class="nav-item"><a class="nav-link" href="/profile/edit">{{ __('profile') }}</a></li>
@@ -46,30 +47,34 @@
             </div>
         </div>
     </nav>
-    <!---- Content ---->
 
-    <div class="container mt-3">
-        <div class="row">
-            <div class="d-flex justify-content-evenly">
-                <div class="d-flex flex-column">
-                    <label for="importe">Importe</label>
-                    <input type="text" class="form-control" id="importe" />
+    <!---- Content ---->
+    <div class="container">
+        <div class="row" id="exchange">
+            <div class="d-flex flex-column flex-sm-row justify-content-sm-evenly align">
+                <div class="col-4 d-flex flex-column">
+                    <label for="importe">{{ __('amount') }}</label>
+                    <input type="number" step="0.01" class="form-control" id="importe" />
+                    <span id="amountError"></span>
                 </div>
-                <div class="d-flex flex-column w-25">
-                    <label for="from">De:</label>
+                <div class="col-4 d-flex flex-column w-25">
+                    <label for="from">{{ __('from') }}</label>
                     <select class="form-select" name="from" id="from">
                     </select>
                 </div>
-                <div class="d-flex flex-column w-25">
-                    <label for="to">a</label>
+                <div class="col-4  d-flex flex-column w-25">
+                    <label for="to">{{ __('to') }}</label>
                     <select class="form-select" name="to" id="to">
                     </select>
                 </div>
-</div>
+            </div>
             <div class="resultado">
                 <div id="result">
-                    <h3></h3>
+                    <span class="h3"></span>
                     <h2></h2>
+                </div>
+                <div class="exchange">
+                    <span></span>
                 </div>
             </div>
         </div>
@@ -78,6 +83,9 @@
 
     <!---- Footer ---->
     @include('partials.footer')
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!--  -->
     <script src="{{ asset('exchanger/js/exchanger.js')}}"></script>
 </body>
 
