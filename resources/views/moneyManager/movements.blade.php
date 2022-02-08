@@ -47,7 +47,7 @@
     </nav>
 
     <div class="container-fluid d-flex justify-content-center">
-        <div style="width:80%;" class="mt-4 text-center">
+        <div style="width:90%;" class="mt-4 text-center">
             <h2>{{ $account->name }}</h2>
             <div class="mt-4 row d-flex justify-content-center">
                 <div class="col-xl-4 col-lg-5 col-12">
@@ -84,7 +84,7 @@
                                                 Importe:
                                             </th>
                                             <td>
-                                                <input type="number" placeholder="Importe" style="width:90%" class="form-control" name="importe" id="importe"></input>
+                                                <input type="number" step="0.01" placeholder="Importe" style="width:90%" class="form-control" name="importe" id="importe"></input>
                                             </td>
                                         </tr>
                                         <tr>
@@ -207,28 +207,245 @@
                 </div>
                 <div class="col-xl-3 mt-lg-3 mt-md-3">
                     <h2>Resumen</h2>
-                    <p>Próximamente</p>
+                    <!-- Variable para calcular el porcentaje de barra que va a enseñar -->
+                    <?php $maximo = -99999; ?>
+                    <!-- 1.- Necesito esto para calcular el maximo de todos -->
+                    @if(count($usuarios) > 0)
+                    @if(count($usuarios) > 1)
+                    @foreach($usuarios as $usuario)
+                    <?php
+                    $gastoComunitario = 0;
+                    $ingresoComunitario = 0;
+                    $gastoTotal = 0;
+                    $ingresoTotal = 0;
+                    ?>
+
+                    <!-- Foreach, para ver el cuanto se ha gastado, dentro del if cada usuario -->
+                    @foreach($gastosUsuario as $gastos)
+                    @if($gastos->user == $usuario->name)
+                    <?php $gastoTotal += $gastos->amount ?>
+                    @endif
+                    <?php $gastoComunitario += $gastos->amount ?>
+                    @endforeach
+
+                    <!-- Foreach, para ver el cuanto se ha ingresado, dentro del if cada usuario -->
+                    @foreach($ingresosUsuario as $ingresos)
+                    @if($ingresos->user == $usuario->name)
+                    <?php $ingresoTotal += $ingresos->amount; ?>
+                    @endif
+                    <?php $ingresoComunitario += $ingresos->amount; ?>
+                    @endforeach
+
+                    <!-- Cálculo para sacar el máximo de todos -->
+                    <?php
+                    $totalUsuario = $ingresoTotal - $gastoTotal;
+                    $comunitario = $ingresoComunitario - $gastoComunitario;
+                    $media = $comunitario / count($usuarios);
+                    $cadauno = $media - $totalUsuario;
+
+                    if ($maximo < $cadauno)
+                        $maximo = $cadauno;
+                    ?>
+                    @endforeach
+
+                    <!-- 1.-FIN Hasta aqué necesito para calcular el máximo -->
+
+                    <!-- 2.- A partir de aqui, hago lo mismo que arriba, pero uso los datos todo el rato  -->
+                    @foreach($usuarios as $usuario)
+                    <?php
+                    $gastoComunitario = 0;
+                    $ingresoComunitario = 0;
+                    $gastoTotal = 0;
+                    $ingresoTotal = 0;
+                    ?>
+
+                    @foreach($gastosUsuario as $gastos)
+                    @if($gastos->user == $usuario->name)
+                    <?php $gastoTotal += $gastos->amount ?>
+                    @endif
+                    <?php $gastoComunitario += $gastos->amount ?>
+                    @endforeach
+
+                    @foreach($ingresosUsuario as $ingresos)
+                    @if($ingresos->user == $usuario->name)
+                    <?php $ingresoTotal += $ingresos->amount; ?>
+                    @endif
+                    <?php $ingresoComunitario += $ingresos->amount; ?>
+                    @endforeach
+
+                    <?php
+                    $totalUsuario = $ingresoTotal - $gastoTotal;
+                    $comunitario = $ingresoComunitario - $gastoComunitario;
+                    $media = $comunitario / count($usuarios);
+                    $cadauno = $media - $totalUsuario;
+
+                    $porcentaje = 0;
+                    if ($maximo != 0)
+                        $porcentaje = ($cadauno * 100) / $maximo;
+
+                    if ($porcentaje < 0) {
+                        $porcentaje = 0 - $porcentaje;
+                    }
+                    $cadauno = number_format($cadauno, 2)
+                    ?>
+
+                    <!-- En caso de que lo que debe el usuario sea negativo -->
+                    @if($cadauno < 0) <div class="d-flex border border-dark borderBar">
+                        <div class="d-flex flex-row-reverse" style="width:50%;">
+                            <div class="progress d-flex flex-row-reverse no-bordered-left" style="width:100%; height: 30px;">
+                                <div class="progress-bar bg-danger" role="progressbar" style='width:<?php echo $porcentaje ?>%;' aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span>{{ $cadauno }}&#8364</span></div>
+                            </div>
+                        </div>
+                        <div class="" style="width:50%;">
+                            <div class="progress no-bordered-right" style="width:100%; height: 30px;">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 0%; " aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div style="padding-top: 7px; padding-left: 5px;">
+                                    {{ $usuario->name }}
+                                </div>
+                            </div>
+                        </div>
                 </div>
-            </div>
-            <div class="row my-5 d-flex justify-content-center" id="divInvitar">
-                <div class="col-lg-6 col-md-8 col-12 p-4" id="invitar">
-                    <h1>INVITAR</h1>
-                    <img src="{{asset('assets/logo/logo_negro.ico')}}" style="width: 40%" class="mb-2">
-                    <h2>Invita usuarios a tu cuenta</h2>
-                    <p>Comparte la cuenta con quien tú quieras y empieza a añadir movimientos con tus amigos</p>
-                    <div class="inputUtilizame">
-                        <input id="compartir" type="text" class="form-control alto" value="{{$url}}" readonly />
-                        <div class="tooltipPersonal">
-                            <span class="tooltiptextPersonal" id="myTooltipPersonal">Copiar enlace</span>
-                            <a href="#nadadenada" id="copiar" style="color:black">
-                                <label for="compartir" class="far fa-copy fa-lg input-icon" />
-                            </a>
+                <br>
+                <!-- Si lo que debe es positivo --> 
+                @elseif($cadauno > 0) <div class="d-flex  border border-dark borderBar">
+                    <div class="d-flex flex-row-reverse" style="width:50%;">
+                        <div class="progress d-flex flex-row-reverse no-bordered-left" style="width:100%; height: 30px;">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div style="padding-top: 7px; padding-right: 5px;">
+                                {{ $usuario->name }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="" style="width:50%;">
+                        <div class="progress no-bordered-right" style="width:100%; height: 30px;">
+                            <div class="progress-bar bg-success" role="progressbar" style='width:<?php echo $porcentaje ?>%;' aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span>{{ $cadauno }}&#8364</span></div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <!-- Por si está en 0 -->
+                @else
+                <div class="d-flex  border border-dark borderBar">
+                    <div class="d-flex flex-row-reverse" style="width:100%;">
+                        <div class="progress d-flex flex-row-reverse borderBar" style="width:100%; height: 30px;">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div style="padding-top: 5px; padding-right: 5px; margin: auto;">
+                                {{ $usuario->name }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                @endif
+                @endforeach
+
+                <!-- Si la cuenta, es solo una, se plantea algo distinto -->
+                @else
+                <?php
+                $gastoTotal = 0;
+                $ingresoTotal = 0
+                ?>
+
+                @foreach($gastosUsuario as $gastos)
+                <?php $gastoTotal += $gastos->amount ?>
+                @endforeach
+
+                @foreach($ingresosUsuario as $ingresos)
+                <?php $ingresoTotal += $ingresos->amount ?>
+                @endforeach
+                <?php
+                $totalUsuario = $ingresoTotal - $gastoTotal;
+                ?>
+                @if($totalUsuario > 0)
+                <?php
+                $todo = $ingresoTotal + $gastoTotal;
+                $porcentaje = $totalUsuario * 100 / $todo;
+                ?>
+                <div class="d-flex  border border-dark borderBar">
+                    <div class="d-flex flex-row-reverse" style="width:50%;">
+                        <div class="progress d-flex flex-row-reverse no-bordered-left" style="width:100%; height: 30px;">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div style="padding-top: 7px; padding-right: 5px;">
+                                @foreach($usuarios as $usuario)
+                                {{ $usuario->name }}
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    <div class="" style="width:50%;">
+                        <div class="progress no-bordered-right" style="width:100%; height: 30px;">
+                            <div class="progress-bar bg-success" role="progressbar" style='width:<?php echo $porcentaje ?>%;' aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span>{{ $totalUsuario }}&#8364</span></div>
+
+                        </div>
+                    </div>
+                </div>
+                <br>
+                @elseif($totalUsuario < 0) <?php
+                                            $todo = $ingresoTotal + $gastoTotal;
+                                            $porcentaje = $totalUsuario * 100 / $todo;
+                                            $porcentaje = 0 - $porcentaje;
+
+                                            ?> <div class="d-flex  border border-dark borderBar">
+                    <div class="d-flex flex-row-reverse" style="width:50%;">
+                        <div class="progress d-flex flex-row-reverse no-bordered-left" style="width:100%; height: 30px;">
+                            <div class="progress-bar bg-danger" role="progressbar" style='width:<?php echo $porcentaje ?>%;' aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span>{{ $totalUsuario }}&#8364</span></div>
+
                         </div>
                     </div>
 
+
+                    <div class=" border border-dark borderBar" style="width:50%;">
+                        <div class="progress no-bordered-right" style="width:100%; height: 30px;">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 0%; " aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div style="padding-top: 7px; padding-left: 5px;">
+                                @foreach($usuarios as $usuario)
+                                {{ $usuario->user }}
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <br>
+            @else
+            <div class="d-flex">
+                <div class="" style="width:100%;">
+                    <div class="progress borderBar" style="width:100%; height: 30px;">
+                        <div class="progress-bar bg-success" role="progressbar" style="width: 0%; " aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div style="padding-top: 5px; padding-left: 5px; margin:auto">
+                            @foreach($usuarios as $usuario)
+                            {{ $usuario->user }}
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
             </div>
+            <br>
+            @endif
+            @endif
+            @else
+
+            @endif
         </div>
+    </div>
+    <div class="row my-5 d-flex justify-content-center" id="divInvitar">
+        <div class="col-lg-6 col-md-8 col-12 p-4" id="invitar">
+            <h1>INVITAR</h1>
+            <img src="{{asset('assets/logo/logo_negro.ico')}}" style="width: 40%" class="mb-2">
+            <h2>Invita usuarios a tu cuenta</h2>
+            <p>Comparte la cuenta con quien tú quieras y empieza a añadir movimientos con tus amigos</p>
+            <div class="inputUtilizame">
+                <input id="compartir" type="text" class="form-control alto" value="{{$url}}" readonly />
+                <div class="tooltipPersonal">
+                    <span class="tooltiptextPersonal" id="myTooltipPersonal">Copiar enlace</span>
+                    <a href="#nadadenada" id="copiar" style="color:black">
+                        <label for="compartir" class="far fa-copy fa-lg input-icon" />
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
     </div>
 
     <!--------- MODAL DE CONCEPTOS  -------->
