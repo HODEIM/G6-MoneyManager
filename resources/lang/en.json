@@ -69,9 +69,15 @@
     "verify.resent": "We resent confirmation link to:",
     "verify.resend": "If you did not receive the email",
     "verify.resendlink": "click here to request another.",
-    "exchange":"Exchange",
-    "amount":"Amount",
-    "from":"From:",
-    "to":"To"
+    "exchange": "Exchange",
+    "amount": "Amount",
+    "from": "From:",
+    "to": "To",
+    "error.name.required": "Name is required",
+    "error.email.required": "Email is required",
+    "error.email.regex": "The format is not valid",
+    "error.msg.required": "Message is required",
+    "error.msg.min": "Minimun 10 characters"
+
 
 }

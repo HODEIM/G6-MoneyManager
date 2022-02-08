@@ -205,15 +205,24 @@
                             <div class="row">
                                 <div class="col-6">
                                     <input class="form-control" name="name" id="name" type="text" placeholder="{{ __('name') }}" />
+                                    @error('name')
+                                    <span style="color: red;">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="col-6">
                                     <input class="form-control" name="email" id="emailAddress" type="email" placeholder="{{ __('email') }}" />
+                                    @error('email')
+                                    <span style="color: red;">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
                         <!-- Message input -->
                         <div class="mb-3">
                             <textarea class="form-control" name="msg" id="message" type="text" placeholder="{{ __('message') }}" style="height: 10rem;"></textarea>
+                            @error('msg')
+                            <span style="color: red;">{{ $message }}</span>
+                            @enderror
                         </div>
                         <!-- Form submit button -->
                         <div class="d-grid">
@@ -221,6 +230,8 @@
                         </div>
 
                     </form>
+                    {{ dd(($errors)) }}
+
                 </div>
             </div>
         </div>
@@ -232,7 +243,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script src="{{ asset('landing/js/landing.js')}}"></script>
-    @if($errors->any() )
+    @if($errors->get('validation') != null )
     <script src="{{ asset('landing/js/scriptModal.js') }}" type="text/javascript"></script>
     @endif
 
