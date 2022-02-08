@@ -78,6 +78,4 @@
     "error.email.regex": "The format is not valid",
     "error.msg.required": "Message is required",
     "error.msg.min": "Minimun 10 characters"
-
-
 }
