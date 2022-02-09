@@ -17,7 +17,7 @@ class MovementController extends Controller
         $movements = Movement::where('id_account', '=', $id)->get();
         $usuarios = $account->user;
         //    $usuarios = DB::select('select id_user from movements where id_account = :id group by user', ['id' => $id]);
-        
+
         $gastosUsuario = DB::select('select * from movements where id_account = :id and type = "Gasto"', ['id' => $id]);
         $ingresosUsuario = DB::select('select * from movements where id_account = :id and type = "Ingreso"', ['id' => $id]);
 
@@ -75,6 +75,16 @@ class MovementController extends Controller
         return redirect('/account/' . $id);
     }
 
+    public function show($movementId)
+    {
+        $movement = Movement::find($movementId);
+        return response()->json($movement, 200);
+    }
+    public function update(Request $request,Movement $movement)
+    {
+        $movement->update($request->all());
+        return response()->json($movement, 200);
+    }
     public function destroy($id)
     {
         Movement::destroy($id);

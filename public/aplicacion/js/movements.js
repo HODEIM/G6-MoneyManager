@@ -4,6 +4,7 @@ function iniciar() {
     $('#copiar').click(copiar);
     $('#copiar').mouseout(outFunc);
     $('#anadir').click(validar);
+    $('#tablaAnadir tr').click(editMovement);
 }
 
 function copiar() {
@@ -68,4 +69,8 @@ function validar() {
         $('#anadirBoton').trigger('click');
         return false;
     }
+}
+function editMovement() {
+
+    console.log('a');  
 }

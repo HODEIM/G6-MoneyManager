@@ -191,12 +191,14 @@
                                 @endif
                                 <td>{{$movement->user}}</td>
                                 <td>
+                                <a href="#" data-toggle="modal" data-target="#modalMovimiento">A </a>
                                     <a href="#" style="color:black" onclick="event.preventDefault(); document.getElementById('destroyMovement{{$movement->id}}').submit();">
                                         <i class="fas fa-trash fa-lg"></i></a>
                                     <form method="POST" action="/movement/{{$movement->id}}" id="destroyMovement{{$movement->id}}">
                                         @csrf
                                         @method('delete')
                                     </form>
+                                    
                                 </td>
                             </tr>
                             @endforeach
@@ -477,6 +479,23 @@
         </div>
     </div>
     <!--------- FIN MODAL DE CONCEPTOS  -------->
+
+    <!--------- MODAL Edit Movimientos  -------->
+    <div class="modal fade" id="modalMovimiento" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header img">
+                    <button type="button" class="close d-flex align-items-center justify-content-center" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="fas fa-times"></span>
+                    </button>
+                </div>
+                <div class="modal-body pt-md-0 pb-5 px-4 px-md-5 text-center">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--------- FIN MODAL Edit Movimientos  -------->
 
 </body>
 

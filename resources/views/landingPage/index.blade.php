@@ -230,8 +230,6 @@
                         </div>
 
                     </form>
-                    {{ dd(($errors)) }}
-
                 </div>
             </div>
         </div>
