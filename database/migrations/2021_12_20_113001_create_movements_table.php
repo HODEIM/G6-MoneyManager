@@ -17,7 +17,7 @@ class CreateMovementsTable extends Migration
             $table->id();
             $table->string('type');
             $table->double('amount');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->date('date');
             $table->string('user');
             $table->unsignedBigInteger('id_concept');

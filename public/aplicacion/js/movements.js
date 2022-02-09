@@ -4,6 +4,8 @@ function iniciar() {
     $('#copiar').click(copiar);
     $('#copiar').mouseout(outFunc);
     $('#anadir').click(validar);
+    $('#botonPermisos').click(validarPermisos);
+    $('#botonDisattatch').click(validarDetach);
 }
 
 function copiar() {
@@ -49,18 +51,18 @@ function validar() {
     } else {
         $('#importe').css("border-color", "#ced4da");
     }
-    if(concepto == ""){
+    if (concepto == "") {
         $('#concepto').css("border-color", "red");
         $('#conceptoError').append("-Escoja o cree uno<br>");
         todoOk = false;
-    }else {
+    } else {
         $('#concepto').css("border-color", "#ced4da");
     }
-    if(fecha == ""){
+    if (fecha == "") {
         $('#fecha').css("border-color", "red");
         $('#fechaError').append("-Rellene el campo<br>");
         todoOk = false;
-    }else {
+    } else {
         $('#fecha').css("border-color", "#ced4da");
     }
     if (!todoOk) {
@@ -69,3 +71,57 @@ function validar() {
         return false;
     }
 }
+function validarPermisos() {
+    var usuario = $('#usuario').val();
+    var permiso = $('#permission').val();
+
+    $('#usuarioError').text("");
+    $('#permisosError').text("");
+
+    var todoOk = true;
+
+    if (usuario == "") {
+        $('#usuario').css("border-color", "red");
+        $('#usuarioError').append("-Escoja uno");
+        todoOk = false;
+    } else {
+        $('#usuario').css("border-color", "#ced4da");
+    }
+    if (permiso == "") {
+        $('#permission').css("border-color", "red");
+        $('#permisosError').append("-Escoja o cree uno<br>");
+        todoOk = false;
+    } else {
+        $('#permission').css("border-color", "#ced4da");
+    }
+   
+    if (!todoOk) {
+        $('#administrar').trigger('click');
+        $('#administrar').trigger('click');
+        return false;
+    }
+}
+
+function validarDetach() {
+    var usuario = $('#usuario').val();
+
+    $('#usuarioError').text("");
+
+    var todoOk = true;
+
+    if (usuario == "") {
+        $('#usuario').css("border-color", "red");
+        $('#usuarioError').append("-Escoja usuario a eliminar");
+        todoOk = false;
+    } else {
+        $('#usuario').css("border-color", "#ced4da");
+        $('#destroyUser').val(usuario);
+    }
+   
+    if (!todoOk) {
+        $('#administrar').trigger('click');
+        $('#administrar').trigger('click');
+        return false;
+    }
+}
+
