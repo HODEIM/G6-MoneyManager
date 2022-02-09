@@ -36,7 +36,7 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="/exchange">{{ __('exchange') }}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/exchange">{{ __('exchange') }}</a></li>
                     <li class="nav-item"><a class="nav-link" href="/accounts">{{ __('myaccounts') }}</a></li>
                     <li class="nav-item"><a class="nav-link" href="/profile/edit">{{ __('profile') }}</a></li>
                     <li class="nav-item">
@@ -62,8 +62,8 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-5 col-md-6 m-auto">
+        <div class="row d-flex flex-direction-row">
+            <div class="col-lg-5 col-md-6">
                 <table class="table table-hover">
                     <tbody id="accountsTable">
                         @if(count($accounts) > 0)
@@ -72,6 +72,13 @@
                             <td name="accountID" hidden>{{ $account->id }}</td>
                             <td>{{ $account->name }}</td>
                             <td>{{ $account->description }}</td>
+                            <td>
+                                <form method="GET" action="/account/stats">
+                                    @csrf
+                                    <input type="hidden" name="accountID" value="{{ $account->id }}">
+                                    <input type="submit" value="Stats">
+                                </form>
+                            </td>
                         </tr>
                         @endforeach
                         @else
@@ -82,7 +89,49 @@
                         </tr>
                         @endif
                     </tbody>
+                    <table>
+            </div>
+            <div class="col-lg-5 col-md-6">
+                <table>
+                    <tr>
+                        <td>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                Edit
+                            </button>
+                        </td>
+                        <td>
+                            <form method="POST" action="/account/destroy/view">
+                                @csrf
+                                @method('delete')
+                                <input type="hidden" name="accountID" value="{{ $account->id }}">
+                                <input type="submit" value="Supr">
+                            </form>
+                        </td>
+                    </tr>
                 </table>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
             </div>
         </div>
     </div>

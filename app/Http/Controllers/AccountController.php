@@ -69,4 +69,22 @@ class AccountController extends Controller
         $account->user()->detach($request->user);
         return redirect()->back();
     }
+    public function stats(Request $request)
+    {
+        $id = $request->accountID;
+        $account = Account::find($id);
+        return view('moneyManager.stats', ['account', $account]);
+    }
+    public function editView(Request $request)
+    {
+        $id = $request->accountID;
+        $account = Account::find($id);
+        return view('moneyManager.editAccount', ['account', $account]);
+    }
+    public function destroyView(Request $request)
+    {
+        $id = $request->accountID;
+        Account::destroy($id);
+        return redirect()->back();
+    }
 }

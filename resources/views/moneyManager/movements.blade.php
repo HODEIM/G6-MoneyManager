@@ -59,10 +59,10 @@
                                 <span class="grande">Añadir</span>
                             </button>
                             <div class="contentCollapse">
-                                <form method="POST" action="/movement/store">
-                                    <input type="hidden" value="{{$account->id}}" name="accountId">
-                                    @csrf
-                                    <table style="width:100%" id="tablaAnadir">
+                                <table style="width:100%" id="tablaAnadir">
+                                    <form method="POST" action="/movement/store">
+                                        @csrf
+                                        <input type="hidden" value="{{$account->id}}" name="accountId">
                                         <tr>
                                             <th>
                                                 Tipo:
@@ -100,9 +100,7 @@
                                                 Concepto:
                                             </th>
                                             <td class="d-flex justify-content-between align-items-center" style="width:90%">
-
-
-                                                <div>
+                                                <div style="width: 100%;">
                                                     <select class="form-select" name="concepto" id="concepto">
                                                         <option selected hidden value="">--Concepto--</option>
                                                         @foreach($concepts as $concept)
@@ -113,8 +111,6 @@
                                                 <div>
                                                     <a href="#" id="botonAnadir" style="padding-left: 5px;" data-toggle="modal" data-target="#modalConcepto"><i class="far fa-plus-square fa-lg"></i></a>
                                                 </div>
-
-
                                             </td>
                                         </tr>
                                         <tr>
@@ -152,12 +148,12 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td colspan="2">
+                                            <td colspan="2" class="py-2">
                                                 <input type="submit" class="btn btn-primary" id="anadir" value="Añadir">
                                             </td>
                                         </tr>
-                                    </table>
-                                </form>
+                                    </form>
+                                </table>
                             </div>
                         </div>
                         @endif

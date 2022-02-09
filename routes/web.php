@@ -50,6 +50,12 @@ Route::post('/accounts/store', [AccountController::class, 'store'])->middleware(
 
 Route::post('/accounts/acceptInvitation', [AccountController::class, 'acceptInvitation'])->middleware("auth");
 
+Route::get('/account/stats', [AccountController::class, 'stats'])->middleware(["auth", "verified"]);
+
+Route::get('/account/edit/view', [AccountController::class, 'editView'])->middleware(["auth", "verified"]);
+
+Route::delete('/account/destroy/view', [AccountController::class, 'destroyView'])->middleware(["auth", "verified"]);
+
 //account User ROUTES
 Route::delete('/accountUser/destroy', [AccountController::class, 'disatatchUser'])->middleware("auth");
 
