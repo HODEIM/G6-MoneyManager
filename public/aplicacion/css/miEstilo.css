@@ -766,13 +766,24 @@ a.close.disabled {
 }
 
 .no-bordered-right {
-  border-radius:0px 25px 25px 0px ;
+  border-radius: 0px 25px 25px 0px;
 }
 
 .no-bordered-left {
-  border-radius:25px 0px 0px 25px ;
+  border-radius: 25px 0px 0px 25px;
 }
 
 .borderBar {
-  border-radius:25px 25px 25px 25px ;
+  border-radius: 25px 25px 25px 25px;
+}
+
+.submit {
+  color: #fff !important;
+  display: block;
+  width: 130px;
+  height: 52px;
+  font-size: 16px;
+  background: #3e64ff !important;
+  border: none;
+  border-radius: 0;
 }

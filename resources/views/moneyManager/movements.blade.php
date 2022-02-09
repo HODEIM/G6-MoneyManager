@@ -100,8 +100,8 @@
                                                 Concepto:
                                             </th>
                                             <td class="d-flex justify-content-between align-items-center" style="width:90%">
-                                            
-                                                @if($id_permission[0]->id_permission == 1)
+
+
                                                 <div>
                                                     <select class="form-select" name="concepto" id="concepto">
                                                         <option selected hidden value="">--Concepto--</option>
@@ -113,14 +113,8 @@
                                                 <div>
                                                     <a href="#" id="botonAnadir" style="padding-left: 5px;" data-toggle="modal" data-target="#modalConcepto"><i class="far fa-plus-square fa-lg"></i></a>
                                                 </div>
-                                                @else
-                                                <select class="form-select" name="concepto" id="concepto">
-                                                    <option selected hidden value="">--Concepto--</option>
-                                                    @foreach($concepts as $concept)
-                                                    <option value="{{ $concept->id }}">{{ $concept->concept  }}</option>
-                                                    @endforeach
-                                                </select>
-                                                @endif
+
+
                                             </td>
                                         </tr>
                                         <tr>
@@ -178,9 +172,9 @@
                         <div class="col-xl-12 col-lg-12 col-md-6">
                             <button type="button" class="collapsibleCollapse btn" id="administrar"><span class="grande">Administrar permisos de usuarios</span></button>
                             <div class="contentCollapse">
-                                <form method="POST" action="/permissions/update">
-                                    @csrf
-                                    <table style="width:100%" id="tablaAnadir">
+                                <table style="width:100%" id="tablaAnadir">
+                                    <form method="POST" action="/permissions/update">
+                                        @csrf
                                         <tr>
                                             @if(count($usuarios) > 1)
                                             <th>
@@ -224,24 +218,25 @@
                                         <tr>
                                             <td colspan="2" class="py-2">
                                                 <input type="submit" value="Cambiar rol" class="btn btn-primary" id="botonPermisos">
-                                </form>
-                                <form method="post" action="/accountUser/destroy" style="float:left;">
-                                    @csrf
-                                    @method('delete')
-                                    <input type="hidden" name="user" id="destroyUser" value="">
-                                    <input type="hidden" name="idAccount" value="{{$account->id}}">
-                                    <input type="submit" value="Expulsar usuario" class="btn btn-primary" id="botonDisattatch">
-                                </form>
-                                </td>
-                                </tr>
-                                @else
-                                <tr>
-                                    <th colspan="2" class="py-4">
-                                        <input type="text" value="Invita a tus amigos" readonly style="width:100%" class="form-control">
-                                    </th>
-                                </tr>
-                                @endif
+                                    </form>
+                                    <form method="post" action="/accountUser/destroy" style="float:left;">
+                                        @csrf
+                                        @method('delete')
+                                        <input type="hidden" name="user" id="destroyUser" value="">
+                                        <input type="hidden" name="idAccount" value="{{$account->id}}">
+                                        <input type="submit" value="Expulsar usuario" class="btn btn-primary" id="botonDisattatch">
+                                    </form>
+                                    </td>
+                                    </tr>
+                                    @else
+                                    <tr>
+                                        <th colspan="2" class="py-4">
+                                            <input type="text" value="Invita a tus amigos" readonly style="width:100%" class="form-control">
+                                        </th>
+                                    </tr>
+                                    @endif
                                 </table>
+
                             </div>
                         </div>
                         @endif
@@ -559,7 +554,7 @@
                 <div class="modal-body pt-md-0 pb-5 px-4 px-md-5 text-center">
                     <h2>Conceptos</h2>
                     <div class="icon d-flex align-items-center justify-content-center">
-                        <img src="{{ asset('assets/logo/logo_negro.ico') }}" alt="" class="img-fluid">
+                        <img src="{{ asset('assets/logo/logo_negro.ico') }}" alt="" class="img-fluid" />
                     </div>
                     <h4 class="mb-2">Añadir un nuevo concepto</h4>
                     <form method="POST" class="subscribe-form" action="/concept/store">
@@ -567,7 +562,7 @@
                             @csrf
                             <input type="hidden" value="{{$account->id}}" name="accountId">
                             <input type="text" class="form-control rounded-left" placeholder="Ingrese concepto nuevo" name="conceptName">
-                            <input type="submit" value="Añadir" class="form-control submit px-3">
+                            <input type="submit" value="Añadir" class="form-control px-3 py-2 submit">
                         </div>
                     </form>
                 </div>
