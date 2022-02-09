@@ -1,11 +1,33 @@
 $('document').ready(iniciar);
 
+let movementMap = L.map('movementMap').setView([40.4378698, -3.8196207], 13);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 50,
+}).addTo(movementMap);
+let marker = L.marker([40.4378698, -3.8196207]).addTo(movementMap);
+
 function iniciar() {
     $('#copiar').click(copiar);
     $('#copiar').mouseout(outFunc);
     $('#anadir').click(validar);
     $('#editMovement').click(editMovement);
+    $('#modalMovimiento').on('show.bs.modal', function () {
+        let height = $('#movementMap').height() / 2;
+        let width = $('#movementMap').width() / 2;
+        console.log(width + '/' + height)
+        let string = 'translate3d(' + width + 'px, ' + height + 'px, 0px) !important';
+        // $('#movementMap .leaflet-pane').css('transform', string);
+        let a = $('#movementMap').get(0);
+        $(a).css({
+            'transform': string
+        });
+        setTimeout(function () {
+            movementMap.invalidateSize();
+        }, 10);
+    });
 }
+
+
 
 function copiar() {
     var copyText = document.getElementById("compartir");
@@ -71,7 +93,10 @@ function validar() {
     }
 }
 
+
+
 function editMovement() {
+
 
     console.log('a');
 }

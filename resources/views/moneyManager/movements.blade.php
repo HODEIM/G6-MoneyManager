@@ -15,6 +15,9 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
     <!--Jquery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
     <!-- Personal CSS-->
@@ -496,6 +499,11 @@
                             <td>Importe</td>
                             <td>Concepto</td>
                         </tr>
+                        <tr>
+                            <td>Tipo</td>
+                            <td>Importe</td>
+                            <td>Concepto</td>
+                        </tr>
                     </table>
                     <select class="form-select" name="tipo" id="tipo">
                         <option value="Ingreso">Ingreso</option>
@@ -508,6 +516,7 @@
                         @endforeach
                     </select> <input type="text" class="form-control" value="Descripcion" />
                     <input type="text" class="form-control" value="Fecha" />
+                    <div style="height: 15rem;" id="movementMap"></div>
                 </div>
             </div>
         </div>
@@ -518,7 +527,8 @@
 
 <!-- Footer-->
 @include('partials.footer')
-
+<!-- Leaflet -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
