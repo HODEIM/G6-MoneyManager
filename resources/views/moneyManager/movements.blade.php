@@ -53,6 +53,7 @@
             <div class="mt-4 row d-flex justify-content-center">
                 <div class="col-xl-4 col-lg-5 col-12">
                     <div class="row">
+                        @if($id_permission[0]->id_permission != 3)
                         <div class="col-xl-12 col-lg-12 col-md-6 mb-2">
                             <button type="button" class="btn collapsibleCollapse" id="anadirBoton">
                                 <span class="grande">Añadir</span>
@@ -99,6 +100,8 @@
                                                 Concepto:
                                             </th>
                                             <td class="d-flex justify-content-between align-items-center" style="width:90%">
+                                            
+                                                @if($id_permission[0]->id_permission == 1)
                                                 <div>
                                                     <select class="form-select" name="concepto" id="concepto">
                                                         <option selected hidden value="">--Concepto--</option>
@@ -110,6 +113,14 @@
                                                 <div>
                                                     <a href="#" id="botonAnadir" style="padding-left: 5px;" data-toggle="modal" data-target="#modalConcepto"><i class="far fa-plus-square fa-lg"></i></a>
                                                 </div>
+                                                @else
+                                                <select class="form-select" name="concepto" id="concepto">
+                                                    <option selected hidden value="">--Concepto--</option>
+                                                    @foreach($concepts as $concept)
+                                                    <option value="{{ $concept->id }}">{{ $concept->concept  }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @endif
                                             </td>
                                         </tr>
                                         <tr>
@@ -155,12 +166,85 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="col-xl-12 col-lg-12 col-md-6">
+                        @endif
+                        <div class="col-xl-12 col-lg-12 col-md-6 mb-2">
                             <button type="button" class="collapsibleCollapse btn"><span class="grande">Filtrar datos</span></button>
                             <div class="contentCollapse">
                                 <p class="p-2">Próximamente</p>
                             </div>
                         </div>
+
+                        @if($id_permission[0]->id_permission == 1)
+                        <div class="col-xl-12 col-lg-12 col-md-6">
+                            <button type="button" class="collapsibleCollapse btn" id="administrar"><span class="grande">Administrar permisos de usuarios</span></button>
+                            <div class="contentCollapse">
+                                <form method="POST" action="/permissions/update">
+                                    @csrf
+                                    <table style="width:100%" id="tablaAnadir">
+                                        <tr>
+                                            @if(count($usuarios) > 1)
+                                            <th>
+                                                Usuario:
+                                            </th>
+                                            <td class="pt-2">
+                                                <select class="form-select" style="width:90%" name="usuario" id="usuario">
+                                                    <option selected hidden value="">--Usuarios--</option>
+                                                    @foreach($usuarios as $usuario)
+                                                    @if($usuario->name != auth()->user()->name)
+                                                    <option value="{{$usuario->id}} ">{{ $usuario->name }}</option>
+                                                    @endif
+                                                    @endforeach
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                <div id="usuarioError" class="ponerRojo"></div>
+                                            </td>
+                                        </tr>
+                                        <input type="hidden" name="idAccount" value="{{$account->id}}">
+                                        <tr>
+                                            <th>Permiso:</th>
+                                            <td class="py-2">
+                                                <select class="form-select" style="width:90%" name="permission" id="permission">
+                                                    <option selected hidden value="">--Permisos--</option>
+                                                    @foreach($permissions as $permission)
+                                                    <option value=" {{$permission->id}} ">{{ $permission->permission }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                <div id="permisosError" class="ponerRojo"></div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" class="py-2">
+                                                <input type="submit" value="Cambiar rol" class="btn btn-primary" id="botonPermisos">
+                                </form>
+                                <form method="post" action="/accountUser/destroy" style="float:left;">
+                                    @csrf
+                                    @method('delete')
+                                    <input type="hidden" name="user" id="destroyUser" value="">
+                                    <input type="hidden" name="idAccount" value="{{$account->id}}">
+                                    <input type="submit" value="Expulsar usuario" class="btn btn-primary" id="botonDisattatch">
+                                </form>
+                                </td>
+                                </tr>
+                                @else
+                                <tr>
+                                    <th colspan="2" class="py-4">
+                                        <input type="text" value="Invita a tus amigos" readonly style="width:100%" class="form-control">
+                                    </th>
+                                </tr>
+                                @endif
+                                </table>
+                            </div>
+                        </div>
+                        @endif
                     </div>
                 </div>
                 <div class="col-xl-5 col-lg-7 col-12">
@@ -307,7 +391,7 @@
                         </div>
                 </div>
                 <br>
-                <!-- Si lo que debe es positivo --> 
+                <!-- Si lo que debe es positivo -->
                 @elseif($cadauno > 0) <div class="d-flex  border border-dark borderBar">
                     <div class="d-flex flex-row-reverse" style="width:50%;">
                         <div class="progress d-flex flex-row-reverse no-bordered-left" style="width:100%; height: 30px;">
@@ -408,6 +492,7 @@
             </div>
             <br>
             @else
+            @if(count($movements) != 0)
             <div class="d-flex">
                 <div class="" style="width:100%;">
                     <div class="progress borderBar" style="width:100%; height: 30px;">
@@ -421,6 +506,19 @@
                 </div>
             </div>
             <br>
+            @else
+            <div class="d-flex">
+                <div class="" style="width:100%;">
+                    <div class="progress borderBar" style="width:100%; height: 30px;">
+                        <div class="progress-bar bg-success" role="progressbar" style="width: 0%; " aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div style="padding-top: 4px; margin:auto">
+                            No hay ningún movimiento
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            @endif
             @endif
             @endif
             @else

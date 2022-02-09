@@ -59,4 +59,14 @@ class AccountController extends Controller
         } else
             return redirect()->back()->withErrors(['existes' => "Ya estás unido a la cuenta"]);
     }
+    public function disatatchUser(Request $request)
+    {
+        $request->validate([
+            'user' => 'required',
+            'idAccount' => 'required',
+        ]);
+        $account = Account::find($request->idAccount);
+        $account->user()->detach($request->user);
+        return redirect()->back();
+    }
 }

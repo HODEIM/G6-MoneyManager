@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Concept;
 use App\Models\Account;
 use App\Models\Movement;
+use App\Models\Permission;
 use Illuminate\Support\Facades\DB;
 
 class MovementController extends Controller
@@ -18,6 +19,9 @@ class MovementController extends Controller
         $usuarios = $account->user;
         //    $usuarios = DB::select('select id_user from movements where id_account = :id group by user', ['id' => $id]);
         
+        $id_permission = DB::select('select id_permission from account_users where id_user = :id and id_account = :idAccount', ['id' => auth()->user()->id, 'idAccount' => $id]);
+        $permissions = Permission::all();
+
         $gastosUsuario = DB::select('select * from movements where id_account = :id and type = "Gasto"', ['id' => $id]);
         $ingresosUsuario = DB::select('select * from movements where id_account = :id and type = "Ingreso"', ['id' => $id]);
 
@@ -33,7 +37,7 @@ class MovementController extends Controller
             $url .= $_SERVER['HTTP_HOST'];
             $url .= $_SERVER['REQUEST_URI'];
             $url .= "/invite/" . auth()->user()->id;
-            return view('moneyManager.movements', ['account' => $account, 'concepts' => $concepts, 'movements' => $movements, 'url' => $url, 'usuarios' => $usuarios, 'ingresosUsuario' => $ingresosUsuario, 'gastosUsuario' => $gastosUsuario, 'mediaCuenta' => $mediaCuenta]);
+            return view('moneyManager.movements', ['account' => $account, 'concepts' => $concepts, 'movements' => $movements, 'url' => $url, 'usuarios' => $usuarios, 'ingresosUsuario' => $ingresosUsuario, 'gastosUsuario' => $gastosUsuario, 'mediaCuenta' => $mediaCuenta, 'id_permission' => $id_permission, 'permissions' => $permissions]);
         } else
             return redirect("/accounts");
     }

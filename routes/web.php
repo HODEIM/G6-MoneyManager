@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MovementController;
 use App\Http\Controllers\ConceptController;
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\LangController;
 use App\Http\Controllers\MailMessagesController;
 
@@ -49,6 +50,9 @@ Route::post('/accounts/store', [AccountController::class, 'store'])->middleware(
 
 Route::post('/accounts/acceptInvitation', [AccountController::class, 'acceptInvitation'])->middleware("auth");
 
+//account User ROUTES
+Route::delete('/accountUser/destroy', [AccountController::class, 'disatatchUser'])->middleware("auth");
+
 // movements ROUTES
 
 Route::get('/account/{id}', [MovementController::class, 'index'])->middleware(["auth", "verified"]);
@@ -60,6 +64,12 @@ Route::delete('/movement/{id}', [MovementController::class, 'destroy'])->middlew
 // concept ROUTES
 
 Route::post('/concept/store', [ConceptController::class, 'store'])->middleware("auth");
+
+// Permission Routes
+
+Route::post('/permissions/update', [PermissionController::class, 'update'])->middleware("auth");
+
+
 
 // Admin ROUTES
 Route::get('/admin', [AdminController::class, 'index'])->middleware(["auth", "verified"]);
