@@ -13,6 +13,7 @@ class Movement extends Model
         'amount',
         'description',
         'date',
+        'user',
         'id_concept',
         'id_account'
     ];

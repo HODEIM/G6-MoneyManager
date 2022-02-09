@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Account extends Model
 {
     use HasFactory;
-    protected $fillable =[
+    protected $fillable = [
         'name',
         'description',
     ];
@@ -22,6 +22,6 @@ class Account extends Model
     }
     public function user()
     {
-        return $this->belongsToMany('App\Models\User');
+        return $this->belongsToMany('App\Models\User', 'account_users', 'id_account', 'id_user')->withPivot('active', 'id_permission')->withTimestamps();
     }
 }

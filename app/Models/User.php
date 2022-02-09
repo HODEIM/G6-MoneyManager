@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -49,10 +49,10 @@ class User extends Authenticatable
     ];
     public function rol()
     {
-        return $this->belongsTo('App\Models\Rol');
+        return $this->belongsTo('App\Models\Rol', 'id_rol');
     }
     public function accounts()
     {
-        return $this->belongsToMany('App\Models\Account');
+        return $this->belongsToMany('App\Models\Account', 'account_users', 'id_user', 'id_account')->withPivot('active', 'id_permission')->withTimestamps();
     }
 }

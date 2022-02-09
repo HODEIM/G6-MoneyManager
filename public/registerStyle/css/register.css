@@ -1,0 +1,95 @@
+/**** Tooltips Error Message ****/
+.tooltip {
+    position: relative;
+    border-bottom: 1px black;
+}
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #cb0104;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 30%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 10px;
+}
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #cb0104 transparent transparent transparent;
+}
+.tooltip .nametooltip .tooltiptext {
+    visibility: hidden;
+    opacity: 1;
+    z-index: 2;
+}
+.tooltip .surnametooltip .tooltiptext {
+    visibility: hidden;
+    opacity: 1;
+}
+.tooltip .passwordtooltip .tooltiptext {
+    visibility: hidden;
+    left: 70%;
+    opacity: 1;
+    z-index: 1;
+}
+.tooltip .repeatpasswordtooltip .tooltiptext {
+    visibility: hidden;
+    opacity: 1;
+}
+.tooltip .daytooltip .tooltiptext {
+    visibility: hidden;
+    opacity: 1;
+}
+.tooltip .monthtooltip .tooltiptext {
+    visibility: hidden;
+    opacity: 1;
+}
+.tooltip .yeartooltip .tooltiptext {
+    visibility: hidden;
+    opacity: 1;
+}
+.tooltip .emailtooltip .tooltiptext {
+    visibility: hidden;
+    opacity: 1;
+}
+.tooltip .repeatemailtooltip .tooltiptext {
+    visibility: hidden;
+    opacity: 1;
+}
+.tooltip .addresstooltip .tooltiptext {
+    visibility: hidden;
+    opacity: 1;
+}
+.tooltip .codetooltip .tooltiptext {
+    visibility: hidden;
+    opacity: 1;
+}
+.tooltip .telephonetooltip .tooltiptext {
+    visibility: hidden;
+    opacity: 1;
+}
+/**** End Tooltips Error Message ****/
+
+/**** No Rows Input Number ****/
+.no-controls::-webkit-outer-spin-button,
+.no-controls::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.no-controls {
+  -moz-appearance:textfield;
+}
+/**** End No Rows Input Number ****/
