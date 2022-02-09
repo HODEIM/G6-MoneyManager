@@ -191,14 +191,14 @@
                                 @endif
                                 <td>{{$movement->user}}</td>
                                 <td>
-                                <a href="#" data-toggle="modal" data-target="#modalMovimiento">A </a>
+                                    <a href="#" id="editMovement" data-toggle="modal" data-target="#modalMovimiento">A </a>
                                     <a href="#" style="color:black" onclick="event.preventDefault(); document.getElementById('destroyMovement{{$movement->id}}').submit();">
                                         <i class="fas fa-trash fa-lg"></i></a>
                                     <form method="POST" action="/movement/{{$movement->id}}" id="destroyMovement{{$movement->id}}">
                                         @csrf
                                         @method('delete')
                                     </form>
-                                    
+
                                 </td>
                             </tr>
                             @endforeach
@@ -309,7 +309,7 @@
                         </div>
                 </div>
                 <br>
-                <!-- Si lo que debe es positivo --> 
+                <!-- Si lo que debe es positivo -->
                 @elseif($cadauno > 0) <div class="d-flex  border border-dark borderBar">
                     <div class="d-flex flex-row-reverse" style="width:50%;">
                         <div class="progress d-flex flex-row-reverse no-bordered-left" style="width:100%; height: 30px;">
@@ -482,15 +482,32 @@
 
     <!--------- MODAL Edit Movimientos  -------->
     <div class="modal fade" id="modalMovimiento" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header img">
+        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 45rem !important;">
+            <div class=" modal-content">
+                <div class=" modal-header img">
                     <button type="button" class="close d-flex align-items-center justify-content-center" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true" class="fas fa-times"></span>
                     </button>
                 </div>
                 <div class="modal-body pt-md-0 pb-5 px-4 px-md-5 text-center">
-                    
+                    <table>
+                        <tr>
+                            <td>Tipo</td>
+                            <td>Importe</td>
+                            <td>Concepto</td>
+                        </tr>
+                    </table>
+                    <select class="form-select" name="tipo" id="tipo">
+                        <option value="Ingreso">Ingreso</option>
+                        <option value="Gasto">Gasto</option>
+                    </select>
+                    <input type="text" class="form-control" value="Importe" />
+                    <select class="form-select" name="concepto" id="concepto">
+                        @foreach($concepts as $concept)
+                        <option value="{{ $concept->id }}">{{ $concept->concept  }}</option>
+                        @endforeach
+                    </select> <input type="text" class="form-control" value="Descripcion" />
+                    <input type="text" class="form-control" value="Fecha" />
                 </div>
             </div>
         </div>
