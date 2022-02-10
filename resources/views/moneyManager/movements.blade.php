@@ -9,12 +9,17 @@
     <title>Movimientos</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/logo/logo_negro.ico') }}" />
     <!-- Font Awesome icons (free version)-->
-    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+    <script src="{{ asset('aplicacion/js/fontawesome.js') }}" crossorigin="anonymous"></script>
+
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
     <!--Jquery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Leaflet -->
+    <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" /> -->
+    <link rel="stylesheet" href="{{ asset('aplicacion/css/map.css') }}" />
+
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
     <!-- Personal CSS-->
@@ -102,7 +107,7 @@
                                             <td class="d-flex justify-content-between align-items-center" style="width:90%">
 
 
-                                                <div>
+                                                <div class="w-100">
                                                     <select class="form-select" name="concepto" id="concepto">
                                                         <option selected hidden value="">--Concepto--</option>
                                                         @foreach($concepts as $concept)
@@ -161,12 +166,12 @@
                             </div>
                         </div>
                         @endif
-                        <div class="col-xl-12 col-lg-12 col-md-6 mb-2">
+                        <!-- <div class="col-xl-12 col-lg-12 col-md-6 mb-2">
                             <button type="button" class="collapsibleCollapse btn"><span class="grande">Filtrar datos</span></button>
                             <div class="contentCollapse">
                                 <p class="p-2">Próximamente</p>
                             </div>
-                        </div>
+                        </div> -->
 
                         @if($id_permission[0]->id_permission == 1)
                         <div class="col-xl-12 col-lg-12 col-md-6">
@@ -236,7 +241,6 @@
                                     </tr>
                                     @endif
                                 </table>
-
                             </div>
                         </div>
                         @endif
@@ -270,12 +274,18 @@
                                 @endif
                                 <td>{{$movement->user}}</td>
                                 <td>
-                                    <a href="#" style="color:black" onclick="event.preventDefault(); document.getElementById('destroyMovement{{$movement->id}}').submit();">
-                                        <i class="fas fa-trash fa-lg"></i></a>
-                                    <form method="POST" action="/movement/{{$movement->id}}" id="destroyMovement{{$movement->id}}">
-                                        @csrf
-                                        @method('delete')
-                                    </form>
+                                    <div class="d-flex justify-content-end">
+                                        <a href="#" id="editMovement" data-toggle="modal" data-target="#modalMovimiento" onclick="editMovement('{{$movement->id}}')"><i class="fas fa-edit fa-lg mx-2" style="color:black;"></i></a>
+                                        </form>
+
+                                        <form method="POST" action="/movement/{{$movement->id}}" id="destroyMovement{{$movement->id}}">
+                                            @csrf
+                                            @method('delete')
+                                        </form>
+                                        <a href="#" style="color:black" onclick="event.preventDefault(); document.getElementById('destroyMovement{{$movement->id}}').submit();">
+                                            <i class="fas fa-trash fa-lg"></i>
+                                        </a>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach
@@ -455,7 +465,6 @@
                     <div class="" style="width:50%;">
                         <div class="progress no-bordered-right" style="width:100%; height: 30px;">
                             <div class="progress-bar bg-success" role="progressbar" style='width:<?php echo $porcentaje ?>%;' aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span>{{ $totalUsuario }}&#8364</span></div>
-
                         </div>
                     </div>
                 </div>
@@ -464,12 +473,10 @@
                                             $todo = $ingresoTotal + $gastoTotal;
                                             $porcentaje = $totalUsuario * 100 / $todo;
                                             $porcentaje = 0 - $porcentaje;
-
                                             ?> <div class="d-flex  border border-dark borderBar">
                     <div class="d-flex flex-row-reverse" style="width:50%;">
                         <div class="progress d-flex flex-row-reverse no-bordered-left" style="width:100%; height: 30px;">
                             <div class="progress-bar bg-danger" role="progressbar" style='width:<?php echo $porcentaje ?>%;' aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span>{{ $totalUsuario }}&#8364</span></div>
-
                         </div>
                     </div>
 
@@ -557,6 +564,8 @@
                         <img src="{{ asset('assets/logo/logo_negro.ico') }}" alt="" class="img-fluid" />
                     </div>
                     <h4 class="mb-2">Añadir un nuevo concepto</h4>
+
+                    </form>
                     <form method="POST" class="subscribe-form" action="/concept/store">
                         <div class="form-group d-flex">
                             @csrf
@@ -571,10 +580,75 @@
     </div>
     <!--------- FIN MODAL DE CONCEPTOS  -------->
 
+    <!--------- MODAL Edit Movimientos  -------->
+    <div class="modal fade" id="modalMovimiento" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 45rem !important;">
+            <div class=" modal-content">
+                <div class=" modal-header img">
+                    <button type="button" class="close d-flex align-items-center justify-content-center" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="fas fa-times"></span>
+                    </button>
+
+                </div>
+                <div class="modal-body pt-md-0 pb-5 px-4 px-md-5 text-center d-flex flex-column justify-content-center text-white">
+                    <h2>Movimiento</h2>
+                    <table>
+                        <tr>
+                            <td>Tipo
+                                <select class="form-select" name="tipo" id="tipo2">
+                                    <option value="Ingreso">Ingreso</option>
+                                    <option value="Gasto">Gasto</option>
+                                </select>
+                            </td>
+                            <td>Importe
+                                <input type="text" class="form-control" value="Importe" id="importe2" />
+                            </td>
+                            <td>Concepto
+                                <select class="form-select" name="concepto" id="concepto2">
+                                    @foreach($concepts as $concept)
+                                    <option value="{{ $concept->id }}">{{ $concept->concept  }}</option>
+                                    @endforeach
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">Descripcion
+                                <input type="text" class="form-control mb-2" value="Descripcion" id="descripcion2" />
+                            </td>
+                            <td>Fecha
+                                <input type="date" class="form-control mb-2" value="Fecha" id="fecha2" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <div id="mapContainer" style="width: 100%;" class="mt-3">
+                                    <div style="height: 20rem;" id="movementMap"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <div class="d-flex justify-content-end mt-3">
+                                    <input type="hidden" id="idMovement" class="form-control w-25" value="Guardar" />
+                                    <input type="button" id="updateMovement" class="form-control w-25" value="Guardar" />
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--------- FIN MODAL Edit Movimientos  -------->
+
 </body>
 
 <!-- Footer-->
 @include('partials.footer')
+
+<!-- Leaflet -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+<!-- <script src="{{ asset('aplicacion/js/map.js')}}"></script> -->
 
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

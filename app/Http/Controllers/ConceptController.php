@@ -15,6 +15,6 @@ class ConceptController extends Controller
                 'id_account' => $request->accountId
             ]);
         }
-        return redirect("/account/".$request->accountId);
+        return redirect("/account/" . $request->accountId);
     }
 }

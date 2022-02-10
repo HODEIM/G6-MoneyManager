@@ -18,7 +18,7 @@ class MovementController extends Controller
         $movements = Movement::where('id_account', '=', $id)->get();
         $usuarios = $account->user;
         //    $usuarios = DB::select('select id_user from movements where id_account = :id group by user', ['id' => $id]);
-        
+
         $id_permission = DB::select('select id_permission from account_users where id_user = :id and id_account = :idAccount', ['id' => auth()->user()->id, 'idAccount' => $id]);
         $permissions = Permission::all();
 
@@ -79,6 +79,15 @@ class MovementController extends Controller
         return redirect('/account/' . $id);
     }
 
+    public function show(Movement $movement)
+    {
+        return response()->json($movement, 200);
+    }
+    public function update(Request $request, Movement $movement)
+    {
+        $movement->update($request->all());
+        return response()->json($movement, 200);
+    }
     public function destroy($id)
     {
         Movement::destroy($id);
