@@ -9,7 +9,8 @@
     <title>Movimientos</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/logo/logo_negro.ico') }}" />
     <!-- Font Awesome icons (free version)-->
-    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+    <script src="{{ asset('aplicacion/js/fontawesome.js') }}" crossorigin="anonymous"></script>
+
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
@@ -492,33 +493,49 @@
                         <span aria-hidden="true" class="fas fa-times"></span>
                     </button>
                 </div>
-                <div class="modal-body pt-md-0 pb-5 px-4 px-md-5 text-center">
+                <div class="modal-body pt-md-0 pb-5 px-4 px-md-5 text-center d-flex justify-content-center text-white">
                     <table>
                         <tr>
-                            <td>Tipo</td>
-                            <td>Importe</td>
-                            <td>Concepto</td>
+                            <td>Tipo
+                                <select class="form-select mb-2" name="tipo" id="tipo">
+                                    <option value="Ingreso">Ingreso</option>
+                                    <option value="Gasto">Gasto</option>
+                                </select>
+                            </td>
+                            <td>Importe
+                                <input type="text" class="form-control mb-2" value="Importe" />
+                            </td>
+                            <td>Concepto
+                                <select class="form-select mb-2" name="concepto" id="concepto">
+                                    @foreach($concepts as $concept)
+                                    <option value="{{ $concept->id }}">{{ $concept->concept  }}</option>
+                                    @endforeach
+                                </select>
+                            </td>
                         </tr>
                         <tr>
-                            <td>Tipo</td>
-                            <td>Importe</td>
-                            <td>Concepto</td>
+                            <td colspan="2">Descripcion
+                                <input type="text" class="form-control mb-2" value="Descripcion" />
+                            </td>
+                            <td>Fecha
+                                <input type="text" class="form-control mb-2" value="Fecha" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <div style="width: 100%;" class="mt-3">
+                                    <div style=" height: 15rem;" id="movementMap"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <div class="d-flex justify-content-end mt-3">
+                                    <input type="button" id=uUpdateMovement" class="form-control w-25" value="Guardar" />
+                                </div>
+                            </td>
                         </tr>
                     </table>
-                    <select class="form-select" name="tipo" id="tipo">
-                        <option value="Ingreso">Ingreso</option>
-                        <option value="Gasto">Gasto</option>
-                    </select>
-                    <input type="text" class="form-control" value="Importe" />
-                    <select class="form-select" name="concepto" id="concepto">
-                        @foreach($concepts as $concept)
-                        <option value="{{ $concept->id }}">{{ $concept->concept  }}</option>
-                        @endforeach
-                    </select> <input type="text" class="form-control" value="Descripcion" />
-                    <input type="text" class="form-control" value="Fecha" />
-                    <div style="width: 100%;">
-                        <div style=" height: 15rem;" id="movementMap"></div>
-                    </div>
                 </div>
             </div>
         </div>

@@ -11,6 +11,7 @@ function iniciar() {
     $('#copiar').mouseout(outFunc);
     $('#anadir').click(validar);
     $('#editMovement').click(editMovement);
+    $('#updateMovement').click(updateMovement);
     $('#modalMovimiento').on('show.bs.modal', function () {
         setTimeout(function () {
             let width = $(window).width();
