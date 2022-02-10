@@ -17,6 +17,9 @@
     <!--Jquery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
     <!-- Personal CSS-->
@@ -36,7 +39,7 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="/exchange">{{ __('exchange') }}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/exchange">{{ __('exchange') }}</a></li>
                     <li class="nav-item"><a class="nav-link" href="/accounts">{{ __('myaccounts') }}</a></li>
                     <li class="nav-item"><a class="nav-link" href="/profile/edit">{{ __('profile') }}</a></li>
                     <li class="nav-item">
@@ -52,7 +55,7 @@
     </nav>
 
     <div class="container-fluid">
-        <div class="row d-flex justify-content-center mt-3">
+        <div class="row d-flex justify-content-center mt-3 ">
             <div class="col-lg-5 col-md-6 text-center">
                 <div class=" d-flex flex-direction-row justify-content-around align-items-center">
                     <h1>{{ __('accounts') }}</h1>
@@ -62,8 +65,8 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-5 col-md-6 m-auto">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-5 col-md-6 col-7">
                 <table class="table table-hover">
                     <tbody id="accountsTable">
                         @if(count($accounts) > 0)
@@ -84,8 +87,44 @@
                     </tbody>
                 </table>
             </div>
+            <div class="col-lg-1 col-md-1 col-4 d-inline-flex">
+                <table>
+                    @if(count($accounts) > 0)
+                    @foreach($accounts as $account)
+                    <tr>
+                        <td class="px-2">
+                            <a href="#" style="color:black" onclick="event.preventDefault(); document.getElementById('stats{{$account->id}}').submit();">
+                                <i class="fas fa-chart-bar fa-lg"></i>
+                            </a>
+                            <form method="post" action="/account/stats/{{$account->id}}" id="stats{{$account->id}}">
+                                @csrf
+                            </form>
+                        </td>
+                        <td class="px-2">
+                            <a href="#" style="color:black" onclick="event.preventDefault(); document.getElementById('editAccount{{$account->id}}').submit();">
+                                <i class="fas fa-edit fa-lg"></i>
+                            </a>
+                            <form method="post" action="/account/edit/{{$account->id}}" id="editAccount{{$account->id}}">
+                                @csrf
+                            </form>
+                        </td>
+                        <td class="px-2">
+                            <a href="#" style="color:black" onclick="event.preventDefault(); document.getElementById('destroyAccount{{$account->id}}').submit();">
+                                <i class="fas fa-trash fa-lg"></i>
+                            </a>
+                            <form method="POST" action="/account/destroy/{{$account->id}}" id="destroyAccount{{$account->id}}">
+                                @csrf
+                                @method('delete')
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
+                    @endif
+                </table>
+            </div>
         </div>
     </div>
+
     <!-- Footer-->
     @include('partials.footer')
 
@@ -93,7 +132,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script src="{{ asset('landing/js/scripts.js')}}"></script>
+    @if(count($accounts) > 0)
     <script src="{{ asset('aplicacion/js/user.js')}}"></script>
+    @endif
 </body>
 
 </html>
