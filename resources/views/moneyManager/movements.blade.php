@@ -115,10 +115,11 @@
                                                         @endforeach
                                                     </select>
                                                 </div>
+                                                @if($id_permission[0]->id_permission == 1)
                                                 <div>
                                                     <a href="#" id="botonAnadir" style="padding-left: 5px;" data-toggle="modal" data-target="#modalConcepto"><i class="far fa-plus-square fa-lg"></i></a>
                                                 </div>
-
+                                                @endif
 
                                             </td>
                                         </tr>
