@@ -516,7 +516,9 @@
                         @endforeach
                     </select> <input type="text" class="form-control" value="Descripcion" />
                     <input type="text" class="form-control" value="Fecha" />
-                    <div style="height: 15rem;" id="movementMap"></div>
+                    <div style="width: 100%;">
+                        <div style=" height: 15rem;" id="movementMap"></div>
+                    </div>
                 </div>
             </div>
         </div>

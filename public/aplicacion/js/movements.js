@@ -12,18 +12,18 @@ function iniciar() {
     $('#anadir').click(validar);
     $('#editMovement').click(editMovement);
     $('#modalMovimiento').on('show.bs.modal', function () {
-        let height = $('#movementMap').height() / 2;
-        let width = $('#movementMap').width() / 2;
-        console.log(width + '/' + height)
-        let string = 'translate3d(' + width + 'px, ' + height + 'px, 0px) !important';
-        // $('#movementMap .leaflet-pane').css('transform', string);
-        let a = $('#movementMap').get(0);
-        $(a).css({
-            'transform': string
-        });
         setTimeout(function () {
+            let width = $(window).width();
+            let height2 = $(window).height() - 5;
+            console.log(width + '/' + height2);
+            window.resizeTo(width, height2);
+            let width3 = $(window).width();
+            let height3 = $(window).height();
+            console.log(width3 + '/' + height3);
+            // let height = $('#movementMap').height() / 2;
+            // $('.leaflet-map-pane').css('transform', 'translate3d(312px,' + height + 'px,0px)');
             movementMap.invalidateSize();
-        }, 10);
+        }, 20);
     });
 }
 
