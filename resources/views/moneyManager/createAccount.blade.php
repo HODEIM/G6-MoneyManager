@@ -35,13 +35,8 @@
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
-                <!-- <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#!">Movimientos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">Ingresos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">Gastos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">Estadísticas</a></li>
-                </ul> -->
                 <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/exchange">{{ __('exchange') }}</a></li>
                     <li class="nav-item"><a class="nav-link" href="/accounts">{{ __('myaccounts') }}</a></li>
                     <li class="nav-item"><a class="nav-link" href="/profile/edit">{{ __('profile') }}</a></li>
                     <li class="nav-item">

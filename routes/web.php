@@ -48,10 +48,18 @@ Route::get('/accounts/create', [AccountController::class, 'create'])->middleware
 
 Route::post('/accounts/store', [AccountController::class, 'store'])->middleware(["auth", "verified"]);
 
-Route::post('/accounts/acceptInvitation', [AccountController::class, 'acceptInvitation'])->middleware("auth");
+Route::post('/accounts/acceptInvitation', [AccountController::class, 'acceptInvitation'])->middleware(["auth", "verified"]);
+
+Route::post('/account/stats/{id}', [AccountController::class, 'stats'])->middleware(["auth", "verified"]);
+
+Route::post('/account/edit/{id}', [AccountController::class, 'editView'])->middleware(["auth", "verified"]);
+
+Route::post('/account/edit', [AccountController::class, 'edit'])->middleware(["auth", "verified"]);
+
+Route::delete('/account/destroy/{id}', [AccountController::class, 'destroy'])->middleware(["auth", "verified"]);
 
 //account User ROUTES
-Route::delete('/accountUser/destroy', [AccountController::class, 'disatatchUser'])->middleware("auth");
+Route::delete('/accountUser/destroy', [AccountController::class, 'disatatchUser'])->middleware(["auth", "verified"]);
 
 // movements ROUTES
 

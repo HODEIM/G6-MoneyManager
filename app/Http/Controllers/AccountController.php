@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Account;
 use App\Models\User;
+use App\Models\Account;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 
 class AccountController extends Controller
@@ -68,5 +69,41 @@ class AccountController extends Controller
         $account = Account::find($request->idAccount);
         $account->user()->detach($request->user);
         return redirect()->back();
+    }
+    public function destroy($id)
+    {
+        Account::destroy($id);
+        return redirect()->back();
+    }
+    public function editView($id)
+    {
+        $account = Account::find($id);
+        return view('moneyManager.editAccount', ['account' => $account]);
+    }
+    public function edit(Request $request)
+    {
+        
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+        ]);
+        $account = Account::find($request->id);
+        $account->name = $request->name;
+        $account->description = $request->description;
+        $account->save();
+        return redirect('/accounts');
+    }
+    public function stats($id)
+    {
+        $sqlGasto = DB::table("movements")->
+        where("id_account",  "=", $id)->
+        where("type", "=", "'Gasto'")->
+        select("*", DB::raw("SUM(amount) as sum_amount"))->
+        groupBy("id_concept")
+        ->get();
+        dd($sqlGasto);
+        
+        $account = Account::find($id);
+        return view('moneyManager.stats', ['account' => $account]);
     }
 }
