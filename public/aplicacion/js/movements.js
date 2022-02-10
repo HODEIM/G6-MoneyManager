@@ -1,34 +1,32 @@
 $('document').ready(iniciar);
 
-let movementMap = L.map('movementMap').setView([40.4378698, -3.8196207], 13);
+let movementMap = L.map('movementMap').setView([40.416729, -3.703339], 14);
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 50,
 }).addTo(movementMap);
-let marker = L.marker([40.4378698, -3.8196207]).addTo(movementMap);
+movementMap.doubleClickZoom.disable();
+let marker = L.marker([40.416729, -3.703339]).addTo(movementMap);
+movementMap.on('dblclick', function (e) {
+    lat = e.latlng.lat;
+    lon = e.latlng.lng;
+
+    if (marker != undefined) {
+        movementMap.removeLayer(marker);
+    };
+
+    //Add a marker to show where you clicked.
+    marker = L.marker([lat, lon]).addTo(movementMap);
+});
 
 function iniciar() {
     $('#copiar').click(copiar);
     $('#copiar').mouseout(outFunc);
     $('#anadir').click(validar);
-    $('#editMovement').click(editMovement);
     $('#updateMovement').click(updateMovement);
-    $('#modalMovimiento').on('show.bs.modal', function () {
-        setTimeout(function () {
-            let width = $(window).width();
-            let height2 = $(window).height() - 5;
-            console.log(width + '/' + height2);
-            window.resizeTo(width, height2);
-            let width3 = $(window).width();
-            let height3 = $(window).height();
-            console.log(width3 + '/' + height3);
-            // let height = $('#movementMap').height() / 2;
-            // $('.leaflet-map-pane').css('transform', 'translate3d(312px,' + height + 'px,0px)');
-            movementMap.invalidateSize();
-        }, 20);
+    $('#modalMovimiento').on('shown.bs.modal', function (e) {
+        movementMap.invalidateSize();
     });
 }
-
-
 
 function copiar() {
     var copyText = document.getElementById("compartir");
@@ -44,7 +42,6 @@ function outFunc() {
     var tooltip = document.getElementById("myTooltipPersonal");
     tooltip.innerHTML = "Copiar enlace";
 }
-
 
 function validar() {
     var tipo = $('#tipo').val();
@@ -94,10 +91,60 @@ function validar() {
     }
 }
 
+function editMovement(id) {
+    console.log(id);
+    // let requestUrl = location.origin + '/api/movement/' + $(this).attr('data-id');
+    let requestUrl = location.origin + '/api/movement/' + id;
+    console.log(requestUrl);
+    $.ajax({
+        type: "GET",
+        contentType: "application/json",
+        url: requestUrl,
+        data: {},
+        dataType: "json",
+        success: function (result) {
+            $('#idMovement').val(result.id);
+            $('#importe2').val(result.amount);
+            $('#tipo2 option[value=' + result.type + ']');
+            $('#concepto2 option[value=' + result.id_concept + ']');
+            $('#descripcion2 ').val(result.description);
+            $('#fecha2').val(result.date);
+            movementMap.setView([result.latitude, result.longitude], 14);
+            marker.setLatLng([result.latitude, result.longitude]);
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            alert(xhr.status);
+            alert(thrownError);
+        }
+    });
+}
 
+function updateMovement() {
+    let id = $('#idMovement').val();
+    let requestUrl = location.origin + '/api/movement/' + id;
 
-function editMovement() {
-
-
-    console.log('a');
+    let LatLng = marker.getLatLng();
+    console.log(LatLng.lat + '/' + LatLng.lng);
+    $.ajax({
+        type: "PUT",
+        contentType: "application/json",
+        url: requestUrl,
+        data: {
+            'type': '',
+            'amount': $('#importe2').val(),
+            'description': $('#tipo2').val(),
+            'date': $('#fecha2').val(),
+            'id_concept': $('#concepto2').val(),
+            'latitude': LatLng.lat,
+            'longitude': LatLng.lng
+        },
+        dataType: "json",
+        success: function (result) {
+            alert('Guardado con existo');
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            alert(xhr.status);
+            alert(thrownError);
+        }
+    });
 }

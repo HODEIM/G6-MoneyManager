@@ -19,5 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('movement/{id}', [MovementController::class , 'show']);
-Route::put('movement/{id}', [MovementController::class , 'update']);
+Route::get('movement/{movement}', [MovementController::class, 'show']);
+Route::put('movement/{movement}', [MovementController::class, 'update']);

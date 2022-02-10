@@ -15,7 +15,9 @@ class Movement extends Model
         'date',
         'user',
         'id_concept',
-        'id_account'
+        'id_account',
+        'latitude',
+        'longitude'
     ];
     public function concept()
     {

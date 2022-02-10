@@ -17,7 +17,8 @@
     <!--Jquery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Leaflet -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+    <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" /> -->
+    <link rel="stylesheet" href="{{ asset('aplicacion/css/map.css') }}" />
 
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
@@ -195,7 +196,7 @@
                                 @endif
                                 <td>{{$movement->user}}</td>
                                 <td>
-                                    <a href="#" id="editMovement" data-toggle="modal" data-target="#modalMovimiento">A </a>
+                                    <a href="#" id="editMovement" data-toggle="modal" data-target="#modalMovimiento" onclick="editMovement('{{$movement->id}}')">A</a>
                                     <a href="#" style="color:black" onclick="event.preventDefault(); document.getElementById('destroyMovement{{$movement->id}}').submit();">
                                         <i class="fas fa-trash fa-lg"></i></a>
                                     <form method="POST" action="/movement/{{$movement->id}}" id="destroyMovement{{$movement->id}}">
@@ -497,16 +498,16 @@
                     <table>
                         <tr>
                             <td>Tipo
-                                <select class="form-select mb-2" name="tipo" id="tipo">
+                                <select class="form-select mb-2" name="tipo" id="tipo2">
                                     <option value="Ingreso">Ingreso</option>
                                     <option value="Gasto">Gasto</option>
                                 </select>
                             </td>
                             <td>Importe
-                                <input type="text" class="form-control mb-2" value="Importe" />
+                                <input type="text" class="form-control mb-2" value="Importe" id="importe2" />
                             </td>
                             <td>Concepto
-                                <select class="form-select mb-2" name="concepto" id="concepto">
+                                <select class="form-select mb-2" name="concepto" id="concepto2">
                                     @foreach($concepts as $concept)
                                     <option value="{{ $concept->id }}">{{ $concept->concept  }}</option>
                                     @endforeach
@@ -515,23 +516,24 @@
                         </tr>
                         <tr>
                             <td colspan="2">Descripcion
-                                <input type="text" class="form-control mb-2" value="Descripcion" />
+                                <input type="text" class="form-control mb-2" value="Descripcion" id="descripcion2" />
                             </td>
                             <td>Fecha
-                                <input type="text" class="form-control mb-2" value="Fecha" />
+                                <input type="date" class="form-control mb-2" value="Fecha" id="fecha2" />
                             </td>
                         </tr>
                         <tr>
                             <td colspan="3">
-                                <div style="width: 100%;" class="mt-3">
-                                    <div style=" height: 15rem;" id="movementMap"></div>
+                                <div id="mapContainer" style="width: 100%;" class="mt-3">
+                                    <div style="height: 20rem;" id="movementMap"></div>
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="3">
                                 <div class="d-flex justify-content-end mt-3">
-                                    <input type="button" id=uUpdateMovement" class="form-control w-25" value="Guardar" />
+                                    <input type="hidden" id="idMovement" class="form-control w-25" value="Guardar" />
+                                    <input type="button" id="updateMovement" class="form-control w-25" value="Guardar" />
                                 </div>
                             </td>
                         </tr>
@@ -546,8 +548,11 @@
 
 <!-- Footer-->
 @include('partials.footer')
+
 <!-- Leaflet -->
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+<!-- <script src="{{ asset('aplicacion/js/map.js')}}"></script> -->
+
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->

@@ -75,12 +75,11 @@ class MovementController extends Controller
         return redirect('/account/' . $id);
     }
 
-    public function show($movementId)
+    public function show(Movement $movement)
     {
-        $movement = Movement::find($movementId);
         return response()->json($movement, 200);
     }
-    public function update(Request $request,Movement $movement)
+    public function update(Request $request, Movement $movement)
     {
         $movement->update($request->all());
         return response()->json($movement, 200);
