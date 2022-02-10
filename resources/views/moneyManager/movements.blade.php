@@ -196,7 +196,7 @@
                                 @endif
                                 <td>{{$movement->user}}</td>
                                 <td>
-                                    <a href="#" id="editMovement" data-toggle="modal" data-target="#modalMovimiento" onclick="editMovement('{{$movement->id}}')">A</a>
+                                    <a href="#" id="editMovement" data-toggle="modal" data-target="#modalMovimiento" onclick="editMovement('{{$movement->id}}')"><i class="fas fa-edit fa-lg" style="color:black;"></i></a>
                                     <a href="#" style="color:black" onclick="event.preventDefault(); document.getElementById('destroyMovement{{$movement->id}}').submit();">
                                         <i class="fas fa-trash fa-lg"></i></a>
                                     <form method="POST" action="/movement/{{$movement->id}}" id="destroyMovement{{$movement->id}}">
@@ -493,21 +493,23 @@
                     <button type="button" class="close d-flex align-items-center justify-content-center" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true" class="fas fa-times"></span>
                     </button>
+
                 </div>
-                <div class="modal-body pt-md-0 pb-5 px-4 px-md-5 text-center d-flex justify-content-center text-white">
+                <div class="modal-body pt-md-0 pb-5 px-4 px-md-5 text-center d-flex flex-column justify-content-center text-white">
+                    <h2>Movimiento</h2>
                     <table>
                         <tr>
                             <td>Tipo
-                                <select class="form-select mb-2" name="tipo" id="tipo2">
+                                <select class="form-select" name="tipo" id="tipo2">
                                     <option value="Ingreso">Ingreso</option>
                                     <option value="Gasto">Gasto</option>
                                 </select>
                             </td>
                             <td>Importe
-                                <input type="text" class="form-control mb-2" value="Importe" id="importe2" />
+                                <input type="text" class="form-control" value="Importe" id="importe2" />
                             </td>
                             <td>Concepto
-                                <select class="form-select mb-2" name="concepto" id="concepto2">
+                                <select class="form-select" name="concepto" id="concepto2">
                                     @foreach($concepts as $concept)
                                     <option value="{{ $concept->id }}">{{ $concept->concept  }}</option>
                                     @endforeach

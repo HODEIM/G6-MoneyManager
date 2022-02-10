@@ -122,24 +122,31 @@ function editMovement(id) {
 function updateMovement() {
     let id = $('#idMovement').val();
     let requestUrl = location.origin + '/api/movement/' + id;
-
     let LatLng = marker.getLatLng();
-    console.log(LatLng.lat + '/' + LatLng.lng);
+    var type = $('#tipo2').val();
+    var amount = $('#importe2').val();
+    var description = $('#descripcion2').val();
+    var date = $('#fecha2').val();
+    var id_concept = $('#concepto2').val();
+    var latitude = LatLng.lat;
+    var longitude = LatLng.lng;
+
+
     $.ajax({
         type: "PUT",
-        contentType: "application/json",
         url: requestUrl,
         data: {
-            'type': '',
-            'amount': $('#importe2').val(),
-            'description': $('#tipo2').val(),
-            'date': $('#fecha2').val(),
-            'id_concept': $('#concepto2').val(),
-            'latitude': LatLng.lat,
-            'longitude': LatLng.lng
+            type: type,
+            amount: amount,
+            description: description,
+            date: date,
+            id_concept: id_concept,
+            latitude: latitude,
+            longitude: longitude
         },
         dataType: "json",
         success: function (result) {
+            console.log(result);
             alert('Guardado con existo');
         },
         error: function (xhr, ajaxOptions, thrownError) {
