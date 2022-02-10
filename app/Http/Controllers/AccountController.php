@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Concept;
 use App\Models\Account;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -82,7 +83,7 @@ class AccountController extends Controller
     }
     public function edit(Request $request)
     {
-        
+
         $request->validate([
             'name' => 'required',
             'description' => 'required',
@@ -95,15 +96,17 @@ class AccountController extends Controller
     }
     public function stats($id)
     {
-        $sqlGasto = DB::table("movements")->
-        where("id_account",  "=", $id)->
-        where("type", "=", "'Gasto'")->
-        select("*", DB::raw("SUM(amount) as sum_amount"))->
-        groupBy("id_concept")
-        ->get();
-        dd($sqlGasto);
-        
+        $sqlGastos = DB::select('select sum(amount) as total_amount, id_concept from movements WHERE id_account = :id and type = "Gasto" GROUP BY id_concept', ['id' => $id]);
+        $sqlingresos = DB::select('select sum(amount) as total_amount, id_concept from movements WHERE id_account = :id and type = "Ingreso" GROUP BY id_concept', ['id' => $id]);
+
+        $concepts = Concept::where("id_account", "=", $id)->get();
         $account = Account::find($id);
-        return view('moneyManager.stats', ['account' => $account]);
+
+        $usuarios = $account->user;
+    
+        $gastosUsuario = DB::select('select sum(amount) as total_amount, user from movements WHERE id_account = :id and type = "Gasto" GROUP BY user', ['id' => $id]);
+        $ingresosUsuario = DB::select('select sum(amount) as total_amount, user from movements WHERE id_account = :id and type = "Ingreso" GROUP BY user', ['id' => $id]);
+
+        return view('moneyManager.stats', ['account' => $account, 'sqlGastos' => $sqlGastos, 'sqlIngresos' => $sqlingresos, 'concepts' => $concepts, 'gastosUsuario' => $gastosUsuario, 'ingresosUsuario' => $ingresosUsuario, 'usuarios' => $usuarios]);
     }
 }

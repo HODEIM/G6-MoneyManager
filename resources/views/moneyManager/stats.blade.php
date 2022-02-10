@@ -31,7 +31,125 @@
         google.charts.load('current', {
             'packages': ['corechart', 'bar']
         });
-        
+        google.charts.load('current', {
+            'packages': ['corechart']
+        });
+
+        google.charts.setOnLoadCallback(gastos);
+        google.charts.setOnLoadCallback(ingresos);
+        google.charts.setOnLoadCallback(usuarios);
+
+        function gastos() {
+            <?php $gastoTotal = 0 ?>
+            var data = google.visualization.arrayToDataTable([
+                ['Gastos', 'Gastos por concepto'],
+                <?php foreach ($sqlGastos as $gasto) { ?>
+                    <?php foreach ($concepts as $concept) { ?>
+                        <?php if ($concept->id ==  $gasto->id_concept) { ?>['<?php echo $concept->concept ?>', <?php echo $gasto->total_amount ?>],
+                <?php $gastoTotal = $gastoTotal + $gasto->total_amount;
+                        }
+                    }
+                } ?>
+
+            ]);
+
+            var options = {
+                title: 'Gastos: <?php echo $gastoTotal . '€' ?>',
+                is3D: true,
+                pieSliceText: 'value'
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('gastos'));
+
+            chart.draw(data, options);
+        }
+
+        function ingresos() {
+            <?php $ingresoTotal = 0 ?>
+            var data = google.visualization.arrayToDataTable([
+                ['Ingresos', 'Ingresos por concepto'],
+                <?php foreach ($sqlIngresos as $ingreso) { ?>
+                    <?php foreach ($concepts as $concept) { ?>
+                        <?php if ($concept->id ==  $ingreso->id_concept) { ?>['<?php echo $concept->concept ?>', <?php echo $ingreso->total_amount ?>],
+                        <?php $ingresoTotal = $ingresoTotal + $ingreso->total_amount;
+                        } ?>
+                    <?php } ?>
+                <?php } ?>
+            ]);
+
+            var options = {
+                title: 'Ingresos: <?php echo $ingresoTotal . '€' ?>',
+                is3D: true,
+                pieSliceText: 'value'
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('ingresos'));
+
+            chart.draw(data, options);
+        }
+
+
+        function usuarios() {
+
+            var chartDiv = document.getElementById('chart_div');
+
+            var data = google.visualization.arrayToDataTable([
+                ['Usuarios', 'Ingresos', 'Gastos'],
+
+                <?php
+                foreach ($usuarios as $usuario) {
+                    $user = $usuario->name;
+                    $gasto = 0;
+                    $ingreso = 0;
+                    foreach ($gastosUsuario as $gastos) {
+                        if ($user == $gastos->user) {
+                            $gasto = $gastos->total_amount;
+                        }
+                    }
+                    foreach ($ingresosUsuario as $ingresos) {
+                        if ($user == $ingresos->user) {
+                            $ingreso = $ingresos->total_amount;
+                        }
+                    }
+
+                ?>['<?php echo $user ?>', <?php echo $ingreso ?>, <?php echo $gasto ?>],
+                <?php } ?>
+            ]);
+
+            var materialOptions = {
+
+                chart: {
+                    title: 'Resumen usuarios',
+                },
+                series: {
+                    0: {
+                        axis: 'Ingresos'
+                    },
+                    1: {
+                        axis: 'Gastos'
+                    }
+                },
+                axes: {
+                    y: {
+                        Ingresos: {
+                            label: 'Ingresos'
+                        },
+                        Gastos: {
+                            side: 'right',
+                            label: 'Gastos'
+                        }
+                    }
+                }
+            };
+
+            function drawMaterialChart() {
+                var materialChart = new google.charts.Bar(chartDiv);
+                materialChart.draw(data, google.charts.Bar.convertOptions(materialOptions));
+            }
+
+
+            drawMaterialChart();
+        };
     </script>
 </head>
 
@@ -67,28 +185,26 @@
 
     <div class="container-fluid">
         @if($account != null)
-        <div class="row d-flex justify-content-center mt-3 ">
-            <div class="col-lg-5 col-md-6 text-center">
-                <div class=" d-flex flex-direction-row justify-content-around align-items-center">
-                    <h1>Graficos de {{$account->name}}</h1>
-                </div>
-            </div>
-            <div class="row d-flex justify-content-center">
-                <div class="col-lg-6">
-                    <div id="piechart" style="width: 80%; height: 500px;"></div>
-                </div>
-                <div class="col-lg-6">
-                    <div id="piechart2" style="width: 80%; height: 500px;"></div>
-                </div>
-                
-            </div>
-            <div>
-                <div style="width: 400px;">
-                    <div  id="chart_div" style="width: 100%; height: 500px;"></div>
-                </div>
-            </div>
 
+        <div class="col-lg-5 col-md-6 m-auto">
+            <div class=" d-flex flex-direction-row justify-content-around align-items-center">
+                <h1>Graficos de {{$account->name}}</h1>
+            </div>
         </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-6">
+                <div id="gastos" style="width: 80%; height: 500px;"></div>
+            </div>
+            <div class="col-lg-6">
+                <div id="ingresos" style="width: 80%; height: 500px;"></div>
+            </div>
+        </div>
+        <div class="row my-2">
+            <div class="col-lg-6 m-auto col-md-6">
+                <div id="chart_div" style="width: 80%; height: 500px;"></div>
+            </div>
+        </div>
+
         @endif
     </div>
 
@@ -99,8 +215,6 @@
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
-
-    <script src="{{ asset('aplicacion/js/graficos.js')}}"></script>
 
 </body>
 
