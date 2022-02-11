@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Concept;
 use App\Models\Account;
 use App\Models\Movement;
+use App\Models\Permission;
+use Illuminate\Support\Facades\DB;
 
 class MovementController extends Controller
 {
@@ -14,6 +16,19 @@ class MovementController extends Controller
         $account = Account::where(['id' => $id])->first();
         $concepts = Concept::where('id_account', '=', $id)->get();
         $movements = Movement::where('id_account', '=', $id)->get();
+        $usuarios = $account->user;
+        //    $usuarios = DB::select('select id_user from movements where id_account = :id group by user', ['id' => $id]);
+
+        $id_permission = DB::select('select id_permission from account_users where id_user = :id and id_account = :idAccount', ['id' => auth()->user()->id, 'idAccount' => $id]);
+        $permissions = Permission::all();
+
+        $gastosUsuario = DB::select('select * from movements where id_account = :id and type = "Gasto"', ['id' => $id]);
+        $ingresosUsuario = DB::select('select * from movements where id_account = :id and type = "Ingreso"', ['id' => $id]);
+
+        $gastos = DB::select('select sum(amount) as amount from movements where id_account = :id and type = "Gasto"', ['id' => $id]);
+        $ingresos = DB::select('select sum(amount) as amount from movements where id_account = :id and type = "Ingreso"', ['id' => $id]);
+        $mediaCuenta = $ingresos[0]->amount - $gastos[0]->amount;
+
         if ($account != null) {
             if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
                 $url = "https://";
@@ -21,8 +36,8 @@ class MovementController extends Controller
                 $url = "http://";
             $url .= $_SERVER['HTTP_HOST'];
             $url .= $_SERVER['REQUEST_URI'];
-            $url .= "/invite/".auth()->user()->id;
-            return view('moneyManager.movements', ['account' => $account, 'concepts' => $concepts, 'movements' => $movements, 'url' => $url]);
+            $url .= "/invite/" . auth()->user()->id;
+            return view('moneyManager.movements', ['account' => $account, 'concepts' => $concepts, 'movements' => $movements, 'url' => $url, 'usuarios' => $usuarios, 'ingresosUsuario' => $ingresosUsuario, 'gastosUsuario' => $gastosUsuario, 'mediaCuenta' => $mediaCuenta, 'id_permission' => $id_permission, 'permissions' => $permissions]);
         } else
             return redirect("/accounts");
     }
@@ -64,6 +79,15 @@ class MovementController extends Controller
         return redirect('/account/' . $id);
     }
 
+    public function show(Movement $movement)
+    {
+        return response()->json($movement, 200);
+    }
+    public function update(Request $request, Movement $movement)
+    {
+        $movement->update($request->all());
+        return response()->json($movement, 200);
+    }
     public function destroy($id)
     {
         Movement::destroy($id);

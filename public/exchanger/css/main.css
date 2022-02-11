@@ -1,0 +1,39 @@
+.resultado{
+    text-align: center;
+    margin-top: 3%;
+
+}
+.h3{
+    opacity: 0.9;
+    font-size: 160%;
+}
+#result h2{
+    margin-top: 1%;
+}
+#exchange{
+    margin-top: 3rem;
+}
+.exchange span{
+    margin-top: 5%;
+}
+@media (max-width: 991px){
+    .breadcrumb{
+        float: right;
+    }
+}
+    
+
+@media (max-width: 575px){
+    #exchange{
+        margin-top: 1rem;
+    }
+    #exchange .align{
+        text-align: center;
+        align-items: center;
+    }
+    #exchange .align div{
+        width: 33.333333% !important;
+    }
+
+}
+

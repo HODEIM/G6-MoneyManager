@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MovementController;
 use App\Http\Controllers\ConceptController;
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\LangController;
 use App\Http\Controllers\MailMessagesController;
 
@@ -15,6 +16,9 @@ use App\Http\Controllers\MailMessagesController;
 Route::get('/', function () {
     return view('landingPage.index');
 });
+Route::get('/exchange', function () {
+    return view('moneyManager.exchanger');
+})->middleware(["auth", "verified"]);
 
 Route::get('/lang/{lang}', [LangController::class, 'change'])->name('lang.change');
 
@@ -44,7 +48,18 @@ Route::get('/accounts/create', [AccountController::class, 'create'])->middleware
 
 Route::post('/accounts/store', [AccountController::class, 'store'])->middleware(["auth", "verified"]);
 
-Route::post('/accounts/acceptInvitation', [AccountController::class, 'acceptInvitation'])->middleware("auth");
+Route::post('/accounts/acceptInvitation', [AccountController::class, 'acceptInvitation'])->middleware(["auth", "verified"]);
+
+Route::post('/account/stats/{id}', [AccountController::class, 'stats'])->middleware(["auth", "verified"]);
+
+Route::post('/account/edit/{id}', [AccountController::class, 'editView'])->middleware(["auth", "verified"]);
+
+Route::post('/account/edit', [AccountController::class, 'edit'])->middleware(["auth", "verified"]);
+
+Route::delete('/account/destroy/{id}', [AccountController::class, 'destroy'])->middleware(["auth", "verified"]);
+
+//account User ROUTES
+Route::delete('/accountUser/destroy', [AccountController::class, 'disatatchUser'])->middleware(["auth", "verified"]);
 
 // movements ROUTES
 
@@ -57,6 +72,12 @@ Route::delete('/movement/{id}', [MovementController::class, 'destroy'])->middlew
 // concept ROUTES
 
 Route::post('/concept/store', [ConceptController::class, 'store'])->middleware("auth");
+
+// Permission Routes
+
+Route::post('/permissions/update', [PermissionController::class, 'update'])->middleware("auth");
+
+
 
 // Admin ROUTES
 Route::get('/admin', [AdminController::class, 'index'])->middleware(["auth", "verified"]);

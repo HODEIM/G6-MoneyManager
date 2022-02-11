@@ -31,7 +31,7 @@
         <div class="container px-5">
             <a class="navbar-brand" href="/">
                 <img src="{{ asset('landing/assets/img/logo_blanco.png') }}" alt="logo" width="50" class="d-inline-block">
-                Money Manager
+                {{ __('mm') }}
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -54,20 +54,29 @@
     <div class="container-fluid">
         <div class="row d-flex justify-content-center">
             <div class="col-xl-5 col-lg-5 col-md-7 col-10 text-center mt-3">
-                <h1>Añadir cuenta nueva</h1>
+                <h1>Editar Cuenta</h1>
             </div>
         </div>
         <div class="row d-flex justify-content-center">
-            <div class="col-xl-5 col-lg-5 col-md-7 col-10 mt-3 m-auto">
-                <form method="POST" action="/accounts/store">
+            <div class="col-xl-5 col-lg-5 col-md-7 col-10 mt-3">
+                @if($account != null)
+                <form method="POST" action="/account/edit">
                     @csrf
                     <table class="miTabla">
+                        <tr>
+                            <td>
+                                Id Cuenta:
+                            </td>
+                            <td>
+                                <input type="text" class="form-control mt-2" placeholder="Id" name="id" id="id" value="{{$account->id}}" readonly>
+                            </td>
+                        </tr>
                         <tr>
                             <td>
                                 Nombre:
                             </td>
                             <td>
-                                <input type="text" class="form-control mt-2" placeholder="Nombre" name="name" id="name">
+                                <input type="text" class="form-control mt-2" placeholder="Nombre" name="name" value="{{$account->name}}" id="name">
                             </td>
                         </tr>
                         <tr>
@@ -81,7 +90,7 @@
                                 Descripcion:
                             </td>
                             <td>
-                                <input type="text" class="form-control mt-2" placeholder="Descripcion" name="description" id="description">
+                                <input type="text" class="form-control mt-2" placeholder="Descripcion" name="description" value="{{$account->description}}" id="description">
                             </td>
                         </tr>
                         <tr>
@@ -93,24 +102,24 @@
                         <tr>
                             <td colspan="2">
                                 <div class="text-center">
-                                    <input type="submit" class="btn btn-primary mt-2" value="Crear cuenta" id="create">
+                                    <input type="submit" class="btn btn-primary mt-2" value="Editar datos" id="create">
                                 </div>
                             </td>
                         </tr>
                     </table>
                 </form>
+                @endif
             </div>
         </div>
     </div>
-
-
-
 
     <!-- Footer-->
     @include('partials.footer')
 
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="{{ asset('landing/js/scripts.js')}}"></script>
     <script src="{{ asset('aplicacion/js/account.js')}}"></script>
 
 </body>

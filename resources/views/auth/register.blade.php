@@ -33,7 +33,7 @@
 				<div class="form-left">
 					<h2>{{ __('titleregister') }}</h2>
 					<div class="logo">
-						<img src="{{ asset('assets/logo/logo_unificado.ico') }}">
+						<a href="/"><img src="{{ asset('assets/logo/logo_unificado.ico') }}"></a>
 					</div>
 					<div class="form-group">
 						<div class="form-row form-row-1">
